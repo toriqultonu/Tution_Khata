@@ -1,16 +1,18 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/constant.dart';
 
 import 'home_page.dart';
 
 class LoginScreen extends StatefulWidget {
+  static String id = 'login_screen';
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool _isObscure = true;
@@ -133,32 +135,37 @@ class _LoginScreenState extends State<LoginScreen> {
 
             // Submit Button
             Container(
-              width: 570,
-              height: 70,
+               width: 314,
+               height: 70,
               padding: EdgeInsets.only(top: 20),
-              child: RaisedButton(
-                  color: Colors.pink,
-                  child: Text("Submit", style: TextStyle(color: Colors.white)),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
-                  onPressed: () {
-                    if (kDebugMode) {
-                      print(
-                          "Username: ${usernameController.text}, password: ${passwordController.text}");
-                    }
-                    if (usernameController.text == fetchCredentials()[0] &&
-                        passwordController.text == fetchCredentials()[1]) {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute(builder: (context) => HomePage()),
-                            (Route<dynamic> route) => false,
-                      );
-                    } else {
-                      setState(() {
-                        _isVisible = true;
-                      });
-                    }
-                  }),
+              child: Column(
+                children: [
+                  RoundedButton(
+                    color: primaryColor,
+                    title: "Login",
+                    width: 277,
+                    height: 45.0,
+                    onPressed: () {
+                      if (kDebugMode) {
+                        print(
+                            "Username: ${usernameController.text}, password: ${passwordController.text}");
+                      }
+                      if (usernameController.text == fetchCredentials()[0] &&
+                          passwordController.text == fetchCredentials()[1]) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(builder: (context) => HomePage()),
+                          (Route<dynamic> route) => false,
+                        );
+                      } else {
+                        setState(() {
+                          _isVisible = true;
+                        });
+                      }
+                    },
+                  ),
+                ],
+              ),
             ),
           ],
         ));
