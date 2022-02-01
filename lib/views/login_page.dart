@@ -60,11 +60,11 @@ class _LoginScreenState extends State<LoginScreen> {
         ]
               ),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Container(
 
-                    width: MediaQuery.of(context).size.width,
+                   // width: MediaQuery.of(context).size.width,
                     height: 45,
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -80,14 +80,22 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
 
                     child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        focusColor: Colors.grey,
-                        prefixIcon: Icon(Icons.phone),
-                        hintText: 'Phone No.',
-                        hintStyle: hintText,
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
+                        isCollapsed: true,
+                        //fillColor: Colors.white,
+                        //focusColor: Colors.grey,
+                          prefixIcon: Icon(Icons.phone),
+                          labelText: 'Phone No.',
+                          hintStyle: hintText,
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none
+                        //border: OutlineInputBorder(borderSide: BorderSide.none),
                       ),
                     ),
                   ),

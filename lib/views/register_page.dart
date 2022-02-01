@@ -23,6 +23,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   File? imageFile;
   bool passwordVisible = false;
+  int? selectedRadio;
 
   bool _checked = false;
 
@@ -30,6 +31,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
     final pickedFile = await ImagePicker().getImage(source: source);
     setState(() {
       imageFile = File(pickedFile!.path);
+    });
+  }
+
+  setSelectedRadio(val){
+    setState(() {
+      selectedRadio = val;
     });
   }
 
@@ -265,16 +272,29 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 ]
                             ),
 
-                            child: TextFormField(
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                focusColor: Colors.grey,
-                                prefixIcon: Icon(Icons.phone),
-                                hintText: 'Phone No.',
-                                hintStyle: hintText,
-                                border: OutlineInputBorder(borderSide: BorderSide.none),
+                            child: Row(
+                              children:[ Radio(
+                                value: 1,
+                                groupValue: selectedRadio,
+                                activeColor: primaryColor,
+                                onChanged: (value){
+                                  setSelectedRadio(value);
+                                  print(selectedRadio);
+                                },
                               ),
+                                Text('Male', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
+                                SizedBox(width: 54,),
+                                Radio(
+                                  value: 2,
+                                  groupValue: selectedRadio,
+                                  activeColor: primaryColor,
+                                  onChanged: (value){
+                                      setSelectedRadio(value);
+                                      print(selectedRadio);
+                                  },
+                                ),
+                                Text('Female', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
+                            ]
                             ),
                           ),
                           Spacer(),
