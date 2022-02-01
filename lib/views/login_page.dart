@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/constant.dart';
+import 'package:tution_khata/views/register_page.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = "login_screen";
@@ -160,7 +161,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 22,
               child: GestureDetector(
                 onTap: (){
-                  ///TODO transistion to signup
+                  Navigator.pushNamed(context, RegisterScreen.id);
                 },
                   child: Text(
                 'CLICK TO CREATE ACCOUNT',
