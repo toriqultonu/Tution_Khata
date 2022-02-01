@@ -17,3 +17,22 @@ TextStyle hintText = TextStyle(
 
     color: Colors.black
 );
+
+
+InputDecoration getTextFieldDesign({required String labelText, required Icon icon}) {
+  return InputDecoration(
+      isCollapsed: true,
+      //fillColor: Colors.white,
+      //focusColor: Colors.grey,
+      prefixIcon: icon,
+      labelText: labelText,
+      hintStyle: hintText,
+      floatingLabelBehavior: FloatingLabelBehavior.never,
+      border: InputBorder.none,
+      focusedBorder: InputBorder.none,
+      enabledBorder: InputBorder.none,
+      errorBorder: InputBorder.none,
+      disabledBorder: InputBorder.none
+    //border: OutlineInputBorder(borderSide: BorderSide.none),
+  );
+}

@@ -64,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 children: [
                   Container(
 
-                   // width: MediaQuery.of(context).size.width,
+                    width: MediaQuery.of(context).size.width,
                     height: 45,
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -83,9 +83,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       textAlignVertical: TextAlignVertical.center,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
-                        isCollapsed: true,
                         //fillColor: Colors.white,
                         //focusColor: Colors.grey,
+                          isCollapsed: true,
                           prefixIcon: Icon(Icons.phone),
                           labelText: 'Phone No.',
                           hintStyle: hintText,
@@ -96,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           errorBorder: InputBorder.none,
                           disabledBorder: InputBorder.none
                         //border: OutlineInputBorder(borderSide: BorderSide.none),
-                      ),
+                      )
                     ),
                   ),
                   Spacer(),
@@ -116,13 +116,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ]
                     ),
                     child: TextFormField(
+                      textAlignVertical: TextAlignVertical.center,
                       obscureText: !passwordVisible,
                       decoration: InputDecoration(
-                        fillColor: Colors.white,
-                        focusColor: Colors.grey,
+                        isCollapsed: true,
                         prefixIcon: Icon(Icons.lock),
-                        hintText: 'Phone No.',
+                        labelText: 'Password',
                         hintStyle: hintText,
+                        floatingLabelBehavior: FloatingLabelBehavior.never,
+                        border: InputBorder.none,
+                        focusedBorder: InputBorder.none,
+                        enabledBorder: InputBorder.none,
+                        errorBorder: InputBorder.none,
+                        disabledBorder: InputBorder.none,
                         suffixIcon: IconButton(
                           color: Colors.grey,
                           splashRadius: 1,
@@ -131,7 +137,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               : Icons.visibility_off_outlined),
                           onPressed: togglePassword,
                         ),
-                        border: OutlineInputBorder(borderSide: BorderSide.none),
                       ),
                     ),
                   ),
