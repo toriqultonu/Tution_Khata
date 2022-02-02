@@ -106,15 +106,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                          CustomTextFormField('Full Name', Icon(Icons.person), TextInputType.name),
                           Spacer(),
                           CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
                           Spacer(),
-                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                          CustomTextFormField('Email Address', Icon(Icons.email), TextInputType.emailAddress),
                           Spacer(),
-                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                          CustomTextFormField('District', Icon(Icons.add_location), TextInputType.streetAddress),
                           Spacer(),
-                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                          CustomTextFormField('Upazila/Thana', Icon(Icons.add_location), TextInputType.streetAddress),
                           Spacer(),
 
                           Container(
