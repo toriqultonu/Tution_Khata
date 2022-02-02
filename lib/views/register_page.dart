@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/textformfield_design.dart';
 
 import '../constant.dart';
 
@@ -105,181 +106,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
-
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
-                            ),
-
-                            child: TextFormField(
-                              textAlignVertical: TextAlignVertical.center,
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                hintStyle: hintText,
-                                floatingLabelBehavior: FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                              ),
-                            ),
-                          ),
+                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
                           Spacer(),
-                          Container(
-
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
-
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
-                            ),
-
-                            child: TextFormField(
-                              textAlignVertical: TextAlignVertical.center,
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                hintStyle: hintText,
-                                floatingLabelBehavior: FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                              ),
-                            ),
-                          ),
+                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
                           Spacer(),
-                          Container(
-
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
-
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
-                            ),
-
-                            child: TextFormField(
-                              textAlignVertical: TextAlignVertical.center,
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                hintStyle: hintText,
-                                floatingLabelBehavior: FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                              ),
-                            ),
-                          ),
+                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
                           Spacer(),
-                          Container(
-
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
-
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
-                            ),
-
-                            child: TextFormField(
-                              textAlignVertical: TextAlignVertical.center,
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                hintStyle: hintText,
-                                floatingLabelBehavior: FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                              ),
-                            ),
-                          ),
+                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
                           Spacer(),
-                          Container(
-
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
-
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
-                            ),
-
-                            child: TextFormField(
-                              textAlignVertical: TextAlignVertical.center,
-                              keyboardType: TextInputType.phone,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                hintStyle: hintText,
-                                floatingLabelBehavior: FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                              ),
-                            ),
-                          ),
+                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
                           Spacer(),
+
                           Container(
 
                             width: MediaQuery.of(context).size.width,

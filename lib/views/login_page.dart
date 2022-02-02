@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/textformfield_design.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/register_page.dart';
 
@@ -62,43 +63,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Container(
-
-                    width: MediaQuery.of(context).size.width,
-                    height: 45,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6.0),
-
-                        boxShadow: [BoxShadow(
-                          color: Colors.grey.withOpacity(0.8),
-                          spreadRadius: 0.1,
-                          blurRadius: 2,
-                          offset: Offset(3,3),
-                        )
-                        ]
-                    ),
-
-                    child: TextFormField(
-                      textAlignVertical: TextAlignVertical.center,
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                        //fillColor: Colors.white,
-                        //focusColor: Colors.grey,
-                          isCollapsed: true,
-                          prefixIcon: Icon(Icons.phone),
-                          labelText: 'Phone No.',
-                          hintStyle: hintText,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none
-                        //border: OutlineInputBorder(borderSide: BorderSide.none),
-                      )
-                    ),
-                  ),
+                  CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
                   Spacer(),
                   Container(
                     width: MediaQuery.of(context).size.width,
