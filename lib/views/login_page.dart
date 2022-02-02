@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tution_khata/components/custom_alert_dialog.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
 import 'package:tution_khata/constant.dart';
@@ -14,13 +15,22 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   bool passwordVisible = false;
 
   void togglePassword() {
     setState(() {
       passwordVisible = !passwordVisible;
     });
+  }
+
+  Future openDialog(context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          content: CustomAlertDialog()
+      ),
+    );
   }
 
   @override
@@ -49,21 +59,19 @@ class _LoginScreenState extends State<LoginScreen> {
               width: 314,
               height: 238,
               //color: boxColor,
-              decoration: BoxDecoration(
-
-                color: boxColor,
-                boxShadow: [BoxShadow(
+              decoration: BoxDecoration(color: boxColor, boxShadow: [
+                BoxShadow(
                   color: Colors.grey.withOpacity(0.8),
                   spreadRadius: 0.3,
                   blurRadius: 6,
-                  offset: Offset(4,5),
+                  offset: Offset(4, 5),
                 )
-        ]
-              ),
+              ]),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                  CustomTextFormField(
+                      'Phone No.', Icon(Icons.phone), TextInputType.phone),
                   Spacer(),
                   Container(
                     width: MediaQuery.of(context).size.width,
@@ -71,15 +79,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(6.0),
-
-                        boxShadow: [BoxShadow(
-                          color: Colors.grey.withOpacity(0.8),
-                          spreadRadius: 0.1,
-                          blurRadius: 2,
-                          offset: Offset(3,3),
-                        )
-                        ]
-                    ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.8),
+                            spreadRadius: 0.1,
+                            blurRadius: 2,
+                            offset: Offset(3, 3),
+                          )
+                        ]),
                     child: TextFormField(
                       textAlignVertical: TextAlignVertical.center,
                       obscureText: !passwordVisible,
@@ -120,15 +127,20 @@ class _LoginScreenState extends State<LoginScreen> {
             SizedBox(
               height: 22,
             ),
-            Container(
-              width: 168,
-              height: 22,
-              child: Text(
-                'FORGET PASSWORD?',
-                style: TextStyle(
-                    fontFamily: "Nunito Sans",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400),
+            GestureDetector(
+              onTap: () {
+                openDialog(context);
+              },
+              child: Container(
+                width: 168,
+                height: 22,
+                child: Text(
+                  'FORGET PASSWORD?',
+                  style: TextStyle(
+                      fontFamily: "Nunito Sans",
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400),
+                ),
               ),
             ),
             SizedBox(
@@ -138,17 +150,17 @@ class _LoginScreenState extends State<LoginScreen> {
               width: 218,
               height: 22,
               child: GestureDetector(
-                onTap: (){
-                  Navigator.pushNamed(context, RegisterScreen.id);
-                },
+                  onTap: () {
+                    Navigator.pushNamed(context, RegisterScreen.id);
+                  },
                   child: Text(
-                'CLICK TO CREATE ACCOUNT',
-                style: TextStyle(
-                    color: Colors.redAccent,
-                    fontFamily: "Nunito Sans",
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400),
-              )),
+                    'CLICK TO CREATE ACCOUNT',
+                    style: TextStyle(
+                        color: Colors.redAccent,
+                        fontFamily: "Nunito Sans",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400),
+                  )),
             ),
           ],
         )),
@@ -156,3 +168,5 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
+
