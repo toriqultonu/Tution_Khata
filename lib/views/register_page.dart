@@ -52,227 +52,227 @@ class _RegisterScreenState extends State<RegisterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-            child: SafeArea(
-              child: Center(
-                child: Column(
-                  children:[
-                  Container(
-                    height: 41,
-                    width: 137,
-                    margin: EdgeInsets.only(top: 59, bottom: 15),
-                    child: Text(
-                      'SIGNUP',
-                      style: TextStyle(
-                          fontFamily: "Open Sans",
-                          fontSize: 34,
-                          fontWeight: FontWeight.w500,
-                          color: primaryColor),
-                    )
-                    ),
-                    GestureDetector(
-                      onTap: (){
-                        chooseImage(ImageSource.gallery);
-                      },
-                      child: Container(
-                        width: 70,
-                        height: 70,
-                        margin: EdgeInsets.only(bottom: 25),
-                        decoration: BoxDecoration(
-                          shape: BoxShape.rectangle,
-                          borderRadius: BorderRadius.circular(5.0),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: imageFile != null ? FileImage(imageFile!):AssetImage("assets/component/photo.png") as ImageProvider,
-                          )
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.only(top: 30, left: 18, right: 18),
-                      width: 314,
-                      height: 625,
-                      //color: boxColor,
+          child: SafeArea(
+            child: Center(
+              child: Column(
+                children:[
+                Container(
+                  height: 41,
+                  width: 137,
+                  margin: EdgeInsets.only(top: 59, bottom: 15),
+                  child: Text(
+                    'SIGNUP',
+                    style: TextStyle(
+                        fontFamily: "Open Sans",
+                        fontSize: 34,
+                        fontWeight: FontWeight.w500,
+                        color: primaryColor),
+                  )
+                  ),
+                  GestureDetector(
+                    onTap: (){
+                      chooseImage(ImageSource.gallery);
+                    },
+                    child: Container(
+                      width: 70,
+                      height: 70,
+                      margin: EdgeInsets.only(bottom: 25),
                       decoration: BoxDecoration(
-
-                          color: boxColor,
-                          boxShadow: [BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
-                            spreadRadius: 0.3,
-                            blurRadius: 6,
-                            offset: Offset(4,5),
-                          )
-                          ]
+                        shape: BoxShape.rectangle,
+                        borderRadius: BorderRadius.circular(5.0),
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: imageFile != null ? FileImage(imageFile!):AssetImage("assets/component/photo.png") as ImageProvider,
+                        )
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          CustomTextFormField('Full Name', Icon(Icons.person), TextInputType.name),
-                          Spacer(),
-                          CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
-                          Spacer(),
-                          CustomTextFormField('Email Address', Icon(Icons.email), TextInputType.emailAddress),
-                          Spacer(),
-                          CustomTextFormField('District', Icon(Icons.add_location), TextInputType.streetAddress),
-                          Spacer(),
-                          CustomTextFormField('Upazila/Thana', Icon(Icons.add_location), TextInputType.streetAddress),
-                          Spacer(),
+                    ),
+                  ),
+                  Container(
+                    padding: EdgeInsets.only(top: 30, left: 18, right: 18),
+                    width: 314,
+                    height: 625,
+                    //color: boxColor,
+                    decoration: BoxDecoration(
 
-                          Container(
+                        color: boxColor,
+                        boxShadow: [BoxShadow(
+                          color: Colors.grey.withOpacity(0.8),
+                          spreadRadius: 0.3,
+                          blurRadius: 6,
+                          offset: Offset(4,5),
+                        )
+                        ]
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        CustomTextFormField('Full Name', Icon(Icons.person), TextInputType.name),
+                        Spacer(),
+                        CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                        Spacer(),
+                        CustomTextFormField('Email Address', Icon(Icons.email), TextInputType.emailAddress),
+                        Spacer(),
+                        CustomTextFormField('District', Icon(Icons.add_location), TextInputType.streetAddress),
+                        Spacer(),
+                        CustomTextFormField('Upazila/Thana', Icon(Icons.add_location), TextInputType.streetAddress),
+                        Spacer(),
 
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
+                        Container(
 
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
+
+                              boxShadow: [BoxShadow(
+                                color: Colors.grey.withOpacity(0.8),
+                                spreadRadius: 0.1,
+                                blurRadius: 2,
+                                offset: Offset(3,3),
+                              )
+                              ]
+                          ),
+
+                          child: Row(
+                            children:[ Radio(
+                              value: 1,
+                              groupValue: selectedRadio,
+                              activeColor: primaryColor,
+                              onChanged: (value){
+                                setSelectedRadio(value);
+                                print(selectedRadio);
+                              },
                             ),
-
-                            child: Row(
-                              children:[ Radio(
-                                value: 1,
+                              Text('Male', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
+                              SizedBox(width: 54,),
+                              Radio(
+                                value: 2,
                                 groupValue: selectedRadio,
                                 activeColor: primaryColor,
                                 onChanged: (value){
-                                  setSelectedRadio(value);
-                                  print(selectedRadio);
+                                    setSelectedRadio(value);
+                                    print(selectedRadio);
                                 },
                               ),
-                                Text('Male', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
-                                SizedBox(width: 54,),
-                                Radio(
-                                  value: 2,
-                                  groupValue: selectedRadio,
-                                  activeColor: primaryColor,
-                                  onChanged: (value){
-                                      setSelectedRadio(value);
-                                      print(selectedRadio);
-                                  },
-                                ),
-                                Text('Female', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
-                            ]
-                            ),
+                              Text('Female', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
+                          ]
                           ),
-                          Spacer(),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
+                        ),
+                        Spacer(),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
 
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
-                            ),
-                            child: TextFormField(
-                              textAlignVertical: TextAlignVertical.center,
-                              obscureText: !passwordVisible,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                hintStyle: hintText,
-                                floatingLabelBehavior: FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                suffixIcon: IconButton(
-                                  color: Colors.grey,
-                                  splashRadius: 1,
-                                  icon: Icon(passwordVisible
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined),
-                                  onPressed: togglePassword,
-                                ),
-
+                              boxShadow: [BoxShadow(
+                                color: Colors.grey.withOpacity(0.8),
+                                spreadRadius: 0.1,
+                                blurRadius: 2,
+                                offset: Offset(3,3),
+                              )
+                              ]
+                          ),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            obscureText: !passwordVisible,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              prefixIcon: Icon(Icons.lock),
+                              labelText: 'Password',
+                              hintStyle: hintText,
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              suffixIcon: IconButton(
+                                color: Colors.grey,
+                                splashRadius: 1,
+                                icon: Icon(passwordVisible
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined),
+                                onPressed: togglePassword,
                               ),
+
                             ),
                           ),
-                          Spacer(),
-                          Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: 45,
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(6.0),
+                        ),
+                        Spacer(),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
 
-                                boxShadow: [BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3,3),
-                                )
-                                ]
-                            ),
-                            child: TextFormField(
-                              textAlignVertical: TextAlignVertical.center,
-                              obscureText: !passwordVisible,
-                              decoration: InputDecoration(
-                                isCollapsed: true,
-                                prefixIcon: Icon(Icons.lock),
-                                labelText: 'Password',
-                                hintStyle: hintText,
-                                floatingLabelBehavior: FloatingLabelBehavior.never,
-                                border: InputBorder.none,
-                                focusedBorder: InputBorder.none,
-                                enabledBorder: InputBorder.none,
-                                errorBorder: InputBorder.none,
-                                disabledBorder: InputBorder.none,
-                                suffixIcon: IconButton(
-                                  color: Colors.grey,
-                                  splashRadius: 1,
-                                  icon: Icon(passwordVisible
-                                      ? Icons.visibility_outlined
-                                      : Icons.visibility_off_outlined),
-                                  onPressed: togglePassword,
-                                ),
-
+                              boxShadow: [BoxShadow(
+                                color: Colors.grey.withOpacity(0.8),
+                                spreadRadius: 0.1,
+                                blurRadius: 2,
+                                offset: Offset(3,3),
+                              )
+                              ]
+                          ),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            obscureText: !passwordVisible,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              prefixIcon: Icon(Icons.lock),
+                              labelText: 'Password',
+                              hintStyle: hintText,
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              suffixIcon: IconButton(
+                                color: Colors.grey,
+                                splashRadius: 1,
+                                icon: Icon(passwordVisible
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined),
+                                onPressed: togglePassword,
                               ),
+
                             ),
                           ),
-                          Spacer(),
-                          CheckboxListTile(
-                            title: Text('terms and conditions'),
-                            controlAffinity: ListTileControlAffinity.leading,
-                            value: _checked,
-                            onChanged: (value){
-                              setState(() {
-                                _checked = value!;
-                              });
+                        ),
+                        Spacer(),
+                        CheckboxListTile(
+                          title: Text('terms and conditions'),
+                          controlAffinity: ListTileControlAffinity.leading,
+                          value: _checked,
+                          onChanged: (value){
+                            setState(() {
+                              _checked = value!;
+                            });
+                          },
+                          activeColor: primaryColor,
+                          checkColor: Colors.white,
+                        ),
+                        Spacer(),
+                        RoundedButton(
+                            color: primaryColor,
+                            title: "SignUp",
+                            onPressed: () {
+                              print("SignUp");
                             },
-                            activeColor: primaryColor,
-                            checkColor: Colors.white,
-                          ),
-                          Spacer(),
-                          RoundedButton(
-                              color: primaryColor,
-                              title: "SignUp",
-                              onPressed: () {
-                                print("SignUp");
-                              },
-                              height: 45,
-                              width: MediaQuery.of(context).size.width)
-                        ],
-                      ),
+                            height: 45,
+                            width: MediaQuery.of(context).size.width)
+                      ],
                     ),
-                ]
                   ),
-              ),
+              ]
+                ),
+            ),
 
-              ),
+            ),
         ),
     );
   }
