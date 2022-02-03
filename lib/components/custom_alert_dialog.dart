@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
+import 'package:tution_khata/views/phone_verification_page.dart';
 
 import '../constant.dart';
 
@@ -34,7 +35,7 @@ class CustomAlertDialog extends StatelessWidget {
                 color: primaryColor,
                 title: "Send",
                 onPressed: () {
-                  print("login");
+                  Navigator.pushNamed(context, PhoneVerification.id);
                 },
                 height: 38,
                 width: MediaQuery.of(context).size.width)
