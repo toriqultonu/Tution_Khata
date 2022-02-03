@@ -4,7 +4,7 @@ class TextFieldOtp extends StatelessWidget {
 
   final bool first, last;
 
-  const TextFieldOtp({Key? key, required this.first, required this.last}) : super(key: key);
+  const TextFieldOtp({ required this.first, required this.last});
 
   @override
   Widget build(BuildContext context) {
