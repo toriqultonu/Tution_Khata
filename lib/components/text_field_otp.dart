@@ -15,7 +15,12 @@ class TextFieldOtp extends StatelessWidget {
         child: TextField(
           autofocus: true,
           onChanged: (value){
-
+            if(value.length == 1 && last == false){
+              FocusScope.of(context).nextFocus();
+            }
+            if(value.length == 1 && first == false){
+              FocusScope.of(context).previousFocus();
+            }
           },
           showCursor: false,
           readOnly: false,
