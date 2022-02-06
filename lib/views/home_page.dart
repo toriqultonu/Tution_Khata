@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: NavigationDrawer(),
       appBar: AppBar(
+        toolbarHeight: 90,
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: primaryColor,
         title: CustomAppBar(str1: 'ডেটা ',str2:'স্ট্যাকচার'),
