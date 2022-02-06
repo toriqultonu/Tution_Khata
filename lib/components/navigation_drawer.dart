@@ -14,14 +14,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     return SafeArea(
       child: Drawer(
         child: Material(
-          color: primaryColor,
+          color: Colors.white,
           child: ListView(
 
               children: [
-                SizedBox(height: 50,),
                 appHeader(context: context),
-                SizedBox(height: 20,),
-                Divider(color: Colors.blue, thickness: 1,),
+               // Divider(color: Colors.blue, thickness: 1,),
                 buildMenuItem(text: "ডেটা স্ট্যাকচার (DataStructure)", icon: Icons.home_outlined, context: context, ID: 'home'),
                 ExpansionTile(title: buildMenuItem(text: "অ্যাারে (Array)", icon: Icons.add, context: context, ID: 'array'),
                   children: [
@@ -73,9 +71,10 @@ Widget buildMenuItem({required String text, required IconData icon, context, req
     leading: Icon(icon, color: Colors.black54, size: 28,),
     title: Text(text,style: TextStyle(color: Colors.black54, fontSize: 17),),
     onTap: (){
-      Navigator.pop(context);
-      Navigator.pop(context);
-      Navigator.pushNamed(context, ID);
+      // Navigator.pop(context);
+      // Navigator.pop(context);
+      // Navigator.pushNamed(context, ID);
+      print('$text + view');
     },
   );
 }
@@ -107,22 +106,17 @@ Widget appHeader({context}){
       Navigator.pop(context);
       Navigator.pushNamed(context, 'home');
     },
-    child: Column(
-      children: [
-        SizedBox(width: 24,),
-        //FlutterLogo(size: 40,),
-        Image(image: AssetImage('Images/logo_dsa.png'),height: 55, width: 55,),
-        SizedBox(height: 15,),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text("Easy ",style: TextStyle(fontSize: 30, fontWeight: FontWeight.w500, color: Colors.black87)),
-            SizedBox(width: 0,),
-            Text("DS", style: TextStyle(fontSize: 30,color: Colors.blue, fontWeight: FontWeight.w500),)
-          ],
-        ),
+    child: Container(
+      padding: EdgeInsets.symmetric(vertical: 15),
+      color: primaryColor,
+      child: Column(
+        children: [
 
-      ],
+          //FlutterLogo(size: 40,),
+          Image(image: AssetImage('assets/component/demologo.png'),height: 194, width: 282,),
+
+        ],
+      ),
     ),
   );
 }
