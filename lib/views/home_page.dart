@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tution_khata/components/appBar.dart';
+import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/navigation_drawer.dart';
 import 'package:tution_khata/constant.dart';
 
