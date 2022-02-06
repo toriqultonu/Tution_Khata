@@ -26,6 +26,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           iconTheme: IconThemeData(color: primaryColor),
+          elevation: 0.0,
         ),
         body: SingleChildScrollView(
           child: Center(
