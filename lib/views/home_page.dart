@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tution_khata/components/appBar.dart';
+import 'package:tution_khata/components/navigation_drawer.dart';
+import 'package:tution_khata/constant.dart';
 
 import '../main.dart';
 
@@ -14,41 +17,41 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: true,
-        //backgroundColor: const Color.fromRGBO(40, 38, 56, 1),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Center(
-              child: Container(
-                  height: 400,
-                  width: 200,
-                  padding: EdgeInsets.all(20),
-                  alignment: Alignment.center,
-                  child: Text(
-                    "Successfull login!",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(color: Colors.white, fontSize: 25),
-                  )),
+      drawer: NavigationDrawer(),
+      appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: primaryColor,
+        title: CustomAppBar(str1: 'ডেটা ',str2:'স্ট্যাকচার'),
+        centerTitle: true,
+        elevation: 0.0,
+        actions: [
+          Opacity(
+            opacity: 0.0,
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 16),
+              child: Icon(Icons.add),
             ),
-            Container(
-              height: 100,
-              width: 570,
-              padding: EdgeInsets.all(20),
-              child: RaisedButton(
-                  color: Colors.pink,
-                  child: Text("Logout", style: TextStyle(color: Colors.white)),
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30)),
-                  onPressed: () {
-                    Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => MyApp()),
-                          (Route<dynamic> route) => false,
-                    );
-                  }),
-            )
+          )
+        ],
+      ),
+      body: Container(
+        //color: primaryColor,
+        child: Column(
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+
+
+                ],
+              ),
+            ),
+
+            //BannerAdsWidgets(),
+
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
