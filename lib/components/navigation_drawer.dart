@@ -19,42 +19,20 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
 
               children: [
                 appHeader(context: context),
-               // Divider(color: Colors.blue, thickness: 1,),
-                buildMenuItem(text: "ডেটা স্ট্যাকচার (DataStructure)", icon: Icons.home_outlined, context: context, ID: 'home'),
-                ExpansionTile(title: buildMenuItem(text: "অ্যাারে (Array)", icon: Icons.add, context: context, ID: 'array'),
-                  children: [
-                    textButton(text: 'Array Traversing', ID: 'arraytraversing', context: context),
-                    textButton(text: 'More Array Operation', ID: 'updatearray', context: context),
-                  ],),
-                ExpansionTile(title: buildMenuItem(text: "লিংকড লিস্ট (Linked List)", icon: Icons.add, context: context, ID: 'linkedlist'),
-                  children: [
-                    textButton(text: 'Create & Print Linked List', ID: 'createlinkedlist', context: context),
-                    textButton(text: 'Insert, Delete & Search Operation', ID: 'singlylinkedlist', context: context),
-                    textButton(text: 'Insertion of Doubly Linked List', ID: 'doublyinsertion', context: context),
-                    textButton(text: 'Deletion of Doubly Linked List', ID: 'doublydeletion', context: context),
-                    textButton(text: 'Doubly Linked List', ID: 'doublylinkedlist', context: context),
-                    textButton(text: 'Circular Linked List', ID: 'circularlinkedlist', context: context),
-                    textButton(text: 'Doubly Circular Linked List', ID: 'circularlinkedlist2', context: context),
-                  ],),
-                ExpansionTile(title: buildMenuItem(text: "স্ট্যাক (Stack)", icon: Icons.add, context: context, ID: 'stack'),
-                  children: [
-                    textButton(text: 'Bracket Balancing', ID: 'bracket', context: context),
-                  ],),
-                ExpansionTile(title: buildMenuItem(text: "কিউ (Queue)", icon: Icons.add, context: context, ID: 'queue'),
-                  children: [
-                    textButton(text: 'Dequeue', ID: 'dequeue', context: context),
-                  ],),
-                ExpansionTile(title: buildMenuItem(text: "ট্রি (Tree)", icon: Icons.add, context: context, ID: 'tree'),
-                  children: [
-                    textButton(text: 'Application & Classification', ID: 'applicationoftree', context: context),
-                    textButton(text: 'Binary Search Tree', ID: 'binarysearchTRee', context: context),
-                    textButton(text: 'Binary Search Tree Traversal', ID: 'treetraversal', context: context),
-                    textButton(text: 'Find max. & min. in BST', ID: 'maxmin', context: context),
-                    textButton(text: 'Delete any node of BST', ID: 'deletenode', context: context),
-                  ],),
 
-                buildMenuItem(text: "হ্যাশটেবিল (HashTable)", icon: Icons.add, context: context, ID: 'hashtable'),
-                buildMenuItem(text: "কমপ্লেক্সিটি (Complexity)", icon: Icons.access_time, context: context, ID: 'complexity'),
+                SizedBox(height: 10,),
+                buildMenuItem(text: "My Profile", icon: Icons.home_outlined, context: context, ID: 'home'),
+                Divider(color: Colors.grey, thickness: 1,),
+                buildMenuItem(text: "About Us", icon: Icons.add, context: context, ID: 'array'),
+                Divider(color: Colors.grey, thickness: 1,),
+                buildMenuItem(text: "Contact Us", icon: Icons.add, context: context, ID: 'linkedlist'),
+                Divider(color: Colors.grey, thickness: 1,),
+                buildMenuItem(text: "FAQ", icon: Icons.add, context: context, ID: 'stack'),
+                Divider(color: Colors.grey, thickness: 1,),
+                buildMenuItem(text: "Video Tutorials", icon: Icons.add, context: context, ID: 'queue'),
+                Divider(color: Colors.grey, thickness: 1,),
+                buildMenuItem(text: "Log Out", icon: Icons.add, context: context, ID: 'tree'),
+
               ]
           ),
         ),
