@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
+import 'package:tution_khata/components/home_page_app_bar.dart';
 import 'package:tution_khata/components/navigation_drawer.dart';
 import 'package:tution_khata/constant.dart';
 
@@ -22,18 +23,9 @@ class _HomeScreenState extends State<HomeScreen> {
         toolbarHeight: 90,
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: primaryColor,
-        title: CustomAppBar(str1: 'ডেটা ',str2:'স্ট্যাকচার'),
-        centerTitle: true,
-        elevation: 0.0,
-        actions: [
-          Opacity(
-            opacity: 0.0,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              child: Icon(Icons.add),
-            ),
-          )
-        ],
+        title: HomeAppBar(),
+        //centerTitle: true,
+
       ),
       body: Container(
         //color: primaryColor,
