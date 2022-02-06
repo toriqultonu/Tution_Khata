@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/components/text_field_otp.dart';
+import 'package:tution_khata/views/home_page.dart';
 
 import '../constant.dart';
 
@@ -77,7 +78,7 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                   ),
                   SizedBox(height: 20,),
                   RoundedButton(color: primaryColor, title: 'Verify Now', onPressed: () {
-                    print('verify');
+                    Navigator.pushNamed(context, HomeScreen.id);
                   }, height: 45, width: 277),
                   SizedBox(height: 25,),
                   Container(
