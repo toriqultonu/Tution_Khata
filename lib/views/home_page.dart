@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/home_page_app_bar.dart';
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: primaryColor,
         title: HomeAppBar(),
         //centerTitle: true,
+        elevation: 15,
 
       ),
       body: Container(
@@ -34,6 +36,42 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView(
                 children: [
+                    SizedBox(height: 24,),
+                    CarouselSlider(
+                      options: CarouselOptions(
+                        height: 112,
+                        enlargeCenterPage: true,
+                        autoPlay: true,
+                        aspectRatio: 16/9,
+                        autoPlayCurve: Curves.easeInOut,
+                        enableInfiniteScroll: true,
+                        autoPlayAnimationDuration: Duration(milliseconds: 800),
+                        viewportFraction: 8.0,
+                        //disableCenter: false,
+                      ),
+
+                      items: [
+                        Container(
+                          width: 298,
+                          margin: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            image: DecorationImage(
+                              image: AssetImage('assets/component/demoadbanner.png'),
+                              fit: BoxFit.cover,
+                            )
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text('Advertise', style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w700),)
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 45,),
 
 
                 ],
