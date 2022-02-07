@@ -5,6 +5,8 @@ import 'package:tution_khata/components/textformfield_design.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/register_page.dart';
 
+import 'home_page.dart';
+
 class LoginScreen extends StatefulWidget {
   static String id = "login_screen";
 
@@ -117,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: primaryColor,
                       title: "Login",
                       onPressed: () {
-                        print("login");
+                        Navigator.pushNamed(context, HomeScreen.id);
                       },
                       height: 45,
                       width: MediaQuery.of(context).size.width)
