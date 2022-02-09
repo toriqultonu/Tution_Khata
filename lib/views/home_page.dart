@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:tution_khata/components/custom_app_bar.dart';
+import 'package:tution_khata/components/batch_card.dart';
 import 'package:tution_khata/components/home_page_app_bar.dart';
 import 'package:tution_khata/components/navigation_drawer.dart';
 import 'package:tution_khata/constant.dart';
@@ -36,8 +36,8 @@ class _HomeScreenState extends State<HomeScreen> {
             Expanded(
               child: ListView(
                 children: [
-                    SizedBox(height: 24,),
-                    CarouselSlider(
+                  SizedBox(height: 24,),
+                  CarouselSlider(
                       options: CarouselOptions(
                         height: 112,
                         enlargeCenterPage: true,
@@ -71,8 +71,18 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    SizedBox(height: 45,),
-
+                  SizedBox(height: 45,),
+                  ListView.builder(
+                      physics: ClampingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return BatchCard(batchName: 'Math01',
+                          date: 'sat-sun-mon',
+                          batchId: '3243',
+                          time: '4.00-5.00');
+                    }
+                  )
 
                 ],
               ),
@@ -83,6 +93,15 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: primaryColor,
+        onPressed: (){
+
+        },
+      ),
     );
   }
 }
+
+
+
