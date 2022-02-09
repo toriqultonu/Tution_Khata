@@ -18,6 +18,7 @@ TextStyle hintText = TextStyle(
     color: Colors.black
 );
 
+var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdHV0aW9uLmRjYW1wdXN3ZWIuY29tXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ0NDAwNTc0LCJleHAiOjE2NDY5OTI1NzQsIm5iZiI6MTY0NDQwMDU3NCwianRpIjoiM1FoakNSSFd0eDJnaXJQcyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.BgHlrXpbUmPRC9946HaM7hzmq0ZiVpWjIyswqv0XQoY";
 
 InputDecoration getTextFieldDesign({required String labelText, required Icon icon}) {
   return InputDecoration(
