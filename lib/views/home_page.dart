@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/components/batch_card.dart';
 import 'package:tution_khata/components/home_page_app_bar.dart';
-import 'package:tution_khata/components/listview_builder.dart';
+import 'package:tution_khata/components/build_batch_list.dart';
 import 'package:tution_khata/components/navigation_drawer.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:http/http.dart' as http;
