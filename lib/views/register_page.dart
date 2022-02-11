@@ -7,9 +7,9 @@ import 'package:tution_khata/components/textformfield_design.dart';
 
 import '../constant.dart';
 
-void main() {
- runApp(RegisterScreen());
-}
+// void main() {
+//  runApp(RegisterScreen());
+// }
 
 class RegisterScreen extends StatefulWidget {
   static String id = "register_screen";
