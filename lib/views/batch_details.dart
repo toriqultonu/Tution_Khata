@@ -34,8 +34,8 @@ class _BatchDetailsState extends State<BatchDetails> {
               child: Column(
                 children: [
                   Container(
-                    height: 88,
-
+                    height: 100,
+                    decoration: CustomBoxDecoration(boxColor),
 
                   )
                 ],
