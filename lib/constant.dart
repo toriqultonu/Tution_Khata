@@ -20,6 +20,19 @@ TextStyle hintText = TextStyle(
 
 var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdHV0aW9uLmRjYW1wdXN3ZWIuY29tXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjQ0NDAwNTc0LCJleHAiOjE2NDY5OTI1NzQsIm5iZiI6MTY0NDQwMDU3NCwianRpIjoiM1FoakNSSFd0eDJnaXJQcyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.BgHlrXpbUmPRC9946HaM7hzmq0ZiVpWjIyswqv0XQoY";
 
+BoxDecoration CustomBoxDecoration(Color color) {
+  return BoxDecoration(
+      color: color,
+      borderRadius: BorderRadius.circular(6.0),
+      boxShadow: [
+        BoxShadow(color: Colors.grey.withOpacity(0.8),
+            spreadRadius: 0.1,
+            blurRadius: 2,
+            offset: Offset(3, 3))
+      ]
+  );
+}
+
 InputDecoration getTextFieldDesign({required String labelText, required Icon icon}) {
   return InputDecoration(
       isCollapsed: true,
