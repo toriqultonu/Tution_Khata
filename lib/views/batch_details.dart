@@ -27,6 +27,7 @@ class _BatchDetailsState extends State<BatchDetails> {
           elevation: 13,
         ),
         body: Container(
+
           child: Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 17, vertical: 17),
@@ -34,7 +35,7 @@ class _BatchDetailsState extends State<BatchDetails> {
                 children: [
                   Container(
                     height: 88,
-                    width: MediaQuery.of(context).size.width,
+
 
                   )
                 ],
