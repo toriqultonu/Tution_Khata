@@ -146,8 +146,9 @@ class _BatchDetailsState extends State<BatchDetails> {
                                         case ConnectionState.waiting:
                                           return Center(
                                               child: Container(
-                                                width: 150,
-                                                height: 150,
+                                                margin: EdgeInsets.only(top: 120),
+                                                width: 100,
+                                                height: 100,
                                                 child: CircularProgressIndicator(),
                                               ));
                                         default:
