@@ -61,14 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: 314,
               height: 238,
               //color: boxColor,
-              decoration: BoxDecoration(color: boxColor, boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.8),
-                  spreadRadius: 0.3,
-                  blurRadius: 6,
-                  offset: Offset(4, 5),
-                )
-              ]),
+              decoration: CustomBoxDecoration(boxColor),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
