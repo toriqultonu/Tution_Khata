@@ -43,54 +43,54 @@ class _HomeScreenState extends State<HomeScreen> {
         //color: primaryColor,
         child: Column(
           children: [
+            SizedBox(
+              height: 24,
+            ),
+            CarouselSlider(
+              options: CarouselOptions(
+                height: 112,
+                enlargeCenterPage: true,
+                autoPlay: true,
+                aspectRatio: 16 / 9,
+                autoPlayCurve: Curves.easeInOut,
+                enableInfiniteScroll: true,
+                autoPlayAnimationDuration: Duration(milliseconds: 800),
+                viewportFraction: 8.0,
+                //disableCenter: false,
+              ),
+              items: [
+                Container(
+                  width: 298,
+                  margin: EdgeInsets.all(5),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8.0),
+                      image: DecorationImage(
+                        image: AssetImage(
+                            'assets/component/demoadbanner.png'),
+                        fit: BoxFit.cover,
+                      )),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Advertise',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.w700),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(
+              height: 45,
+            ),
             Expanded(
               child: ListView(
                 children: [
-                  SizedBox(
-                    height: 24,
-                  ),
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      height: 112,
-                      enlargeCenterPage: true,
-                      autoPlay: true,
-                      aspectRatio: 16 / 9,
-                      autoPlayCurve: Curves.easeInOut,
-                      enableInfiniteScroll: true,
-                      autoPlayAnimationDuration: Duration(milliseconds: 800),
-                      viewportFraction: 8.0,
-                      //disableCenter: false,
-                    ),
-                    items: [
-                      Container(
-                        width: 298,
-                        margin: EdgeInsets.all(5),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            image: DecorationImage(
-                              image: AssetImage(
-                                  'assets/component/demoadbanner.png'),
-                              fit: BoxFit.cover,
-                            )),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              'Advertise',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 25,
-                                  fontWeight: FontWeight.w700),
-                            )
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 45,
-                  ),
                   FutureBuilder(
                       future: DatabaseService.getBatchList(token),
                       builder: (BuildContext context, AsyncSnapshot snapshot) {
