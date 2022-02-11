@@ -1,6 +1,8 @@
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
+import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
+import 'package:tution_khata/components/listview_builder.dart';
 import 'package:tution_khata/constant.dart';
 
 // void main() {
@@ -9,6 +11,7 @@ import 'package:tution_khata/constant.dart';
 
 
 class BatchDetails extends StatefulWidget {
+  static String id = "batch_details_screen";
   const BatchDetails({Key? key}) : super(key: key);
 
   @override
@@ -28,7 +31,6 @@ class _BatchDetailsState extends State<BatchDetails> {
           elevation: 15,
         ),
         body: Container(
-
           child: Center(
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 17, vertical: 17),
@@ -130,8 +132,39 @@ class _BatchDetailsState extends State<BatchDetails> {
                       child: Column(
                         children: [
                           Container(
-                            child: Text('Student List', style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w600, fontSize: 17),),
-                          )
+                            child: Text('Student List', style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w600, fontSize: 20),),
+                          ),
+                          Container(child: Text('click on the student to view more options'),),
+                          SizedBox(height: 9,),
+                          Expanded(
+                            child: ListView(
+                              children: [
+                                FutureBuilder(
+                                    future: DatabaseService.getBatchList(token),
+                                    builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                      switch (snapshot.connectionState) {
+                                        case ConnectionState.waiting:
+                                          return Center(
+                                              child: Container(
+                                                width: 150,
+                                                height: 150,
+                                                child: CircularProgressIndicator(),
+                                              ));
+                                        default:
+                                          if (snapshot.hasError) {
+                                            return Center(
+                                                child: Container(
+                                                  child: Text(
+                                                      'Some error occurred! Contact our support team'),
+                                                ));
+                                          } else {
+                                            return buildBatch(snapshot);
+                                          }
+                                      }
+                                    })
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
