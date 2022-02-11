@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/components/batch_card.dart';
@@ -98,6 +99,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           case ConnectionState.waiting:
                             return Center(
                                 child: Container(
+                                  margin: EdgeInsets.only(top: 120),
                               width: 150,
                               height: 150,
                               child: CircularProgressIndicator(),
@@ -120,9 +122,16 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: primaryColor,
-        onPressed: () {},
+      bottomNavigationBar: CupertinoTabBar(
+        // currentIndex: pageIndex,
+        // onTap: onTap,
+        activeColor: primaryColor,
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.whatshot),),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications_active),),
+          BottomNavigationBarItem(icon: Icon(Icons.search),),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle),),
+        ],
       ),
     );
   }
