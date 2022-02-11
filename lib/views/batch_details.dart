@@ -1,8 +1,8 @@
-import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
+import 'package:tution_khata/components/build_student_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
-import 'package:tution_khata/components/listview_builder.dart';
+import 'package:tution_khata/components/build_batch_list.dart';
 import 'package:tution_khata/constant.dart';
 
 // void main() {
@@ -127,7 +127,7 @@ class _BatchDetailsState extends State<BatchDetails> {
                   Expanded(
                     child: Container(
                       width: MediaQuery.of(context).size.width,
-                      padding: EdgeInsets.only(top: 10),
+                      padding: EdgeInsets.only(top: 10, left: 14, right: 14),
                       decoration: CustomBoxDecoration(boxColor),
                       child: Column(
                         children: [
@@ -158,7 +158,7 @@ class _BatchDetailsState extends State<BatchDetails> {
                                                       'Some error occurred! Contact our support team'),
                                                 ));
                                           } else {
-                                            return buildBatch(snapshot);
+                                            return buildStudentList(snapshot);
                                           }
                                       }
                                     })
