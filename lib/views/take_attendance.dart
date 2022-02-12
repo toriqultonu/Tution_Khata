@@ -40,7 +40,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 11),
                   height: 70,
-                  //width: MediaQuery.of(context).size.width,
+                  width: MediaQuery.of(context).size.width,
                   decoration: CustomBoxDecoration(Colors.white),
                   child: Column(
                     children: [
