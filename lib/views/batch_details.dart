@@ -21,8 +21,7 @@ class BatchDetails extends StatefulWidget {
 class _BatchDetailsState extends State<BatchDetails> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: primaryColor,
@@ -176,7 +175,6 @@ class _BatchDetailsState extends State<BatchDetails> {
             ),
           ),
         ),
-      ),
     );
   }
 }
