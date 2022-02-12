@@ -1,6 +1,11 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:tution_khata/Helper/DatabaseService.dart';
+import 'package:tution_khata/components/build_student_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
+import 'package:tution_khata/components/rounded_button.dart';
 
 import '../constant.dart';
 
@@ -47,7 +52,39 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                   ),
                 ),
                 SizedBox(height: 20,),
-
+                Expanded(
+                  child: ListView(
+                    children: [
+                      FutureBuilder(
+                          future: DatabaseService.getBatchList(token),
+                          builder: (BuildContext context, AsyncSnapshot snapshot) {
+                            switch (snapshot.connectionState) {
+                              case ConnectionState.waiting:
+                                return Center(
+                                    child: Container(
+                                      margin: EdgeInsets.only(top: 120),
+                                      width: 150,
+                                      height: 150,
+                                      child: CircularProgressIndicator(),
+                                    ));
+                              default:
+                                if (snapshot.hasError) {
+                                  return Center(
+                                      child: Container(
+                                        child: Text(
+                                            'Some error occurred! Contact our support team'),
+                                      ));
+                                } else {
+                                  return buildAttendanceList(snapshot);
+                                }
+                            }
+                          })
+                    ],
+                  ),
+                ),
+                SizedBox(height: 20,),
+                RoundedButton(color: primaryColor, title: 'Submit', onPressed: (){ print('submit');}, height: 45, width: 277),
+                SizedBox(height: 20,),
               ],
             ),
           ),
