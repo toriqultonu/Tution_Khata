@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
@@ -9,9 +7,6 @@ import 'package:tution_khata/components/rounded_button.dart';
 
 import '../constant.dart';
 
-void main(){
-  return runApp(TakeAttendance());
-}
 
 class TakeAttendance extends StatefulWidget {
   const TakeAttendance({Key? key}) : super(key: key);
@@ -28,7 +23,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: primaryColor,
-          title: CustomAppBar(str1: 'Take Attendance', str2: '',),
+          title: CustomAppBar(str1: 'Take Attendance'),
           centerTitle: true,
           elevation: 15,
         ),
