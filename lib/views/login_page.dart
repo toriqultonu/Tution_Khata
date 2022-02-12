@@ -6,6 +6,7 @@ import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/register_page.dart';
 
 import 'home_page.dart';
+import 'main_page.dart';
 
 class LoginScreen extends StatefulWidget {
   static String id = "login_screen";
@@ -112,7 +113,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: primaryColor,
                       title: "Login",
                       onPressed: () {
-                        Navigator.pushNamed(context, HomeScreen.id);
+                        Navigator.pushNamed(context, MainPage.id);
                       },
                       height: 45,
                       width: MediaQuery.of(context).size.width)
