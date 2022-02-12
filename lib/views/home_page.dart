@@ -15,6 +15,7 @@ import 'package:tution_khata/model/batch.dart';
 import 'package:tution_khata/views/take_attendance.dart';
 
 import '../main.dart';
+import 'fee_collection.dart';
 
 class HomeScreen extends StatefulWidget {
   static String id = "home_screen";
@@ -28,12 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
-
-  int pageIndex = 0;
-  final screens = [
-    HomeScreen(),
-    TakeAttendance(),
-  ];
 
   @override
   Widget build(BuildContext context) {
