@@ -12,6 +12,7 @@ import 'package:tution_khata/components/navigation_drawer.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:http/http.dart' as http;
 import 'package:tution_khata/model/batch.dart';
+import 'package:tution_khata/views/take_attendance.dart';
 
 import '../main.dart';
 
@@ -27,6 +28,12 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
   }
+
+  int pageIndex = 0;
+  final screens = [
+    HomeScreen(),
+    TakeAttendance(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -121,17 +128,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: CupertinoTabBar(
-        // currentIndex: pageIndex,
-        // onTap: onTap,
-        activeColor: primaryColor,
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.whatshot),),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications_active),),
-          BottomNavigationBarItem(icon: Icon(Icons.search),),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle),),
-        ],
       ),
     );
   }
