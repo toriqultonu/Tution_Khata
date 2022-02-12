@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/batch_details.dart';
+import 'package:tution_khata/views/fee_collection.dart';
 import 'package:tution_khata/views/home_page.dart';
 import 'package:tution_khata/views/login_page.dart';
 import 'package:tution_khata/views/main_page.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.id: (context) => HomeScreen(),
         BatchDetails.id: (context) => BatchDetails(),
         MainPage.id: (context) => MainPage(),
+        FeeCollection.id: (context) => FeeCollection(),
 
       },
 
