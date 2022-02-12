@@ -25,7 +25,7 @@ class _BatchDetailsState extends State<BatchDetails> {
         appBar: AppBar(
           iconTheme: IconThemeData(color: Colors.white),
           backgroundColor: primaryColor,
-          title: CustomAppBar(str1: 'Batch Details', str2: '',),
+          title: CustomAppBar(str1: 'Batch Details'),
           centerTitle: true,
           elevation: 15,
         ),
