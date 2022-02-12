@@ -4,6 +4,7 @@ import 'package:tution_khata/components/navigation_drawer.dart';
 import 'package:tution_khata/views/take_attendance.dart';
 
 import '../constant.dart';
+import 'fee_collection.dart';
 import 'home_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -22,6 +23,7 @@ class _MainPageState extends State<MainPage> {
   final screens = [
     HomeScreen(),
     TakeAttendance(),
+    FeeCollection(),
   ];
 
   @override
