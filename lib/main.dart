@@ -4,6 +4,7 @@ import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/home_page.dart';
 import 'package:tution_khata/views/login_page.dart';
+import 'package:tution_khata/views/main_page.dart';
 import 'package:tution_khata/views/phone_verification_page.dart';
 import 'package:tution_khata/views/register_page.dart';
 
@@ -32,6 +33,7 @@ class MyApp extends StatelessWidget {
         PhoneVerification.id: (context) => PhoneVerification(),
         HomeScreen.id: (context) => HomeScreen(),
         BatchDetails.id: (context) => BatchDetails(),
+        MainPage.id: (context) => MainPage(),
 
       },
 
