@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tution_khata/components/change_password_alertdialog.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/custom_info_shower.dart';
 import 'package:tution_khata/components/rounded_button.dart';
@@ -27,6 +28,16 @@ class _ProfilePageState extends State<ProfilePage> {
 
   bool _checked = false;
 
+
+  Future openDialog(context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          content: ChangePasswordAlert()
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +99,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   ),
 
                   SizedBox(height: 15,),
-                  RoundedButton(color: primaryColor, title: 'Click to change your password', onPressed: (){print('change password');}, height: 55, width: 277)
+                  RoundedButton(color: primaryColor, title: 'Click to change your password', onPressed: (){openDialog(context);}, height: 55, width: 277)
                 ]
             ),
           ),
