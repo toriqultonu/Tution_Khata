@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/home_page_app_bar.dart';
 import 'package:tution_khata/components/navigation_drawer.dart';
+import 'package:tution_khata/views/send_sms.dart';
 import 'package:tution_khata/views/take_attendance.dart';
 
 import '../constant.dart';
@@ -24,6 +25,7 @@ class _MainPageState extends State<MainPage> {
     HomeScreen(),
     TakeAttendance(),
     FeeCollection(),
+    SendSMS(),
   ];
 
   @override
