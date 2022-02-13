@@ -21,7 +21,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 appHeader(context: context),
 
                 SizedBox(height: 10,),
-                buildMenuItem(text: "My Profile", icon: Icons.home_outlined, context: context, ID: 'home'),
+                buildMenuItem(text: "My Profile", icon: Icons.home_outlined, context: context, ID: 'profile_page'),
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "About Us", icon: Icons.add, context: context, ID: 'array'),
                 Divider(color: Colors.grey, thickness: 1,),
@@ -51,8 +51,8 @@ Widget buildMenuItem({required String text, required IconData icon, context, req
     onTap: (){
       // Navigator.pop(context);
       // Navigator.pop(context);
-      // Navigator.pushNamed(context, ID);
-      print('$text + view');
+      Navigator.pushNamed(context, ID);
+      print('$text + $ID');
     },
   );
 }
