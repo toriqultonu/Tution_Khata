@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/custom_alert_dialog.dart';
+import 'package:tution_khata/components/custom_password_filed.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
 import 'package:tution_khata/constant.dart';
@@ -69,45 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   CustomTextFormField(
                       'Phone No.', Icon(Icons.phone), TextInputType.phone),
                   Spacer(),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 45,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6.0),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.8),
-                            spreadRadius: 0.1,
-                            blurRadius: 2,
-                            offset: Offset(3, 3),
-                          )
-                        ]),
-                    child: TextFormField(
-                      textAlignVertical: TextAlignVertical.center,
-                      obscureText: !passwordVisible,
-                      decoration: InputDecoration(
-                        isCollapsed: true,
-                        prefixIcon: Icon(Icons.lock),
-                        labelText: 'Password',
-                        hintStyle: hintText,
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                        border: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        errorBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        suffixIcon: IconButton(
-                          color: Colors.grey,
-                          splashRadius: 1,
-                          icon: Icon(passwordVisible
-                              ? Icons.visibility_outlined
-                              : Icons.visibility_off_outlined),
-                          onPressed: togglePassword,
-                        ),
-                      ),
-                    ),
-                  ),
+                  CustomPasswordField(labelText: 'Password'),
                   Spacer(),
                   RoundedButton(
                       color: primaryColor,
