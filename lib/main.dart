@@ -8,6 +8,7 @@ import 'package:tution_khata/views/login_page.dart';
 import 'package:tution_khata/views/main_page.dart';
 import 'package:tution_khata/views/phone_verification_page.dart';
 import 'package:tution_khata/views/register_page.dart';
+import 'package:tution_khata/views/send_sms.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         BatchDetails.id: (context) => BatchDetails(),
         MainPage.id: (context) => MainPage(),
         FeeCollection.id: (context) => FeeCollection(),
-
+        SendSMS.id: (context) => SendSMS(),
       },
 
       home: Scaffold(
