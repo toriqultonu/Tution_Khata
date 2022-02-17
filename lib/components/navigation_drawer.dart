@@ -23,7 +23,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 SizedBox(height: 10,),
                 buildMenuItem(text: "My Profile", icon: Icons.home_outlined, context: context, ID: 'profile_page'),
                 Divider(color: Colors.grey, thickness: 1,),
-                buildMenuItem(text: "About Us", icon: Icons.add, context: context, ID: 'array'),
+                buildMenuItem(text: "About Us", icon: Icons.add, context: context, ID: 'about_us'),
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "Contact Us", icon: Icons.add, context: context, ID: 'linkedlist'),
                 Divider(color: Colors.grey, thickness: 1,),
