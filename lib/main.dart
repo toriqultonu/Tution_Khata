@@ -12,6 +12,7 @@ import 'package:tution_khata/views/profile_page.dart';
 import 'package:tution_khata/views/register_page.dart';
 import 'package:tution_khata/views/send_sms.dart';
 import 'package:tution_khata/views/student_wise_collection.dart';
+import 'package:tution_khata/views/waiting_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         ProfilePage.id: (context) => ProfilePage(),
         StudentWiseCollection.id: (context) => StudentWiseCollection(),
         MonthWiseCollection.id: (context) => MonthWiseCollection(),
+        WaitingList.id: (context) => WaitingList(),
 
 
       },
