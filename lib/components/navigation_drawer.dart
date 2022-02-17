@@ -25,7 +25,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "About Us", icon: Icons.add, context: context, ID: 'about_us'),
                 Divider(color: Colors.grey, thickness: 1,),
-                buildMenuItem(text: "Contact Us", icon: Icons.add, context: context, ID: 'linkedlist'),
+                buildMenuItem(text: "Contact Us", icon: Icons.add, context: context, ID: 'contact_us'),
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "FAQ", icon: Icons.add, context: context, ID: 'stack'),
                 Divider(color: Colors.grey, thickness: 1,),
