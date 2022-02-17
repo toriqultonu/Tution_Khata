@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
+import 'package:tution_khata/views/about_us.dart';
 import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/fee_collection.dart';
 import 'package:tution_khata/views/home_page.dart';
@@ -46,6 +47,8 @@ class MyApp extends StatelessWidget {
         StudentWiseCollection.id: (context) => StudentWiseCollection(),
         MonthWiseCollection.id: (context) => MonthWiseCollection(),
         WaitingList.id: (context) => WaitingList(),
+        AboutUs.id: (context) => AboutUs(),
+
 
 
       },
