@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:tution_khata/Helper/DatabaseService.dart';
+import 'package:tution_khata/components/build_student_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/custom_form_field.dart';
 import 'package:tution_khata/components/month_button.dart';
@@ -114,25 +116,53 @@ class _StudentWiseCollectionState extends State<StudentWiseCollection> {
                 ),
               ),
 
-              SizedBox(height: 40,),
+              SizedBox(height: 30,),
 
-              Container(
-                height: 108,
-                width: MediaQuery.of(context).size.width* 0.9,
-                decoration: CustomBoxDecoration(primaryColor),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 25,),
-                    Text('Month wise Collection', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),),
-                    Spacer(),
-                    Text('একজন শিক্ষার্থী একাধিক মাসের ফি নিন', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w400),),
-                    SizedBox(height: 25,)
-                  ],
+              Expanded(
+               child: Container(
+            width: MediaQuery.of(context).size.width*0.9,
+            padding: EdgeInsets.only(top: 10, left: 14, right: 14, bottom: 14),
+            decoration: CustomBoxDecoration(secondaryColor),
+            child: Column(
+              children: [
+                Container(child: Text('Select one or more students below'),),
+                SizedBox(height: 9,),
+                Expanded(
+                  child: ListView(
+                    children: [
+                      FutureBuilder(
+                          future: DatabaseService.getBatchList(token),
+                          builder: (BuildContext context, AsyncSnapshot snapshot) {
+                            switch (snapshot.connectionState) {
+                              case ConnectionState.waiting:
+                                return Center(
+                                    child: Container(
+                                      margin: EdgeInsets.only(top: 120),
+                                      width: 100,
+                                      height: 100,
+                                      child: CircularProgressIndicator(),
+                                    ));
+                              default:
+                                if (snapshot.hasError) {
+                                  return Center(
+                                      child: Container(
+                                        child: Text(
+                                            'Some error occurred! Contact our support team'),
+                                      ));
+                                } else {
+                                  return buildStudentList(snapshot);
+                                }
+                            }
+                          })
+                    ],
+                  ),
                 ),
-              ),
+              ],
+            ),
+          ),
+        ),
 
-              SizedBox(height: 40,),
+              SizedBox(height: 15,),
 
               RoundedButton(color: primaryColor, title: 'Submit', onPressed: (){print('submit');}, height: 45, width: 277)
             ],
