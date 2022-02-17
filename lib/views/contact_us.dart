@@ -33,7 +33,7 @@ class _ContactUsState extends State<ContactUs> {
           child: Container(
             child: Column(
               children: [
-                Spacer(),
+                SizedBox(height: 40,),
 
                 Container(
                   height: 380,
@@ -46,40 +46,41 @@ class _ContactUsState extends State<ContactUs> {
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: 20),
                         width: MediaQuery.of(context).size.width* 0.9,
-                        child: Row(
-                          children: [
-                            Text('If you have any queries, Please feel free to ask.', style: TextStyle( fontSize: 15, fontWeight: FontWeight.w400),),
-                          ],
-                        ),
+                        child:
+                            Text('If you have any queries, Please feel free to ask.', style: TextStyle( fontSize: 17, fontWeight: FontWeight.w400),),
                       ),
-                      Spacer(),
+                      SizedBox(height: 16,),
 
 
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        width: MediaQuery.of(context).size.width* 0.9,
-                        height: 173,
-                        padding: EdgeInsets.all(8),
+                      Expanded(
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: 20),
+                          width: MediaQuery.of(context).size.width* 0.9,
+                          padding: EdgeInsets.all(8),
 
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                        ),
-                        child: TextFormField(
-                          textAlignVertical: TextAlignVertical.center,
-                          decoration: InputDecoration(
-                            isCollapsed: true,
-                            hintStyle: TextStyle(color: Colors.black12, fontSize: 17, fontWeight: FontWeight.w400),
-                            floatingLabelBehavior: FloatingLabelBehavior.never,
-                            border: InputBorder.none,
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            errorBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.black
+                            ),
+                            color: Colors.white,
+                          ),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              hintStyle: TextStyle(color: Colors.black12, fontSize: 17, fontWeight: FontWeight.w400),
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
 
+                            ),
                           ),
                         ),
                       ),
-                      Spacer(),
+                      SizedBox(height: 16,),
                       RoundedButton(color: primaryColor, title: 'Send', onPressed: (){print('sent');}, height: 45, width: 277)
                     ],
                   ),
@@ -88,25 +89,32 @@ class _ContactUsState extends State<ContactUs> {
                 Spacer(),
 
                 Container(
-                  height: 158,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text('Or Connect us by', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),),
+                ),
+                SizedBox(height: 13,),
+
+                Container(
+                  height: 82,
+                  padding: EdgeInsets.symmetric(horizontal: 30),
                   width: MediaQuery.of(context).size.width* 0.9,
-                  decoration: CustomBoxDecoration(secondaryColor),
-                  child: Column(
+                  decoration: CustomBoxDecoration(boxColor),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+
+                      Icon(Icons.margin, size: 50,),
                       Spacer(),
-                      CustomTextFormField('Batch Name', Icon(Icons.phone), TextInputType.phone),
+                      Icon(Icons.margin, size: 50,),
                       Spacer(),
-                      CustomTextFormField('Select Send Type: All Student', Icon(Icons.phone), TextInputType.phone),
-                      Spacer()
+                      Icon(Icons.margin, size: 50,),
+
                     ],
                   ),
                 ),
 
                 Spacer(),
 
-                RoundedButton(color: primaryColor, title: 'Send', onPressed: (){print('send');}, height: 45, width: 277)
+
               ],
             ),
           ),
