@@ -6,6 +6,7 @@ import 'package:tution_khata/views/fee_collection.dart';
 import 'package:tution_khata/views/home_page.dart';
 import 'package:tution_khata/views/login_page.dart';
 import 'package:tution_khata/views/main_page.dart';
+import 'package:tution_khata/views/month_wise_collection.dart';
 import 'package:tution_khata/views/phone_verification_page.dart';
 import 'package:tution_khata/views/profile_page.dart';
 import 'package:tution_khata/views/register_page.dart';
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         SendSMS.id: (context) => SendSMS(),
         ProfilePage.id: (context) => ProfilePage(),
         StudentWiseCollection.id: (context) => StudentWiseCollection(),
+        MonthWiseCollection.id: (context) => MonthWiseCollection(),
 
 
       },
