@@ -72,6 +72,9 @@ class _SendSMSState extends State<SendSMS> {
                         padding: EdgeInsets.all(8),
 
                         decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.black
+                          ),
                           color: Colors.white,
                         ),
                         child: TextFormField(
