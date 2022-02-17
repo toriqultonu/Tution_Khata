@@ -10,6 +10,7 @@ import 'package:tution_khata/views/phone_verification_page.dart';
 import 'package:tution_khata/views/profile_page.dart';
 import 'package:tution_khata/views/register_page.dart';
 import 'package:tution_khata/views/send_sms.dart';
+import 'package:tution_khata/views/student_wise_collection.dart';
 
 void main() {
   runApp(MyApp());
@@ -40,6 +41,8 @@ class MyApp extends StatelessWidget {
         FeeCollection.id: (context) => FeeCollection(),
         SendSMS.id: (context) => SendSMS(),
         ProfilePage.id: (context) => ProfilePage(),
+        StudentWiseCollection.id: (context) => StudentWiseCollection(),
+
 
       },
 
