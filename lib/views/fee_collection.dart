@@ -6,6 +6,7 @@ import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/components/build_student_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/views/month_wise_collection.dart';
 import 'package:tution_khata/views/student_wise_collection.dart';
 
 import '../constant.dart';
@@ -74,19 +75,24 @@ class _FeeCollectionState extends State<FeeCollection> {
 
                 SizedBox(height: 40,),
 
-                Container(
-                  height: 108,
-                  width: MediaQuery.of(context).size.width* 0.9,
-                  decoration: CustomBoxDecoration(primaryColor),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SizedBox(height: 25,),
-                      Text('Month wise Collection', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),),
-                      Spacer(),
-                      Text('একজন শিক্ষার্থী একাধিক মাসের ফি নিন', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w400),),
-                      SizedBox(height: 25,)
-                    ],
+                GestureDetector(
+                  onTap: (){
+                  Navigator.pushNamed(context, MonthWiseCollection.id);
+                },
+                  child: Container(
+                    height: 108,
+                    width: MediaQuery.of(context).size.width* 0.9,
+                    decoration: CustomBoxDecoration(primaryColor),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(height: 25,),
+                        Text('Month wise Collection', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.w500),),
+                        Spacer(),
+                        Text('একজন শিক্ষার্থী একাধিক মাসের ফি নিন', style: TextStyle(color: Colors.white, fontSize: 17, fontWeight: FontWeight.w400),),
+                        SizedBox(height: 25,)
+                      ],
+                    ),
                   ),
                 ),
 
