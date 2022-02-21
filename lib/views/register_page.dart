@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   File? imageFile;
   bool passwordVisible = false;
   int? selectedRadio;
+  late String _img64;
 
   bool _checked = false;
 
@@ -33,6 +35,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       imageFile = File(pickedFile!.path);
     });
+    final imageBytes = await File(pickedFile!.path).readAsBytesSync();
+    _img64 = base64Encode(imageBytes);
   }
 
   setSelectedRadio(val){
