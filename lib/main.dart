@@ -51,8 +51,6 @@ class MyApp extends StatelessWidget {
         AboutUs.id: (context) => AboutUs(),
         ContactUs.id: (context) => ContactUs(),
 
-
-
       },
 
       home: Scaffold(

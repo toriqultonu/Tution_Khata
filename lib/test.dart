@@ -26,22 +26,25 @@ void main() async{
 
 
   //Create Attendance.
-  final msg = jsonEncode({
-    "batchId":"1000001",
-    "date":"12/18/1995",
-    "absentStudents":[]
-  });
-  final response = await http.post(Uri.parse(
-      'https://tution.dcampusweb.com/api/batch/attendance/create/bydate?token='),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
-      },
-      body: msg);
-  final jsonData = json.decode(response.body);
-  print(response.statusCode);
-  print(jsonData);
+  // final msg = jsonEncode({
+  //   "batchId":"1000001",
+  //   "date":"12/18/1995",
+  //   "absentStudents":[]
+  // });
+  // final response = await http.post(Uri.parse(
+  //     'https://tution.dcampusweb.com/api/batch/attendance/create/bydate?token='),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //       'Authorization': 'Bearer $token',
+  //     },
+  //     body: msg);
+  // final jsonData = json.decode(response.body);
+  // print(response.statusCode);
+  // print(jsonData);
+
+  // Get all district
+
 
 }
 
