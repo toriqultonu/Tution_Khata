@@ -26,6 +26,7 @@ dependencies:
   image_picker:
   carousel_slider:
   http:
+  dropdown_button2:
 
 
   # The following adds the Cupertino Icons font to your application.
