@@ -44,32 +44,32 @@ void main() async{
   // print(jsonData);
 
   // Get all district
-  // final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
-  // final jsonData = json.decode(response.body);
-  // print(jsonData);
+  final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
+  final jsonData = json.decode(response.body);
+  print(jsonData);
 
   // Registration
-  final msg = jsonEncode({
-    "phone":"01**********",
-    "email":"demo@demo.com",
-    "name":"demo",
-    "institutionName":"Demo Institution",
-    "picPath":"",
-    "districtId":"1",
-    "upazilaId":"1",
-    "genderId":"2",
-    "password":"123456"
-  });
-  final response = await http.post(Uri.parse(
-      'https://tution.dcampusweb.com/api/auth/registration'),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: msg);
-  final jsonData = json.decode(response.body);
-  print(response.statusCode);
-  print(jsonData);
+  // final msg = jsonEncode({
+  //   "phone":"01**********",
+  //   "email":"demo@demo.com",
+  //   "name":"demo",
+  //   "institutionName":"Demo Institution",
+  //   "picPath":"",
+  //   "districtId":"1",
+  //   "upazilaId":"1",
+  //   "genderId":"2",
+  //   "password":"123456"
+  // });
+  // final response = await http.post(Uri.parse(
+  //     'https://tution.dcampusweb.com/api/auth/registration'),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //     },
+  //     body: msg);
+  // final jsonData = json.decode(response.body);
+  // print(response.statusCode);
+  // print(jsonData);
 
 }
 

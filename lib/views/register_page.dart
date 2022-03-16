@@ -3,12 +3,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 
 import '../constant.dart';
+import '../model/district.dart';
 
 // void main() {
 //  runApp(RegisterScreen());
@@ -34,9 +36,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   List<String> upazillas = ["Tonu", "Toriqul", "Robin"];
   String? selectedValue;
-  List<String> items = [
-    'A', 'B', 'C', 'D', 'k', 'y', 'e','r','s','v','m','b','z','sfa'
-  ];
+  List<String> items = [];
   late String upzilla;
   String dropdownvalue = 'Item 1';
 
@@ -63,6 +63,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   void initState() {
+    items = DatabaseService.getDistricts() as List<String>;
     super.initState();
   }
 
