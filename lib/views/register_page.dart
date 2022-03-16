@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
+import 'package:dropdown_button2/dropdown_button2.dart';
+
 
 import '../constant.dart';
 
@@ -30,6 +32,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   bool _checked = false;
 
+  List<String> upazillas = ["Tonu", "Toriqul", "Robin"];
+  String? selectedValue;
+  List<String> items = [
+    'A', 'B', 'C', 'D', 'k', 'y', 'e','r','s','v','m','b','z','sfa'
+  ];
+  late String upzilla;
+  String dropdownvalue = 'Item 1';
+
   chooseImage(ImageSource source) async {
     final pickedFile = await ImagePicker().getImage(source: source);
     setState(() {
@@ -49,6 +59,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     setState(() {
       passwordVisible = !passwordVisible;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
   }
 
 
@@ -116,9 +131,139 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Spacer(),
                         CustomTextFormField('Email Address', Icon(Icons.email), TextInputType.emailAddress),
                         Spacer(),
-                        CustomTextFormField('District', Icon(Icons.add_location), TextInputType.streetAddress),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.8),
+                                  spreadRadius: 0.1,
+                                  blurRadius: 2,
+                                  offset: Offset(3, 3),
+                                )
+                              ]),
+                          // child: DropdownButtonHideUnderline(
+                          //   child: DropdownButton2(
+                          //     //icon: Icon(Icons.map),
+                          //     hint: Text(
+                          //       'District',
+                          //       style: hintText,
+                          //     ),
+                          //
+                          //     items: items
+                          //         .map((item) =>
+                          //         DropdownMenuItem<String>(
+                          //           value: item,
+                          //           child: Text(
+                          //             item,
+                          //             style: const TextStyle(
+                          //               fontSize: 14,
+                          //             ),
+                          //           ),
+                          //         ))
+                          //         .toList(),
+                          //     value: selectedValue,
+                          //     onChanged: (value) {
+                          //       setState(() {
+                          //         selectedValue = value as String;
+                          //       });
+                          //     },
+                          //     buttonHeight: 40,
+                          //     buttonWidth: 140,
+                          //     itemHeight: 40,
+                          //   ),
+                          // ),
+                          child: DropdownButtonFormField<String>(
+                            decoration: InputDecoration(
+                              border: InputBorder.none,
+                              prefixIcon: Icon(Icons.person),
+                            ),
+                            hint: Text('District'),
+                            items: items.map((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: new Text(value),
+                              );
+                            }).toList(),
+                            value: selectedValue,
+                            onChanged: (value) {
+                              setState(() {
+                                selectedValue = value;
+                              });
+                              print(selectedValue);
+                              print('tonu');
+                            },
+                          ),
+                        ),
                         Spacer(),
-                        CustomTextFormField('Upazila/Thana', Icon(Icons.add_location), TextInputType.streetAddress),
+                        Container(
+                        width: MediaQuery.of(context).size.width,
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(6.0),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.8),
+                                spreadRadius: 0.1,
+                                blurRadius: 2,
+                                offset: Offset(3, 3),
+                              )
+                            ]),
+                        // child: DropdownButtonHideUnderline(
+                        //   child: DropdownButton2(
+                        //     //icon: Icon(Icons.map),
+                        //     hint: Text(
+                        //       'District',
+                        //       style: hintText,
+                        //     ),
+                        //
+                        //     items: items
+                        //         .map((item) =>
+                        //         DropdownMenuItem<String>(
+                        //           value: item,
+                        //           child: Text(
+                        //             item,
+                        //             style: const TextStyle(
+                        //               fontSize: 14,
+                        //             ),
+                        //           ),
+                        //         ))
+                        //         .toList(),
+                        //     value: selectedValue,
+                        //     onChanged: (value) {
+                        //       setState(() {
+                        //         selectedValue = value as String;
+                        //       });
+                        //     },
+                        //     buttonHeight: 40,
+                        //     buttonWidth: 140,
+                        //     itemHeight: 40,
+                        //   ),
+                        // ),
+                        child: DropdownButtonFormField<String>(
+                          decoration: InputDecoration(
+                            border: InputBorder.none,
+                            prefixIcon: Icon(Icons.person),
+                          ),
+                          hint: Text('Upazila/Thana'),
+                          items: items.map((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: new Text(value),
+                            );
+                          }).toList(),
+                          value: selectedValue,
+                          onChanged: (value) {
+                            setState(() {
+                              selectedValue = value;
+                            });
+                            print(selectedValue);
+                            print('tonu');
+                          },
+                        ),
+                      ),
                         Spacer(),
 
                         Container(
@@ -281,3 +426,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
+
+
+DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
+  value: item,
+  child: Container(
+    //padding: EdgeInsets.all(8.0),
+    child: Text(
+      item,
+      style: TextStyle(
+        color: Color(0xFF0F0909),
+      ),
+    ),
+  ),
+);
