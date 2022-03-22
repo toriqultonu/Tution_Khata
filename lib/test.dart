@@ -44,9 +44,9 @@ void main() async{
   // print(jsonData);
 
   // Get all district
-  final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
-  final jsonData = json.decode(response.body);
-  print(jsonData);
+  // final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
+  // final jsonData = json.decode(response.body);
+  // print(jsonData);
 
   // Registration
   // final msg = jsonEncode({
@@ -71,5 +71,13 @@ void main() async{
   // print(response.statusCode);
   // print(jsonData);
 
+  //Get upazilla by district id:
+
+
+  final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas-by-district?districtId=$upazillaid'));
+  //print('Token : ${token}');
+  var jsonData = json.decode(response.body);
+  print(jsonData.length);
+  print(jsonData);
 }
 
