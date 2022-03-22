@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
+import 'package:http/http.dart' as http;
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 
@@ -33,12 +34,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
   late String _img64;
 
   bool _checked = false;
-
-  List<String> upazillas = ["Tonu", "Toriqul", "Robin"];
   String? selectedValue;
-  List<String> items = [];
+  List<String> districts = [];
   late String upzilla;
-  String dropdownvalue = 'Item 1';
+
 
   chooseImage(ImageSource source) async {
     final pickedFile = await ImagePicker().getImage(source: source);
@@ -61,9 +60,25 @@ class _RegisterScreenState extends State<RegisterScreen> {
     });
   }
 
+  getDistricts() async{
+    var response1 = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
+    if(response1.statusCode == 200){
+      var jsonData = jsonDecode(response1.body);
+      for(int i=0;i<jsonData.length;i++){
+        districts.add(jsonData[i]["district"].toString());
+      }
+      setState(() {
+
+      });
+
+    }
+    else
+      print("Didn't get any response");
+  }
+
   @override
   void initState() {
-    items = DatabaseService.getDistricts() as List<String>;
+    getDistricts();
     super.initState();
   }
 
@@ -182,7 +197,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               prefixIcon: Icon(Icons.person),
                             ),
                             hint: Text('District'),
-                            items: items.map((String value) {
+                            items: districts.map((String value) {
                               return DropdownMenuItem<String>(
                                 value: value,
                                 child: new Text(value),
@@ -249,7 +264,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             prefixIcon: Icon(Icons.person),
                           ),
                           hint: Text('Upazila/Thana'),
-                          items: items.map((String value) {
+                          items: districts.map((String value) {
                             return DropdownMenuItem<String>(
                               value: value,
                               child: new Text(value),
