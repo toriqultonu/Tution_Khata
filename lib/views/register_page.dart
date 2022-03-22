@@ -156,11 +156,113 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        CustomTextFormField('Full Name', Icon(Icons.person), TextInputType.name),
+                        //CustomTextFormField('Full Name', Icon(Icons.person), TextInputType.name),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.8),
+                                  spreadRadius: 0.1,
+                                  blurRadius: 2,
+                                  offset: Offset(3, 3),
+                                )
+                              ]),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            keyboardType: TextInputType.name,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              prefixIcon: Icon(Icons.person),
+                              labelText: 'Full Name',
+                              hintStyle: hintText,
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                            ),
+                            onChanged: (value){
+                                fullName = value;
+                            },
+                          ),
+                        ),
                         Spacer(),
-                        CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                        //CustomTextFormField('Phone No.', Icon(Icons.phone), TextInputType.phone),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.8),
+                                  spreadRadius: 0.1,
+                                  blurRadius: 2,
+                                  offset: Offset(3, 3),
+                                )
+                              ]),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              prefixIcon: Icon(Icons.phone),
+                              labelText: 'Phone No.',
+                              hintStyle: hintText,
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                            ),
+                            onChanged: (value){
+                              phone = value;
+                            },
+                          ),
+                        ),
                         Spacer(),
-                        CustomTextFormField('Email Address', Icon(Icons.email), TextInputType.emailAddress),
+                        //CustomTextFormField('Email Address', Icon(Icons.email), TextInputType.emailAddress),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 45,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.8),
+                                  spreadRadius: 0.1,
+                                  blurRadius: 2,
+                                  offset: Offset(3, 3),
+                                )
+                              ]),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              prefixIcon: Icon(Icons.email),
+                              labelText: 'Email Address',
+                              hintStyle: hintText,
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                            ),
+                            onChanged: (value){
+                                email = value;
+                            },
+                          ),
+                        ),
                         Spacer(),
                         Container(
                           width: MediaQuery.of(context).size.width,
@@ -241,37 +343,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 offset: Offset(3, 3),
                               )
                             ]),
-                        // child: DropdownButtonHideUnderline(
-                        //   child: DropdownButton2(
-                        //     //icon: Icon(Icons.map),
-                        //     hint: Text(
-                        //       'District',
-                        //       style: hintText,
-                        //     ),
-                        //
-                        //     items: items
-                        //         .map((item) =>
-                        //         DropdownMenuItem<String>(
-                        //           value: item,
-                        //           child: Text(
-                        //             item,
-                        //             style: const TextStyle(
-                        //               fontSize: 14,
-                        //             ),
-                        //           ),
-                        //         ))
-                        //         .toList(),
-                        //     value: selectedValue,
-                        //     onChanged: (value) {
-                        //       setState(() {
-                        //         selectedValue = value as String;
-                        //       });
-                        //     },
-                        //     buttonHeight: 40,
-                        //     buttonWidth: 140,
-                        //     itemHeight: 40,
-                        //   ),
-                        // ),
                         child: DropdownButtonFormField<String>(
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -295,7 +366,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ),
                       ),
                         Spacer(),
-
                         Container(
 
                           width: MediaQuery.of(context).size.width,
