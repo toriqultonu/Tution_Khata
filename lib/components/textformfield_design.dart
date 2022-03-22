@@ -42,6 +42,9 @@ class CustomTextFormField extends StatelessWidget {
           errorBorder: InputBorder.none,
           disabledBorder: InputBorder.none,
         ),
+        onChanged: (value){
+
+        },
       ),
     );
   }
