@@ -34,9 +34,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   late String _img64;
 
   bool _checked = false;
-  String? selectedValue;
+  String? selectedValue, fullName, phone, email, district, upazilla, gender, password;
   List<String> districts = [];
   late String upzilla;
+
+  List districtData = [];
+  List upazillaData = [];
 
 
   chooseImage(ImageSource source) async {
@@ -64,11 +67,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
     var response1 = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
     if(response1.statusCode == 200){
       var jsonData = jsonDecode(response1.body);
-      for(int i=0;i<jsonData.length;i++){
-        districts.add(jsonData[i]["district"].toString());
-      }
+      // for(int i=0;i<jsonData.length;i++){
+      //   districts.add(jsonData[i]["district"].toString());
+      // }
       setState(() {
-
+        districtData = jsonData;
       });
 
     }
@@ -76,9 +79,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
       print("Didn't get any response");
   }
 
+  getUpazillas() async{
+    var response2 = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas-by-district?districtId=$upazillaid'));
+    if(response2.statusCode == 200){
+      var jsonData = jsonDecode(response2.body);
+      setState(() {
+        upazillaData = jsonData;
+      });
+    }
+    else
+      print("Didn't get any response");
+  }
+
   @override
   void initState() {
-    getDistricts();
+    this.getDistricts();
     super.initState();
   }
 
@@ -197,19 +212,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               prefixIcon: Icon(Icons.person),
                             ),
                             hint: Text('District'),
-                            items: districts.map((String value) {
+                            items: districtData.map((item) {
                               return DropdownMenuItem<String>(
-                                value: value,
-                                child: new Text(value),
+                                value: item['id'].toString(),
+                                child: new Text(item['district'])
                               );
                             }).toList(),
-                            value: selectedValue,
-                            onChanged: (value) {
+                            value: upazillaid,
+                            onChanged: (newval) {
                               setState(() {
-                                selectedValue = value;
+                                upazillaid = newval!;
                               });
-                              print(selectedValue);
-                              print('tonu');
+                              getUpazillas();
                             },
                           ),
                         ),
@@ -264,10 +278,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             prefixIcon: Icon(Icons.person),
                           ),
                           hint: Text('Upazila/Thana'),
-                          items: districts.map((String value) {
+                          items: upazillaData.map((item) {
                             return DropdownMenuItem<String>(
-                              value: value,
-                              child: new Text(value),
+                              value: item['id'].toString(),
+                              child: new Text(item['upazila'])
                             );
                           }).toList(),
                           value: selectedValue,
