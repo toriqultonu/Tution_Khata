@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
-
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
@@ -31,7 +31,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   File? imageFile;
   bool passwordVisible = false;
   int? selectedRadio;
-  late String _img64;
+  String? _img64;
 
   bool _checked = false;
   String? selectedValue, fullName, phone, email, district, upazilla, gender, password;
@@ -277,37 +277,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   offset: Offset(3, 3),
                                 )
                               ]),
-                          // child: DropdownButtonHideUnderline(
-                          //   child: DropdownButton2(
-                          //     //icon: Icon(Icons.map),
-                          //     hint: Text(
-                          //       'District',
-                          //       style: hintText,
-                          //     ),
-                          //
-                          //     items: items
-                          //         .map((item) =>
-                          //         DropdownMenuItem<String>(
-                          //           value: item,
-                          //           child: Text(
-                          //             item,
-                          //             style: const TextStyle(
-                          //               fontSize: 14,
-                          //             ),
-                          //           ),
-                          //         ))
-                          //         .toList(),
-                          //     value: selectedValue,
-                          //     onChanged: (value) {
-                          //       setState(() {
-                          //         selectedValue = value as String;
-                          //       });
-                          //     },
-                          //     buttonHeight: 40,
-                          //     buttonWidth: 140,
-                          //     itemHeight: 40,
-                          //   ),
-                          // ),
+
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -315,7 +285,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             ),
                             hint: Text('District'),
                             items: districtData.map((item) {
+
                               return DropdownMenuItem<String>(
+                                onTap: (){
+                                  district = item['district'].toString();
+                                },
                                 value: item['id'].toString(),
                                 child: new Text(item['district'])
                               );
@@ -351,6 +325,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           hint: Text('Upazila/Thana'),
                           items: upazillaData.map((item) {
                             return DropdownMenuItem<String>(
+                              onTap: (){
+                                upazilla = item['upazila'].toString();
+                              },
                               value: item['id'].toString(),
                               child: new Text(item['upazila'])
                             );
@@ -361,7 +338,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               selectedValue = value;
                             });
                             print(selectedValue);
-                            print('tonu');
+
                           },
                         ),
                       ),
@@ -490,6 +467,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               ),
 
                             ),
+                            onChanged: (value){
+                              password = value;
+                            },
                           ),
                         ),
                         Spacer(),
@@ -510,7 +490,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             color: primaryColor,
                             title: "SignUp",
                             onPressed: () {
-                              print("SignUp");
+                              print('asfda');
+                              log('$fullName $phone $email $district $upazilla $selectedRadio $password $_checked $_img64');
                             },
                             height: 45,
                             width: MediaQuery.of(context).size.width)
