@@ -8,6 +8,8 @@ var hintTextColor = Color(0xffABABAB);
 
 var upazillaid = '2';
 
+String tonu = '01245789635';
+
 var regexPhone = RegExp(r'(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$');
 
 var regexPassword = RegExp(r'.{6,}');

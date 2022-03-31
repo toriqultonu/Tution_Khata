@@ -32,5 +32,34 @@ class DatabaseService{
     return district;
   }
 
+  static getRegistered(String phone, String email, String name, String picPath, String districtId, String upazilaId, String genderId, String password) async{
+
+    final msg = jsonEncode({
+      "phone": phone,
+      "email": email,
+      "name": name,
+      "institutionName":"",
+      "picPath": picPath,
+      "districtId": districtId,
+      "upazilaId": upazilaId,
+      "genderId": genderId,
+      "password":password
+    });
+    final response = await http.post(Uri.parse(
+        'https://tution.dcampusweb.com/api/auth/registration'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: msg);
+    if(response.statusCode == 200){
+      final jsonData = json.decode(response.body);
+      return jsonData.toString();
+    }
+    else{
+      return "Failed to register!";
+    }
+  }
+
 
 }

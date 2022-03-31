@@ -29,9 +29,9 @@ class BatchCard extends StatelessWidget {
 
 
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                //mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Batch no.'),
+                  // Text('Batch no.'),
                   SizedBox(width: 20,),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

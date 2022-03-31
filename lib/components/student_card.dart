@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/batch_details.dart';
+import 'package:tution_khata/views/edit_student_view.dart';
 
 class StudentCard extends StatelessWidget {
   final String studentName;
@@ -35,7 +36,7 @@ class StudentCard extends StatelessWidget {
                 Spacer(),
                 GestureDetector(
                   onTap: (){
-                    print('settings');
+                    Navigator.pushNamed(context, EditStudent.id);
                   },
                   child: Container(
                     alignment: Alignment.centerRight,

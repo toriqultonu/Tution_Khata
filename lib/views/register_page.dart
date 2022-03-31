@@ -34,10 +34,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
   String? _img64;
 
   bool _checked = false;
-  String? selectedValue, fullName, phone, email, district, upazilla, gender, password;
+   String? selectedValue;
+   String? fullName, phone, email, district, upazilla, gender, password;
   List<String> districts = [];
   late String upzilla;
-
+  String hintDistrict = 'District';
   List districtData = [];
   List upazillaData = [];
 
@@ -70,10 +71,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
       // for(int i=0;i<jsonData.length;i++){
       //   districts.add(jsonData[i]["district"].toString());
       // }
+
       setState(() {
         districtData = jsonData;
       });
-
     }
     else
       print("Didn't get any response");
@@ -283,21 +284,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               border: InputBorder.none,
                               prefixIcon: Icon(Icons.person),
                             ),
-                            hint: Text('District'),
+                            hint: Text('$hintDistrict'),
                             items: districtData.map((item) {
 
                               return DropdownMenuItem<String>(
-                                onTap: (){
-                                  district = item['district'].toString();
-                                },
+                                // onTap: (){
+                                //   district = item['district'].toString();
+                                // },
                                 value: item['id'].toString(),
                                 child: new Text(item['district'])
                               );
                             }).toList(),
                             value: upazillaid,
                             onChanged: (newval) {
+                              upazillaid = newval!;
+                              district = newval;
                               setState(() {
-                                upazillaid = newval!;
+
                               });
                               getUpazillas();
                             },
@@ -335,9 +338,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           value: selectedValue,
                           onChanged: (value) {
                             setState(() {
-                              selectedValue = value;
+                              upazilla = value!;
                             });
-                            print(selectedValue);
 
                           },
                         ),
@@ -489,8 +491,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         RoundedButton(
                             color: primaryColor,
                             title: "SignUp",
-                            onPressed: () {
+                            onPressed: () async{
                               print('asfda');
+                              if(_checked){
+                                DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "");
+                              }
                               log('$fullName $phone $email $district $upazilla $selectedRadio $password $_checked $_img64');
                             },
                             height: 45,

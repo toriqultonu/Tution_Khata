@@ -4,6 +4,7 @@ import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/about_us.dart';
 import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/contact_us.dart';
+import 'package:tution_khata/views/edit_student_view.dart';
 import 'package:tution_khata/views/fee_collection.dart';
 import 'package:tution_khata/views/home_page.dart';
 import 'package:tution_khata/views/login_page.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
         WaitingList.id: (context) => WaitingList(),
         AboutUs.id: (context) => AboutUs(),
         ContactUs.id: (context) => ContactUs(),
+        EditStudent.id: (context) => EditStudent(),
 
       },
 

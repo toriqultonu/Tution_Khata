@@ -9,8 +9,8 @@ Widget buildBatch(AsyncSnapshot snapshot){
       itemCount: snapshot.data.length,
       itemBuilder: (context, index) {
         return BatchCard(batchName: snapshot.data[index].batchName,
-            date: 'sat-sun-mon',
-            batchId: '3243',
+            date: 'sdfasd',
+            batchId: 'asdfa',
             time: '4.00-5.00');
       }
   );

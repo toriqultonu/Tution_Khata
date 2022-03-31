@@ -1,11 +1,44 @@
 
 
 import 'dart:convert';
-
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'constant.dart';
+
+class ModifiedSchedule {
+  String? schedule;
+  String? startingTime;
+  String? endingTime;
+
+  factory ModifiedSchedule.fromJson(Map<String, dynamic> json) {
+    return new ModifiedSchedule._(
+      schedule: json['schedule'],
+      startingTime: json['startingTime'],
+      endingTime: json['endingTime']
+    );
+  }
+
+  ModifiedSchedule._({schedule, startingTime, endingTime});
+
+}
+
+class Batch {
+  String? batchId;
+  String? batchName;
+  String? students_count;
+  ModifiedSchedule? schedule;
+
+  Batch(this.batchId, this.batchName, this.students_count, this.schedule);
+  factory Batch.fromJson(dynamic json) {
+    return Batch(json['batchId'] as String, json['batchName'] as String,json['students_count'] as String, ModifiedSchedule.fromJson(json['modifiedSchedule']));
+  }
+  // @override
+  // String toString() {
+  //   return '{ ${this.title}, ${this.description}, ${this.author.name} }';
+  // }
+}
 
 void main() async{
 
@@ -50,8 +83,8 @@ void main() async{
 
   // Registration
   // final msg = jsonEncode({
-  //   "phone":"01**********",
-  //   "email":"demo@demo.com",
+  //   "phone": tonu,
+  //   "email":"demo@dmo.com",
   //   "name":"demo",
   //   "institutionName":"Demo Institution",
   //   "picPath":"",
@@ -70,14 +103,18 @@ void main() async{
   // final jsonData = json.decode(response.body);
   // print(response.statusCode);
   // print(jsonData);
-
+  // log('$jsonData');
   //Get upazilla by district id:
 
 
-  final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas-by-district?districtId=$upazillaid'));
-  //print('Token : ${token}');
-  var jsonData = json.decode(response.body);
-  print(jsonData.length);
-  print(jsonData);
+  // final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas-by-district?districtId=$upazillaid'));
+  // //print('Token : ${token}');
+  // var jsonData = json.decode(response.body);
+  // print(jsonData.length);
+  // print(jsonData);
+
+
+  // Batch tutorial = Batch.fromJson(jsonDecode(nestedObjText));
+  // log('$tutorial');
 }
 
