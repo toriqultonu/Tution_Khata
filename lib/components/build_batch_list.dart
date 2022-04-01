@@ -9,9 +9,9 @@ Widget buildBatch(AsyncSnapshot snapshot){
       itemCount: snapshot.data.length,
       itemBuilder: (context, index) {
         return BatchCard(batchName: snapshot.data[index].batchName,
-            date: 'sdfasd',
-            batchId: 'asdfa',
-            time: '4.00-5.00');
+            date: snapshot.data[index].scheduleDays,
+            batchId: snapshot.data[index].batchId,
+            time: '${snapshot.data[index].startingTime} - ${snapshot.data[index].endingTime}');
       }
   );
 }

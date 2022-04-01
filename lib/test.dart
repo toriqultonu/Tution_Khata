@@ -5,40 +5,11 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+import 'Helper/DatabaseService.dart';
 import 'constant.dart';
 
-class ModifiedSchedule {
-  String? schedule;
-  String? startingTime;
-  String? endingTime;
 
-  factory ModifiedSchedule.fromJson(Map<String, dynamic> json) {
-    return new ModifiedSchedule._(
-      schedule: json['schedule'],
-      startingTime: json['startingTime'],
-      endingTime: json['endingTime']
-    );
-  }
 
-  ModifiedSchedule._({schedule, startingTime, endingTime});
-
-}
-
-class Batch {
-  String? batchId;
-  String? batchName;
-  String? students_count;
-  ModifiedSchedule? schedule;
-
-  Batch(this.batchId, this.batchName, this.students_count, this.schedule);
-  factory Batch.fromJson(dynamic json) {
-    return Batch(json['batchId'] as String, json['batchName'] as String,json['students_count'] as String, ModifiedSchedule.fromJson(json['modifiedSchedule']));
-  }
-  // @override
-  // String toString() {
-  //   return '{ ${this.title}, ${this.description}, ${this.author.name} }';
-  // }
-}
 
 void main() async{
 
@@ -116,5 +87,9 @@ void main() async{
 
   // Batch tutorial = Batch.fromJson(jsonDecode(nestedObjText));
   // log('$tutorial');
+
+  AsyncSnapshot snapshot = DatabaseService.getBatchList(token) as AsyncSnapshot;
+  print(snapshot.data[0].batchName);
+  log("tonu");
 }
 
