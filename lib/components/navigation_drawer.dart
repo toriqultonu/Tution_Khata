@@ -32,6 +32,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 buildMenuItem(text: "Video Tutorials", icon: Icons.add, context: context, ID: 'queue'),
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "Log Out", icon: Icons.add, context: context, ID: 'tree'),
+                Divider(color: Colors.grey, thickness: 1,),
+                buildMenuItem(text: "Captain panel", icon: Icons.add, context: context, ID: 'tree'),
 
               ]
           ),
