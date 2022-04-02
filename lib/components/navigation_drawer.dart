@@ -33,7 +33,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "Log Out", icon: Icons.add, context: context, ID: 'tree'),
                 Divider(color: Colors.grey, thickness: 1,),
-                buildMenuItem(text: "Captain panel", icon: Icons.add, context: context, ID: 'tree'),
+                buildMenuItem(text: "Captain panel", icon: Icons.add, context: context, ID: 'captain_panel'),
 
               ]
           ),

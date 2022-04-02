@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/about_us.dart';
 import 'package:tution_khata/views/batch_details.dart';
+import 'package:tution_khata/views/captain_panel_view.dart';
 import 'package:tution_khata/views/contact_us.dart';
 import 'package:tution_khata/views/edit_student_view.dart';
 import 'package:tution_khata/views/fee_collection.dart';
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         AboutUs.id: (context) => AboutUs(),
         ContactUs.id: (context) => ContactUs(),
         EditStudent.id: (context) => EditStudent(),
+        CaptainPanel.id: (context) => CaptainPanel(),
 
       },
 
