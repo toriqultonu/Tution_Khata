@@ -9,7 +9,7 @@ Widget buildStudentList(AsyncSnapshot snapshot){
       shrinkWrap: true,
       itemCount: snapshot.data.length,
       itemBuilder: (context, index) {
-        return StudentCard(studentName: snapshot.data[index].batchName,
+        return StudentCard(studentName: snapshot.data[index].captainName,
             date: 'sat-sun-mon',
             batchId: '3243',
             time: '4.00-5.00');
@@ -25,7 +25,7 @@ Widget buildAttendanceList(AsyncSnapshot snapshot){
         shrinkWrap: true,
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {
-          return AttendanceCard(studentName: snapshot.data[index].batchName,
+          return AttendanceCard(studentName: snapshot.data[index].captainName,
               date: 'sat-sun-mon',
               batchId: '3243',
               time: '4.00-5.00');
