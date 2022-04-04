@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'batch_card.dart';
+import '../cards/batch_card.dart';
 
 Widget buildBatch(AsyncSnapshot snapshot){
   return ListView.builder(

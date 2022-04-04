@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tution_khata/components/student_card.dart';
-import 'package:tution_khata/components/unapproved_student_card.dart';
+import 'package:tution_khata/cards/student_card.dart';
+import 'package:tution_khata/cards/unapproved_student_card.dart';
 import 'package:tution_khata/model/UnapprovedStudent.dart';
 
-import 'attendance_card.dart';
+import '../components/attendance_card.dart';
 
 Widget buildStudentList(AsyncSnapshot snapshot){
   return ListView.builder(
@@ -43,8 +43,8 @@ Widget buildUnapprovedStudentList(AsyncSnapshot snapshot){
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {
           return UnapprovedStudentCard(name: snapshot.data[index].name,
-              phone: 'sat-sun-mon',
-              id: '3243',);
+              phone: snapshot.data[index].phone,
+              id: snapshot.data[index].id.toString(),);
         }
     ),
   );

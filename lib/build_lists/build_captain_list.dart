@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tution_khata/components/captain_card.dart';
+import 'package:tution_khata/cards/captain_card.dart';
 
 
 Widget buildCaptainList(AsyncSnapshot snapshot){
