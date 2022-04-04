@@ -60,6 +60,7 @@ class _CaptainPanelState extends State<CaptainPanel> {
                       "* একজন ব্যাচ ক্যাপ্টেইন ব্যাচের কোন ফি এর তথ্য দেখতে  পারবেন না  ",
                       style: TextStyle(fontSize: 15),
                     ),
+                    SizedBox(height: 30,),
                     Spacer(),
                     Row(
                       children: [
