@@ -140,6 +140,8 @@ class _CaptainPanelState extends State<CaptainPanel> {
                   ],
                 ),
               ),
+
+              RoundedButton(color: primaryColor, title: 'Go Home', onPressed: (){}, height: 4, width: 3)
             ],
           ),
         ),

@@ -14,20 +14,20 @@ import 'constant.dart';
 void main() async{
 
   //Get batches information...
-  final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/batch/all/summary?token='), headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': 'Bearer $token',
-  });
-  //print('Token : ${token}');
-  var jsonData = json.decode(response.body);
-  print(jsonData.length);
-  for(var data in jsonData){
-    print(data['batchId']);
-    log('${data['batchId']}');
-  }
- print(jsonData[0]['batchId']);
-  log('${jsonData[0]['batchId']}');
+ //  final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/batch/all/summary?token='), headers: {
+ //    'Content-Type': 'application/json',
+ //    'Accept': 'application/json',
+ //    'Authorization': 'Bearer $token',
+ //  });
+ //  //print('Token : ${token}');
+ //  var jsonData = json.decode(response.body);
+ //  print(jsonData.length);
+ //  for(var data in jsonData){
+ //    print(data['batchId']);
+ //    log('${data['batchId']}');
+ //  }
+ // print(jsonData[0]['batchId']);
+ //  log('${jsonData[0]['batchId']}');
 
 
   //Create Attendance.
@@ -92,5 +92,22 @@ void main() async{
   // AsyncSnapshot snapshot = DatabaseService.getBatchList(token) as AsyncSnapshot;
   // print(snapshot.data[0].batchName);
   // log("tonu");
+
+  //Get unapproved student
+  final body = jsonEncode({
+    "batchId": "1000019"
+  });
+
+  final response = await http.post(Uri.parse(
+      'https://tution.dcampusweb.com/api/student/get/unapproved?token='),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: body
+  );
+  final jsonData = json.decode(response.body);
+  log('$jsonData');
 }
 

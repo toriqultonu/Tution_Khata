@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:tution_khata/model/UnapprovedStudent.dart';
 import 'package:tution_khata/model/batch.dart';
 import 'package:tution_khata/model/captain.dart';
 import 'package:tution_khata/model/district.dart';
@@ -73,6 +74,25 @@ class DatabaseService{
     final jsonData = json.decode(response.body);
 
     return jsonData.map<Captain>(Captain.fromJson).toList();
+  }
+
+  static Future<List<UnapprovedStudent>> getUnapprovedStudentList(var token) async {
+
+    final body = jsonEncode({
+      "batchId": "1000019"
+    });
+
+    final response = await http.post(Uri.parse(
+        'https://tution.dcampusweb.com/api/student/get/unapproved?token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: body);
+    final jsonData = json.decode(response.body);
+
+    return jsonData.map<UnapprovedStudent>(UnapprovedStudent.fromJson).toList();
   }
 
 }
