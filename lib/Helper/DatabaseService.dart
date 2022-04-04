@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:tution_khata/model/batch.dart';
+import 'package:tution_khata/model/captain.dart';
 import 'package:tution_khata/model/district.dart';
 
 class DatabaseService{
@@ -61,5 +62,17 @@ class DatabaseService{
     }
   }
 
+  static Future<List<Captain>> getCaptainList(var token) async {
+    final response = await http.post(Uri.parse(
+        'https://tution.dcampusweb.com/api/batchcaptain/get/all?token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    final jsonData = json.decode(response.body);
+
+    return jsonData.map<Captain>(Captain.fromJson).toList();
+  }
 
 }

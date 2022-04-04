@@ -51,7 +51,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                   child: ListView(
                     children: [
                       FutureBuilder(
-                          future: DatabaseService.getBatchList(token),
+                          future: DatabaseService.getCaptainList(token),
                           builder: (BuildContext context, AsyncSnapshot snapshot) {
                             switch (snapshot.connectionState) {
                               case ConnectionState.waiting:
