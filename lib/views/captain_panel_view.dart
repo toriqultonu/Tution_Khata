@@ -4,6 +4,8 @@ import 'package:tution_khata/components/regular_button.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 import 'package:tution_khata/views/add_student_view.dart';
 
+import '../Helper/DatabaseService.dart';
+import '../components/build_student_list.dart';
 import '../components/custom_app_bar.dart';
 import '../constant.dart';
 
@@ -95,7 +97,48 @@ class _CaptainPanelState extends State<CaptainPanel> {
                     Spacer()
                   ],
                 ),
-              )
+              ),
+              SizedBox(height: 8,),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text('Batch List',),
+                    Spacer(),
+                    Text('Click for change')
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView(
+                  children: [
+                    FutureBuilder(
+                        future: DatabaseService.getBatchList(token),
+                        builder: (BuildContext context, AsyncSnapshot snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.waiting:
+                              return Center(
+                                  child: Container(
+                                    //margin: EdgeInsets.only(top: 120),
+                                    width: 150,
+                                    height: 150,
+                                    child: CircularProgressIndicator(),
+                                  ));
+                            default:
+                              if (snapshot.hasError) {
+                                return Center(
+                                    child: Container(
+                                      child: Text(
+                                          'Some error occurred! Contact our support team'),
+                                    ));
+                              } else {
+                                return buildAttendanceList(snapshot);
+                              }
+                          }
+                        })
+                  ],
+                ),
+              ),
             ],
           ),
         ),
