@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tution_khata/components/build_student_list.dart';
+import 'package:tution_khata/build_lists/build_student_list.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 
 import '../Helper/DatabaseService.dart';
-import '../components/buildCaptainList.dart';
+import '../build_lists/build_captain_list.dart';
 import '../components/custom_app_bar.dart';
 import '../constant.dart';
 
@@ -202,36 +202,6 @@ class _AddStudentState extends State<AddStudent> {
                                     ));
                               } else {
                                 return buildUnapprovedStudentList(snapshot);
-                              }
-                          }
-                        })
-                  ],
-                ),
-              ),
-              Expanded(
-                child: ListView(
-                  children: [
-                    FutureBuilder(
-                        future: DatabaseService.getCaptainList(token),
-                        builder: (BuildContext context, AsyncSnapshot snapshot) {
-                          switch (snapshot.connectionState) {
-                            case ConnectionState.waiting:
-                              return Center(
-                                  child: Container(
-                                    //margin: EdgeInsets.only(top: 120),
-                                    width: 150,
-                                    height: 150,
-                                    child: CircularProgressIndicator(),
-                                  ));
-                            default:
-                              if (snapshot.hasError) {
-                                return Center(
-                                    child: Container(
-                                      child: Text(
-                                          'Some error occurred! Contact our support team'),
-                                    ));
-                              } else {
-                                return buildCaptainList(snapshot);
                               }
                           }
                         })
