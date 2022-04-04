@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
-import 'package:tution_khata/components/build_student_list.dart';
+import 'package:tution_khata/build_lists/build_student_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/custom_form_field.dart';
 import 'package:tution_khata/components/month_button.dart';

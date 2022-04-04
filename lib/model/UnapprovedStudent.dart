@@ -1,9 +1,8 @@
 
 class UnapprovedStudent{
-  final String id;
-  final String name;
-  final String phone;
-
+  final id;
+  final name;
+  final phone;
 
 
   const UnapprovedStudent({required this.id, required this.name, required this.phone});

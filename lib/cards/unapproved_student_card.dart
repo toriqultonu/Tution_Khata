@@ -47,7 +47,7 @@ class _UnapprovedStudentCardState extends State<UnapprovedStudentCard> {
                     ],
                   ),
                   Spacer(),
-                  Icon(Icons.edit),
+                  Icon(Icons.delete),
                   SizedBox(width: 20,),
                 ],
               ),
