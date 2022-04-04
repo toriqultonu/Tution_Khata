@@ -14,7 +14,7 @@ class Batch{
   final String endingTime;
 
 
-  Batch({required this.scheduleDays, required this.startingTime, required this.endingTime, required this.batchId, required this.batchName, required this.students_count});
+  const Batch({required this.scheduleDays, required this.startingTime, required this.endingTime, required this.batchId, required this.batchName, required this.students_count});
 
   static Batch fromJson(json) => Batch(
     batchId: json['batchId'],
