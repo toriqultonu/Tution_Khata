@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/about_us.dart';
+import 'package:tution_khata/views/add_student_view.dart';
 import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/captain_panel_view.dart';
 import 'package:tution_khata/views/contact_us.dart';
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
         ContactUs.id: (context) => ContactUs(),
         EditStudent.id: (context) => EditStudent(),
         CaptainPanel.id: (context) => CaptainPanel(),
+        AddStudent.id: (context) => AddStudent(),
 
       },
 

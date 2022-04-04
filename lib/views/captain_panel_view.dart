@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tution_khata/components/month_button.dart';
 import 'package:tution_khata/components/regular_button.dart';
 import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/views/add_student_view.dart';
 
 import '../components/custom_app_bar.dart';
 import '../constant.dart';
@@ -81,7 +82,9 @@ class _CaptainPanelState extends State<CaptainPanel> {
                         Spacer(),
                         //RegularButton(label: 'View Batch', height: 25, width: 100, color: Colors.white),
                         OutlinedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.pushNamed(context, AddStudent.id);
+                            },
                             child: Text(
                               'View Batch',
                               style: TextStyle(color: Colors.black54),
