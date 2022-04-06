@@ -6,7 +6,7 @@ import 'package:tution_khata/views/add_student_view.dart';
 
 import '../Helper/DatabaseService.dart';
 import '../build_lists/build_captain_list.dart';
-import '../build_lists/build_student_list.dart';
+import '../build_lists/build_unapprovedStudent_list.dart';
 import '../components/custom_app_bar.dart';
 import '../constant.dart';
 

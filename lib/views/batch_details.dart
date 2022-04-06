@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
-import 'package:tution_khata/build_lists/build_student_list.dart';
+import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/build_lists/build_batch_list.dart';
 import 'package:tution_khata/constant.dart';
