@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:tution_khata/model/student.dart';
 import 'package:tution_khata/model/unapprovedstudent.dart';
 import 'package:tution_khata/model/batch.dart';
 import 'package:tution_khata/model/captain.dart';
@@ -61,6 +62,19 @@ class DatabaseService{
     else{
       return "Failed to register!";
     }
+  }
+
+  static Future<List<Student>> getStudentList(var token) async{
+    final response = await http.get(Uri.parse(
+        'https://tution.dcampusweb.com/api/batch/get/students/bybatch/id/1000019?token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    final jsonData = json.decode(response.body);
+
+    return jsonData.map<Student>(Student.fromJson).toList();
   }
 
   static Future<List<Captain>> getCaptainList(var token) async {

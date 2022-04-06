@@ -5,6 +5,8 @@ import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/build_lists/build_batch_list.dart';
 import 'package:tution_khata/constant.dart';
 
+import '../build_lists/build_student_list.dart';
+
 // void main() {
 //   runApp(BatchDetails());
 // }
@@ -139,7 +141,7 @@ class _BatchDetailsState extends State<BatchDetails> {
                             child: ListView(
                               children: [
                                 FutureBuilder(
-                                    future: DatabaseService.getCaptainList(token),
+                                    future: DatabaseService.getStudentList(token),
                                     builder: (BuildContext context, AsyncSnapshot snapshot) {
                                       switch (snapshot.connectionState) {
                                         case ConnectionState.waiting:

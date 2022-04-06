@@ -5,11 +5,12 @@ import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/edit_student_view.dart';
 
 class StudentCard extends StatefulWidget {
-  final String studentName;
-  final String date;
-  final String time;
-  final String batchId;
-  StudentCard({ required this.studentName, required this.date, required this.batchId, required this.time});
+  final id;
+  final name;
+  final phone;
+  final approvalStatus;
+  final isActive;
+  StudentCard({ required this.id,required this.name, required this.phone,required this.isActive, required this.approvalStatus});
 
   @override
   State<StudentCard> createState() => _StudentCardState();
@@ -129,9 +130,9 @@ class _StudentCardState extends State<StudentCard> with SingleTickerProviderStat
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(widget.studentName, style: TextStyle(color: primaryColor, fontSize: 18, fontWeight: FontWeight.w500),),
+                    Text(widget.name, style: TextStyle(color: primaryColor, fontSize: 18, fontWeight: FontWeight.w500),),
                     SizedBox(height: 5,),
-                    Text('Phone: 2398472304', style: TextStyle( fontSize: 14),),
+                    Text(widget.phone, style: TextStyle( fontSize: 14),),
                     SizedBox(height: 3,),
                   ],
                 ),

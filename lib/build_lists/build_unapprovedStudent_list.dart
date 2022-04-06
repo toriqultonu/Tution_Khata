@@ -5,19 +5,7 @@ import 'package:tution_khata/model/unapprovedstudent.dart';
 
 import '../components/attendance_card.dart';
 
-Widget buildStudentList(AsyncSnapshot snapshot){
-  return ListView.builder(
-      physics: ClampingScrollPhysics(),
-      shrinkWrap: true,
-      itemCount: snapshot.data.length,
-      itemBuilder: (context, index) {
-        return StudentCard(studentName: snapshot.data[index].captainName,
-            date: 'sat-sun-mon',
-            batchId: '3243',
-            time: '4.00-5.00');
-      }
-  );
-}
+
 
 Widget buildAttendanceList(AsyncSnapshot snapshot){
   return Container(
