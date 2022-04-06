@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-import 'package:tution_khata/model/UnapprovedStudent.dart';
+import 'package:tution_khata/model/unapprovedstudent.dart';
 import 'package:tution_khata/model/batch.dart';
 import 'package:tution_khata/model/captain.dart';
 import 'package:tution_khata/model/district.dart';
