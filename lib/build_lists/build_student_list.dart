@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/cards/student_card.dart';
 import 'package:tution_khata/cards/unapproved_student_card.dart';
-import 'package:tution_khata/model/UnapprovedStudent.dart';
+import 'package:tution_khata/model/unapprovedstudent.dart';
 
 import '../components/attendance_card.dart';
 
