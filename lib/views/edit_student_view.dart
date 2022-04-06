@@ -60,7 +60,11 @@ class _EditStudentState extends State<EditStudent> {
                 Container(
                   height: 80,
                   width: MediaQuery.of(context).size.width * 0.9,
-                  decoration: CustomBoxDecoration(Colors.white),
+                  //decoration: CustomBoxDecoration(Colors.white),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.black45),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
                   child: Row(
                     children: [
                       SizedBox(width: 34,),
@@ -95,7 +99,10 @@ class _EditStudentState extends State<EditStudent> {
                 Container(
                   height: 80,
                   width: MediaQuery.of(context).size.width * 0.9,
-                  decoration: CustomBoxDecoration(Colors.white),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black45),
+                      borderRadius: BorderRadius.circular(10)
+                  ),
                   child: Row(
                     children: [
                       SizedBox(width: 34,),
@@ -130,7 +137,10 @@ class _EditStudentState extends State<EditStudent> {
                 Container(
                   height: 80,
                   width: MediaQuery.of(context).size.width * 0.9,
-                  decoration: CustomBoxDecoration(Colors.white),
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.black45),
+                      borderRadius: BorderRadius.circular(10)
+                  ),
                   child: Row(
                     children: [
                       SizedBox(width: 34,),
