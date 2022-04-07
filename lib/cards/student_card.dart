@@ -100,7 +100,14 @@ class _StudentCardState extends State<StudentCard> with SingleTickerProviderStat
                     Spacer(),
                     GestureDetector(
                       onTap: (){
-                        Navigator.pushNamed(context, EditStudent.id);
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => EditStudent(
+                          studentId: widget.id,
+                          name: widget.name,
+                          phone: widget.phone,
+                          isActive: widget.isActive,
+                          approvalStatus: widget.approvalStatus
+
+                        )));
                       },
                       child: Container(
                         height: 30,
