@@ -14,7 +14,7 @@ Widget buildAttendanceList(AsyncSnapshot snapshot){
         shrinkWrap: true,
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {
-          return AttendanceCard(studentName: snapshot.data[index].captainName,
+          return AttendanceCard(studentName: snapshot.data[index].name,
               date: 'sat-sun-mon',
               batchId: '3243',
               time: '4.00-5.00');
