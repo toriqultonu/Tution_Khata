@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
+import 'package:tution_khata/views/attendance_list.dart';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/rounded_button.dart';
 
 import '../constant.dart';
+import '../model/attendance.dart';
 
 
 class TakeAttendance extends StatefulWidget {
@@ -70,16 +72,13 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                                             'Some error occurred! Contact our support team'),
                                       ));
                                 } else {
-                                  return buildAttendanceList(snapshot);
+                                  return AttendanceList(snapshot: snapshot,);
                                 }
                             }
                           })
                     ],
                   ),
                 ),
-                SizedBox(height: 20,),
-                RoundedButton(color: primaryColor, title: 'Submit', onPressed: (){ print('submit');}, height: 45, width: 277),
-                SizedBox(height: 20,),
               ],
             ),
           ),
@@ -88,4 +87,8 @@ class _TakeAttendanceState extends State<TakeAttendance> {
       ),
     );
   }
+
+
 }
+
+
