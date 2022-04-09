@@ -1,26 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
-
-
-import '../components/text_dialog_widget.dart';
+import '../Helper/edit_student_data.dart';
 import '../constant.dart';
-
-// void main() {
-//  runApp(EditStudent());
-// }
-
-Future<T?> showTextDialog<T>(
-
-  BuildContext context, {
-    required String title,
-    required String value,
-}) => showDialog<T>(
-    context: context,
-    builder: (context) => TextDialogWidget(
-      title: title,
-      value: value,
-    ),
-);
 
 class EditStudent extends StatefulWidget {
 
@@ -43,22 +24,47 @@ class _EditStudentState extends State<EditStudent> {
 
   String? name;
   String? phone;
-
+  String? fee = '500';
+  
   @override
   void initState() {
     name = widget.name;
     phone = widget.phone;
   }
-
-
-  Future editName(String user) async{
-    final firstName = await showTextDialog(context, title: 'Change Name', value: user);
+  
+  Future editName(String oldName) async{
+    final newName = await showTextDialog(context, title: 'Change Name', value: oldName);
 
     setState(() {
-      name = firstName;
+      if(newName == null)
+        name = oldName;
+      else
+        name = newName;
     });
   }
 
+  Future editPhone(String oldPhone) async{
+    final newPhone = await showTextDialog(context, title: 'Change Phone Number', value: oldPhone);
+
+    setState(() {
+      if(newPhone == null)
+        phone = oldPhone;
+      else
+        phone = newPhone;
+    });
+  }
+
+  Future editFee(String oldFee) async{
+    final newFee = await showTextDialog(context, title: 'Change Fee', value: oldFee);
+
+    setState(() {
+      if(newFee == null)
+        fee = oldFee;
+      else
+        fee = newFee;
+    });
+  }
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -154,7 +160,7 @@ class _EditStudentState extends State<EditStudent> {
                         Spacer(),
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context, EditStudent.id);
+                            editPhone(phone!);
                           },
                           child: Container(
                             alignment: Alignment.centerRight,
@@ -185,14 +191,14 @@ class _EditStudentState extends State<EditStudent> {
                           children: [
                             Text('Fee Amount', style: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),),
                             SizedBox(height: 10,),
-                            Text('500', style: TextStyle( fontSize: 18),),
+                            Text(fee!, style: TextStyle( fontSize: 18),),
                             SizedBox(height: 3,),
                           ],
                         ),
                         Spacer(),
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context, EditStudent.id);
+                            editFee(fee!);
                           },
                           child: Container(
                             alignment: Alignment.centerRight,
