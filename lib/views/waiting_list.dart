@@ -56,7 +56,7 @@ class _WaitingListState extends State<WaitingList> {
                 child: ListView(
                   children: [
                     FutureBuilder(
-                        future: DatabaseService.getCaptainList(token),
+                        future: DatabaseService.getUnapprovedStudentList(token),
                         builder: (BuildContext context, AsyncSnapshot snapshot) {
                           switch (snapshot.connectionState) {
                             case ConnectionState.waiting:

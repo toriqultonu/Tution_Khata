@@ -132,7 +132,7 @@ class _StudentWiseCollectionState extends State<StudentWiseCollection> {
                   child: ListView(
                     children: [
                       FutureBuilder(
-                          future: DatabaseService.getCaptainList(token),
+                          future: DatabaseService.getStudentList(token),
                           builder: (BuildContext context, AsyncSnapshot snapshot) {
                             switch (snapshot.connectionState) {
                               case ConnectionState.waiting:
