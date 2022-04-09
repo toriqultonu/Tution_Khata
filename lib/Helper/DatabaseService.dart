@@ -109,4 +109,25 @@ class DatabaseService{
     return jsonData.map<UnapprovedStudent>(UnapprovedStudent.fromJson).toList();
   }
 
+  static updateStudentInfo(var token,String name, String phone, String guardianName, String guardianPhone, String dob, String studentId) async{
+
+    final body = jsonEncode({
+      "name":name,
+      "phone":phone,
+      "guardianName":guardianName,
+      "guardianPhone":guardianPhone,
+      "dob":dob
+    });
+
+    final response = await http.post(Uri.parse(
+        'https://tution.dcampusweb.com/api/student/change/basicinfo/$studentId?token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: body);
+    final jsonData = json.decode(response.body);
+  }
+
 }
