@@ -3,6 +3,7 @@ import 'package:tution_khata/components/buttons/custom_flat_button.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
+import 'package:tution_khata/views/sms_purchase.dart';
 
 import '../constant.dart';
 
@@ -76,7 +77,7 @@ class _PersonalSMSState extends State<PersonalSMS> {
                 SizedBox(height: 10,),
                 Row(
                   children: [
-                      CustomFlatButton(textColor: primaryColor, title: 'Purchase SMS', onPressed: (){}, height: 10, width: 30, icon: Icon(Icons.phone)),
+                      CustomFlatButton(textColor: primaryColor, title: 'Purchase SMS', onPressed: (){Navigator.pushNamed(context, SMSPurchase.id);}, height: 10, width: 30, icon: Icon(Icons.phone)),
                       Spacer(),
                     CustomFlatButton(textColor: primaryColor, title: 'Send SMS', onPressed: (){}, height: 10, width: 30, icon: Icon(Icons.phone)),
                   ],

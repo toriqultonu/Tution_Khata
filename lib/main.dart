@@ -17,6 +17,7 @@ import 'package:tution_khata/views/phone_verification_page.dart';
 import 'package:tution_khata/views/profile_page.dart';
 import 'package:tution_khata/views/register_page.dart';
 import 'package:tution_khata/views/send_sms.dart';
+import 'package:tution_khata/views/sms_purchase.dart';
 import 'package:tution_khata/views/student_wise_collection.dart';
 import 'package:tution_khata/views/waiting_list.dart';
 
@@ -58,6 +59,7 @@ class MyApp extends StatelessWidget {
         CaptainPanel.id: (context) => CaptainPanel(),
         AddStudent.id: (context) => AddStudent(),
         PersonalSMS.id: (context) => PersonalSMS(),
+        SMSPurchase.id: (context) => SMSPurchase(),
 
       },
 
