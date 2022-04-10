@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
-import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
 
 import '../constant.dart';

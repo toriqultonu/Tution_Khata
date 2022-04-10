@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/edit_student_view.dart';
+import 'package:tution_khata/views/personal_sms_view.dart';
 
 class StudentCard extends StatefulWidget {
   final id;
@@ -55,7 +56,11 @@ class _StudentCardState extends State<StudentCard> with SingleTickerProviderStat
                     Spacer(),
                     GestureDetector(
                       onTap: (){
-
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PersonalSMS(
+                            studentId: widget.id,
+                            studentName: widget.name,
+                            studentPhone: widget.phone,
+                          )));
                       },
                       child: Container(
                         height: 30,

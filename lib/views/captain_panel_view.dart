@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tution_khata/components/month_button.dart';
-import 'package:tution_khata/components/regular_button.dart';
-import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/buttons/month_button.dart';
+import 'package:tution_khata/components/buttons/regular_button.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/views/add_student_view.dart';
 
 import '../Helper/DatabaseService.dart';

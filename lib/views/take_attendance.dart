@@ -4,7 +4,7 @@ import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/views/attendance_list.dart';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
-import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 
 import '../constant.dart';
 import '../model/attendance.dart';

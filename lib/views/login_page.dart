@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/custom_alert_dialog.dart';
 import 'package:tution_khata/components/custom_password_filed.dart';
-import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/register_page.dart';

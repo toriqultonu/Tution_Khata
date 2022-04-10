@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
-import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 
 import '../Helper/DatabaseService.dart';
 import '../build_lists/build_captain_list.dart';

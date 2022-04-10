@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/text_field_otp.dart';
 import 'package:tution_khata/views/home_page.dart';
 

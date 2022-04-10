@@ -1,112 +1,30 @@
-
-
 import 'dart:convert';
 import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:tution_khata/constant.dart';
 import 'package:http/http.dart' as http;
-
-import 'Helper/DatabaseService.dart';
-import 'constant.dart';
-
-
-
 
 void main() async{
 
-  //Get batches information...
- //  final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/batch/all/summary?token='), headers: {
- //    'Content-Type': 'application/json',
- //    'Accept': 'application/json',
- //    'Authorization': 'Bearer $token',
- //  });
- //  //print('Token : ${token}');
- //  var jsonData = json.decode(response.body);
- //  print(jsonData.length);
- //  for(var data in jsonData){
- //    print(data['batchId']);
- //    log('${data['batchId']}');
- //  }
- // print(jsonData[0]['batchId']);
- //  log('${jsonData[0]['batchId']}');
+  final studentId = '2';
 
-
-  //Create Attendance.
-  // final msg = jsonEncode({
-  //   "batchId":"1000001",
-  //   "date":"12/18/1995",
-  //   "absentStudents":[]
-  // });
-  // final response = await http.post(Uri.parse(
-  //     'https://tution.dcampusweb.com/api/batch/attendance/create/bydate?token='),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //       'Authorization': 'Bearer $token',
-  //     },
-  //     body: msg);
-  // final jsonData = json.decode(response.body);
-  // print(response.statusCode);
-  // print(jsonData);
-
-  // Get all district
-  // final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
-  // final jsonData = json.decode(response.body);
-  // print(jsonData);
-
-  // Registration
-  // final msg = jsonEncode({
-  //   "phone": tonu,
-  //   "email":"demo@dmo.com",
-  //   "name":"demo",
-  //   "institutionName":"Demo Institution",
-  //   "picPath":"",
-  //   "districtId":"1",
-  //   "upazilaId":"1",
-  //   "genderId":"2",
-  //   "password":"123456"
-  // });
-  // final response = await http.post(Uri.parse(
-  //     'https://tution.dcampusweb.com/api/auth/registration'),
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //       'Accept': 'application/json',
-  //     },
-  //     body: msg);
-  // final jsonData = json.decode(response.body);
-  // print(response.statusCode);
-  // print(jsonData);
-  // log('$jsonData');
-  //Get upazilla by district id:
-
-
-  // final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas-by-district?districtId=$upazillaid'));
-  // //print('Token : ${token}');
-  // var jsonData = json.decode(response.body);
-  // print(jsonData.length);
-  // print(jsonData);
-
-
-  // Batch tutorial = Batch.fromJson(jsonDecode(nestedObjText));
-  // log('$tutorial');
-
-  // AsyncSnapshot snapshot = DatabaseService.getBatchList(token) as AsyncSnapshot;
-  // print(snapshot.data[0].batchName);
-  // log("tonu");
-
-  //Get unapproved student
   final body = jsonEncode({
-    "batchId": "1000019"
+    "name":"Student One",
+    "phone":"01940506870",
+    "guardianName":"Student One Guardian",
+    "guardianPhone":"01940000000",
+    "dob":"12/16/1995"
   });
 
   final response = await http.post(Uri.parse(
-      'https://tution.dcampusweb.com/api/student/get/unapproved?token='),
+      'https://tution.dcampusweb.com/api/student/change/basicinfo/$studentId?token='),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': 'Bearer $token',
       },
-      body: body
-  );
+      body: body);
   final jsonData = json.decode(response.body);
   log('$jsonData');
 }

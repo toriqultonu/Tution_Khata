@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:tution_khata/components/change_password_alertdialog.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/custom_info_shower.dart';
-import 'package:tution_khata/components/rounded_button.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/textformfield_design.dart';
 
 import '../constant.dart';
