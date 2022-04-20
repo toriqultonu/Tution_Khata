@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:pinput/pinput.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/text_field_otp.dart';
 import 'package:tution_khata/views/home_page.dart';
+
 
 import '../constant.dart';
 
@@ -20,6 +24,9 @@ class PhoneVerification extends StatefulWidget {
 }
 
 class _PhoneVerificationState extends State<PhoneVerification> {
+
+  var code;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,23 +70,36 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                       children: [
                         Container(child: Text('Please enter the 4 digit that have sent to your phone', textAlign: TextAlign.center,style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500,),),),
                         Spacer(),
-                        Row(
-                          children: [
-                            TextFieldOtp(first: true, last: false),
-                            Spacer(),
-                            TextFieldOtp(first: true, last: false),
-                            Spacer(),
-                            TextFieldOtp(first: true, last: false),
-                            Spacer(),
-                            TextFieldOtp(first: true, last: false),
-                          ],
-                        ),
-                      ],
+                        // Row(
+                        //   children: [
+                        //     TextFieldOtp(first: true, last: false),
+                        //     Spacer(),
+                        //     TextFieldOtp(first: true, last: false),
+                        //     Spacer(),
+                        //     TextFieldOtp(first: true, last: false),
+                        //     Spacer(),
+                        //     TextFieldOtp(first: true, last: false),
+                        //   ],
+                        // ),
+                        Pinput(
+                          defaultPinTheme: PinTheme(
+                            width: 56,
+                            height: 56,
+                            textStyle: TextStyle(fontSize: 20, color: Color.fromRGBO(30, 60, 87, 1), fontWeight: FontWeight.w600),
+                            decoration: CustomBoxDecoration(Colors.white)
+
+                          ),
+                          onCompleted: (pin) => code = pin
+
+                        )
+
+                   ],
                     ),
                   ),
                   SizedBox(height: 20,),
                   RoundedButton(color: primaryColor, title: 'Verify Now', onPressed: () {
-                    Navigator.pushNamed(context, HomeScreen.id);
+                    log('$code');
+                    //Navigator.pushNamed(context, HomeScreen.id);
                   }, height: 45, width: 277),
                   SizedBox(height: 25,),
                   Container(
