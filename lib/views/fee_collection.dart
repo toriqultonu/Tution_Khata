@@ -8,6 +8,7 @@ import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/views/month_wise_collection.dart';
 import 'package:tution_khata/views/student_wise_collection.dart';
+import 'package:tution_khata/views/student_wise_collection_2.dart';
 
 import '../constant.dart';
 
@@ -54,7 +55,7 @@ class _FeeCollectionState extends State<FeeCollection> {
 
                 GestureDetector(
                   onTap: (){
-                    Navigator.pushNamed(context, StudentWiseCollection.id);
+                    Navigator.pushNamed(context, StudentWiseCollection2.id);
                   },
                   child: Container(
                     height: 108,

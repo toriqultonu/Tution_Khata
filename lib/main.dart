@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/about_us.dart';
@@ -19,6 +18,7 @@ import 'package:tution_khata/views/register_page.dart';
 import 'package:tution_khata/views/send_sms.dart';
 import 'package:tution_khata/views/sms_purchase.dart';
 import 'package:tution_khata/views/student_wise_collection.dart';
+import 'package:tution_khata/views/student_wise_collection_2.dart';
 import 'package:tution_khata/views/waiting_list.dart';
 
 void main() {
@@ -51,6 +51,7 @@ class MyApp extends StatelessWidget {
         SendSMS.id: (context) => SendSMS(),
         ProfilePage.id: (context) => ProfilePage(),
         StudentWiseCollection.id: (context) => StudentWiseCollection(),
+        StudentWiseCollection2.id: (context) => StudentWiseCollection2(),
         MonthWiseCollection.id: (context) => MonthWiseCollection(),
         WaitingList.id: (context) => WaitingList(),
         AboutUs.id: (context) => AboutUs(),
