@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import '../Helper/edit_student_data.dart';
 import '../constant.dart';
@@ -173,6 +174,10 @@ class _EditStudentState extends State<EditStudent> {
 
                   ),
 
+                  RoundedButton(color: primaryColor, title: "Update", onPressed: (){
+                          updateStudentInfo(widget.studentId.toString(), name!, phone!);
+                  }, height: 23, width: 32,),
+
                   SizedBox(height: 40,),
 
                   Container(
@@ -210,6 +215,7 @@ class _EditStudentState extends State<EditStudent> {
                     ),
 
                   ),
+                  RoundedButton(color: primaryColor, title: "Update", onPressed: (){}, height: 23, width: 32,),
                 ],
               ),
             ),
