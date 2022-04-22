@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/about_us.dart';
-import 'package:tution_khata/views/add_student_view.dart';
+import 'package:tution_khata/views/add_student_by_captain.dart';
+import 'package:tution_khata/views/add_student_by_teacher.dart';
 import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/captain_panel_view.dart';
 import 'package:tution_khata/views/contact_us.dart';
+import 'package:tution_khata/views/edit_captain_view.dart';
 import 'package:tution_khata/views/edit_student_view.dart';
 import 'package:tution_khata/views/fee_collection.dart';
 import 'package:tution_khata/views/home_page.dart';
@@ -61,6 +63,8 @@ class MyApp extends StatelessWidget {
         AddStudent.id: (context) => AddStudent(),
         PersonalSMS.id: (context) => PersonalSMS(),
         SMSPurchase.id: (context) => SMSPurchase(),
+        EditCaptain.id: (context) => EditCaptain(),
+        AddStudentByTeacher.id: (context) => AddStudentByTeacher(),
 
       },
 

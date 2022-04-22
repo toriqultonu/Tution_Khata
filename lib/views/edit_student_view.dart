@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
-import '../Helper/edit_student_data.dart';
+import '../Helper/change_Info.dart';
 import '../constant.dart';
 
 class EditStudent extends StatefulWidget {

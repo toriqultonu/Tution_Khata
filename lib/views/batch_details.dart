@@ -4,8 +4,13 @@ import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/build_lists/build_batch_list.dart';
 import 'package:tution_khata/constant.dart';
+import 'package:tution_khata/views/send_sms.dart';
+import 'package:tution_khata/views/take_attendance.dart';
+import 'package:tution_khata/views/waiting_list.dart';
 
 import '../build_lists/build_student_list.dart';
+import 'fee_collection.dart';
+import 'home_page.dart';
 
 // void main() {
 //   runApp(BatchDetails());
@@ -21,6 +26,8 @@ class BatchDetails extends StatefulWidget {
 }
 
 class _BatchDetailsState extends State<BatchDetails> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,61 +77,61 @@ class _BatchDetailsState extends State<BatchDetails> {
                     ),
                   ),
                   SizedBox(height: 15,),
-                  Container(
-                    padding: EdgeInsets.only(left: 29, top: 11),
-                    height: 100,
-                    decoration: CustomBoxDecoration(primaryColor),
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              width: 55.0,
-                              height: 55.0,
-                              decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                image: DecorationImage(
-                                    image: AssetImage("assets/component/profiledemo.png"),
-                                    fit: BoxFit.cover),
-                              ),
-                            ),
-                            SizedBox(width: 16,),
-                            Container(
-                              height: 60,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Container(
-                                    child: Text('Name: Mojura Moula', style: TextStyle(fontFamily: 'Nunito Sans', fontWeight: FontWeight.w600, fontSize: 16, color: Colors.white),),
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    child: Text('Role: Captain', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
-                                  ),
-                                  Spacer(),
-                                  Container(
-                                    child: Text('Phone no: 01699999999', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
-                                  ),
-                                ],
-                              ),
-                            )
-                          ],
-                        ),
-                        Spacer(),
-                        GestureDetector(
-                          onTap: (){
-                            print('click to edit');
-                          },
-                          child: Container(
-                            padding: EdgeInsets.only(right:14, bottom: 5),
-                            alignment: Alignment.bottomRight,
-                            child: Text('Click to edit', style: TextStyle(color: Colors.redAccent),),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 15,),
+                  // Container(
+                  //   padding: EdgeInsets.only(left: 29, top: 11),
+                  //   height: 100,
+                  //   decoration: CustomBoxDecoration(primaryColor),
+                  //   child: Column(
+                  //     children: [
+                  //       Row(
+                  //         children: [
+                  //           Container(
+                  //             width: 55.0,
+                  //             height: 55.0,
+                  //             decoration: BoxDecoration(
+                  //               shape: BoxShape.circle,
+                  //               image: DecorationImage(
+                  //                   image: AssetImage("assets/component/profiledemo.png"),
+                  //                   fit: BoxFit.cover),
+                  //             ),
+                  //           ),
+                  //           SizedBox(width: 16,),
+                  //           Container(
+                  //             height: 60,
+                  //             child: Column(
+                  //               crossAxisAlignment: CrossAxisAlignment.start,
+                  //               children: [
+                  //                 Container(
+                  //                   child: Text('Name: Mojura Moula', style: TextStyle(fontFamily: 'Nunito Sans', fontWeight: FontWeight.w600, fontSize: 16, color: Colors.white),),
+                  //                 ),
+                  //                 Spacer(),
+                  //                 Container(
+                  //                   child: Text('Role: Captain', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
+                  //                 ),
+                  //                 Spacer(),
+                  //                 Container(
+                  //                   child: Text('Phone no: 01699999999', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
+                  //                 ),
+                  //               ],
+                  //             ),
+                  //           )
+                  //         ],
+                  //       ),
+                  //       Spacer(),
+                  //       GestureDetector(
+                  //         onTap: (){
+                  //           print('click to edit');
+                  //         },
+                  //         child: Container(
+                  //           padding: EdgeInsets.only(right:14, bottom: 5),
+                  //           alignment: Alignment.bottomRight,
+                  //           child: Text('Click to edit', style: TextStyle(color: Colors.redAccent),),
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  //SizedBox(height: 15,),
                   Expanded(
                     child: Container(
                       width: MediaQuery.of(context).size.width,
@@ -171,12 +178,13 @@ class _BatchDetailsState extends State<BatchDetails> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20,)
+                  //SizedBox(height: 20,)
                 ],
               ),
             ),
           ),
         ),
+
     );
   }
 }

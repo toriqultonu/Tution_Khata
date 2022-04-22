@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/batch_details.dart';
 
+import '../views/edit_captain_view.dart';
+
 class CaptainCard extends StatefulWidget {
   final String batchId;
   final String captainName;
@@ -49,7 +51,15 @@ class _CaptainCardState extends State<CaptainCard> {
                     ],
                   ),
                   Spacer(),
-                  Icon(Icons.edit),
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => EditCaptain(
+                        batchId: widget.batchId,
+                        name: widget.captainName,
+                        phone: widget.phone,
+                      )));
+                    },
+                      child: Icon(Icons.edit)),
                   SizedBox(width: 20,),
                 ],
               ),

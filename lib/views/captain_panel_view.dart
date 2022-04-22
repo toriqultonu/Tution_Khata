@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tution_khata/components/buttons/month_button.dart';
 import 'package:tution_khata/components/buttons/regular_button.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
-import 'package:tution_khata/views/add_student_view.dart';
+import 'package:tution_khata/views/add_student_by_captain.dart';
 
 import '../Helper/DatabaseService.dart';
 import '../build_lists/build_captain_list.dart';

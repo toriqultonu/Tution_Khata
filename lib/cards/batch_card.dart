@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/views/batch_details.dart';
 
+import '../views/main_page.dart';
+
 class BatchCard extends StatelessWidget {
   final String batchName;
   final String date;
@@ -11,7 +13,7 @@ class BatchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-            Navigator.pushNamed(context, BatchDetails.id);
+            Navigator.pushNamed(context, MainPage.id);
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 8),

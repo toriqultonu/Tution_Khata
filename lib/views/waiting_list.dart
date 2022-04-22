@@ -34,7 +34,7 @@ class _WaitingListState extends State<WaitingList> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: primaryColor,
-          title: CustomAppBar(str1: 'Add Student' ),
+          title: CustomAppBar(str1: 'Pending Student List' ),
           centerTitle: true,
           elevation: 15,
         ),

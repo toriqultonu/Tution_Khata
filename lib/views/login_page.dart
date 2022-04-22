@@ -76,7 +76,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: primaryColor,
                       title: "Login",
                       onPressed: () {
-                        Navigator.pushNamed(context, MainPage.id);
+                        Navigator.pushNamed(context, HomeScreen.id);
                       },
                       height: 45,
                       width: MediaQuery.of(context).size.width)

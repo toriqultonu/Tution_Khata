@@ -21,7 +21,7 @@ Future<T?> showTextDialog<T>(
   ),
 );
 
-updateStudentInfo(String studentId, String studentName, String studentPhone) async {
+  updateStudentInfo(String studentId, String studentName, String studentPhone) async {
 
 
   final body = jsonEncode({
@@ -34,6 +34,30 @@ updateStudentInfo(String studentId, String studentName, String studentPhone) asy
 
   final response = await http.post(Uri.parse(
       'https://tution.dcampusweb.com/api/student/change/basicinfo/$studentId?token='),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: body);
+  final jsonData = json.decode(response.body);
+  log('$jsonData');
+
+  return response.statusCode;
+
+}
+
+  updateCaptainInfo(String batchId, String captainName, String captainPhone) async {
+
+
+  final body = jsonEncode({
+    "batchId": batchId,
+    "name":captainName,
+    "phone":captainPhone,
+  });
+
+  final response = await http.post(Uri.parse(
+      'https://tution.dcampusweb.com/api/batchcaptain/update/info?token='),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',

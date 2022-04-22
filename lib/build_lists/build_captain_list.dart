@@ -10,7 +10,7 @@ Widget buildCaptainList(AsyncSnapshot snapshot){
         itemCount: snapshot.data.length,
         itemBuilder: (context, index) {
           return CaptainCard(captainName: snapshot.data[index].captainName,
-              batchId: snapshot.data[index].isActive,
+              batchId: snapshot.data[index].batchId,
               phone: snapshot.data[index].phone);
         }
     ),
