@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
+import 'package:tution_khata/views/unpaid_mon_list.dart';
+import '../Helper/DatabaseService.dart';
 import '../constant.dart';
+import 'attendance_list.dart';
 
 class StudentWiseCollection2 extends StatefulWidget {
 
@@ -27,23 +30,38 @@ class _StudentWiseCollection2State extends State<StudentWiseCollection2> {
         child: Container(
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 11, horizontal: 52),
-                height: 55,
-                width: MediaQuery.of(context).size.width,
-                //decoration: CustomBoxDecoration(Colors.white),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+
+              SizedBox(height: 20,),
+              Expanded(
+                child: ListView(
                   children: [
-                    Text('TOTAL:', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
-                    Spacer(),
-                    Text('0 BDT', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+                    FutureBuilder(
+                        future: DatabaseService.unPaidMonthByStudent(token, 1),
+                        builder: (BuildContext context, AsyncSnapshot snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.waiting:
+                              return Center(
+                                  child: Container(
+                                    margin: EdgeInsets.only(top: 120),
+                                    width: 150,
+                                    height: 150,
+                                    child: CircularProgressIndicator(),
+                                  ));
+                            default:
+                              if (snapshot.hasError) {
+                                return Center(
+                                    child: Container(
+                                      child: Text(
+                                          'Some error occurred! Contact our support team'),
+                                    ));
+                              } else {
+                                return UnpaidMonthList(snapshot: snapshot,);
+                              }
+                          }
+                        })
                   ],
                 ),
               ),
-
-
-              RoundedButton(color: primaryColor, title: 'Go Home', onPressed: (){print('go home');}, height: 45, width: 277)
             ],
           ),
         ),
