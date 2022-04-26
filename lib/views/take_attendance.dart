@@ -5,6 +5,7 @@ import 'package:tution_khata/views/attendance_list.dart';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
+import 'package:intl/intl.dart';
 
 import '../constant.dart';
 import '../model/attendance.dart';
@@ -18,6 +19,17 @@ class TakeAttendance extends StatefulWidget {
 }
 
 class _TakeAttendanceState extends State<TakeAttendance> {
+
+  String? currentDate;
+
+  @override
+  void initState() {
+    var now = new DateTime.now();
+    var formatter = new DateFormat.yMMMMd('en_US');
+    currentDate = formatter.format(now);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -41,9 +53,9 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                   decoration: CustomBoxDecoration(Colors.white),
                   child: Column(
                     children: [
-                      Text('Date: 22nd May 2021', style: TextStyle(color: primaryColor, fontWeight: FontWeight.w500, fontSize: 16),),
+                      Text('Date: $currentDate', style: TextStyle(color: primaryColor, fontWeight: FontWeight.w500, fontSize: 16),),
                       Spacer(),
-                      Text('Batch Name: Math01', style: TextStyle(color: primaryColor, fontWeight: FontWeight.w400, fontSize: 16),),
+                      Text('Batch Name: $batchName', style: TextStyle(color: primaryColor, fontWeight: FontWeight.w400, fontSize: 16),),
 
                     ],
                   ),

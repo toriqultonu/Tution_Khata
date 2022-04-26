@@ -4,6 +4,7 @@ import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/build_lists/build_batch_list.dart';
 import 'package:tution_khata/constant.dart';
+import 'package:tution_khata/views/batch_update.dart';
 import 'package:tution_khata/views/send_sms.dart';
 import 'package:tution_khata/views/take_attendance.dart';
 import 'package:tution_khata/views/waiting_list.dart';
@@ -19,7 +20,10 @@ import 'home_page.dart';
 
 class BatchDetails extends StatefulWidget {
   static String id = "batch_details_screen";
-  const BatchDetails({Key? key}) : super(key: key);
+
+
+
+  const BatchDetails({Key? key,}) : super(key: key);
 
   @override
   _BatchDetailsState createState() => _BatchDetailsState();
@@ -53,19 +57,19 @@ class _BatchDetailsState extends State<BatchDetails> {
                         Container(
                           alignment: Alignment.topRight,
                           padding: EdgeInsets.only(top: 8, right: 14),
-                          child: Text('Batch Code: 010101', style: TextStyle(fontWeight: FontWeight.w600,),),
+                          child: Text('Batch Code: $batchId', style: TextStyle(fontWeight: FontWeight.w600,),),
                         ),
                         Container(
                           alignment: Alignment.centerLeft,
-                          child: Text('Batch Name: Math 1', style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w600, fontSize: 17),),
+                          child: Text('Batch Name: $batchName', style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w600, fontSize: 17),),
                         ),
                         SizedBox(height: 5,),
-                        Container(alignment: Alignment.centerLeft,child: Text('Day: '),),
+                        Container(alignment: Alignment.centerLeft,child: Text('Day: $date'),),
                         SizedBox(height: 5,),
-                        Container(alignment: Alignment.centerLeft,child: Text('Time: '),),
+                        Container(alignment: Alignment.centerLeft,child: Text('Time: $time'),),
                         GestureDetector(
                           onTap: (){
-                            print('click to edit');
+                            Navigator.pushNamed(context, BatchUpdate.id);
                           },
                           child: Container(
                             padding: EdgeInsets.only(right:14 ),

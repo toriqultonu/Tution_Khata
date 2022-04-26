@@ -13,7 +13,7 @@ class BatchCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-            Navigator.pushNamed(context, MainPage.id);
+        Navigator.push(context, MaterialPageRoute(builder: (context) => MainPage(batchId: batchId, batchName: batchName, date: date, time: time,)));
       },
       child: Container(
         margin: EdgeInsets.only(bottom: 8),

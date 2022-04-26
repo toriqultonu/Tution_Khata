@@ -34,33 +34,16 @@ class _MonthWiseCollectionState extends State<MonthWiseCollection> {
         child: Container(
           child: Column(
             children: [
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 11, horizontal: 52),
-                height: 55,
-                width: MediaQuery.of(context).size.width,
-                decoration: CustomBoxDecoration(Colors.white),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('TOTAL:', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
-                    Spacer(),
-                    Text('0 BDT', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
-                  ],
-                ),
-              ),
-              SizedBox(height: 40,),
+              SizedBox(height: 20,),
 
               Container(
-                height: 220,
+                height: 155,
                 width: MediaQuery.of(context).size.width* 0.9,
-                padding: EdgeInsets.symmetric(vertical: 18),
+                padding: EdgeInsets.symmetric(vertical: 5),
                 decoration: CustomBoxDecoration(secondaryColor),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Container(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
-                        child: CustomTextFormField('Batch Name', Icon(Icons.ac_unit), TextInputType.text)),
                     Container(padding:EdgeInsets.symmetric(vertical: 14),child: Text('Select a month below', style: TextStyle( fontSize: 15, fontWeight: FontWeight.w400),)),
                     Expanded(
                       child: Container(
@@ -132,7 +115,7 @@ class _MonthWiseCollectionState extends State<MonthWiseCollection> {
                         child: ListView(
                           children: [
                             FutureBuilder(
-                                future: DatabaseService.getCaptainList(token),
+                                future: DatabaseService.getStudentList(token),
                                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                                   switch (snapshot.connectionState) {
                                     case ConnectionState.waiting:

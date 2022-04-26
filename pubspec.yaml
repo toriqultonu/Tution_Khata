@@ -28,6 +28,9 @@ dependencies:
   http:
   dropdown_button2:
   pinput: ^2.2.7
+  flutter_phone_direct_caller: ^2.1.1
+  intl: ^0.17.0
+  day_picker: ^2.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

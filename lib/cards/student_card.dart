@@ -1,9 +1,15 @@
+import 'dart:developer';
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phone_direct_caller/flutter_phone_direct_caller.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/batch_details.dart';
 import 'package:tution_khata/views/edit_student_view.dart';
 import 'package:tution_khata/views/personal_sms_view.dart';
+
+import '../views/student_wise_collection_2.dart';
 
 class StudentCard extends StatefulWidget {
   final id;
@@ -34,6 +40,9 @@ class _StudentCardState extends State<StudentCard> with SingleTickerProviderStat
     offset = Tween<Offset>(begin: Offset(0.0, 0.0), end: Offset(0.0, 0.56)).animate(controller!);
   }
 
+  _callNumber(String number) async {
+    await FlutterPhoneDirectCaller.callNumber(number);
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -75,7 +84,7 @@ class _StudentCardState extends State<StudentCard> with SingleTickerProviderStat
                     Spacer(),
                     GestureDetector(
                       onTap: (){
-
+                          _callNumber(widget.phone.toString());
                       },
                       child: Container(
                         height: 30,
@@ -90,7 +99,9 @@ class _StudentCardState extends State<StudentCard> with SingleTickerProviderStat
                     Spacer(),
                     GestureDetector(
                       onTap: (){
-
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => StudentWiseCollection2(
+                            studentId: widget.id,
+                        )));
                       },
                       child: Container(
                         height: 30,
