@@ -1,16 +1,8 @@
 import 'dart:developer';
-
 import 'package:day_picker/day_picker.dart';
 import 'package:day_picker/model/day_in_week.dart';
 import 'package:flutter/material.dart';
-import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
-import 'package:tution_khata/components/buttons/custom_flat_button.dart';
-import 'package:tution_khata/components/buttons/regular_button.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
-import 'package:tution_khata/views/waiting_list.dart';
-
-import '../Helper/DatabaseService.dart';
-import '../build_lists/build_captain_list.dart';
 import '../components/custom_app_bar.dart';
 import '../constant.dart';
 
@@ -23,38 +15,23 @@ class BatchUpdate extends StatefulWidget {
 
 class _BatchUpdateState extends State<BatchUpdate> {
 
-  String? selectedValue;
-  int? selectedRadio;
+  var dateVal;
+  String? batchName, fee, start, end;
 
-  setSelectedRadio(val){
-    setState(() {
-      selectedRadio = val;
-    });
-  }
-
-  List<DayInWeek> _days = [
-    DayInWeek(
-      "Sat",
-    ),
-    DayInWeek(
+  List<DayInWeek> _days = [DayInWeek(
+      "Sat",), DayInWeek(
       "Sun",
-    ),
-    DayInWeek(
+    ), DayInWeek(
       "Mon",
-    ),
-    DayInWeek(
+    ), DayInWeek(
       "Tue",
-    ),
-    DayInWeek(
+    ), DayInWeek(
       "Wed",
-    ),
-    DayInWeek(
+    ), DayInWeek(
       "Thu",
-    ),
-    DayInWeek(
+    ), DayInWeek(
       "Fri",
-    ),
-  ];
+    ),];
 
   TimeOfDay? startTime;
   TimeOfDay? endTime;
@@ -88,7 +65,8 @@ class _BatchUpdateState extends State<BatchUpdate> {
     else{
       final hour = startTime?.hour.toString().padLeft(2,'0');
       final minute = startTime?.minute.toString().padLeft(2,'0');
-      return 'Start Time: ${startTime?.hour}:${startTime?.minute}';
+      start = "$hour:$minute";
+      return 'Start Time: $hour:$minute';
     }
   }
 
@@ -99,7 +77,8 @@ class _BatchUpdateState extends State<BatchUpdate> {
     else{
       final hour = endTime?.hour.toString().padLeft(2,'0');
       final minute = endTime?.minute.toString().padLeft(2,'0');
-      return 'End Time: ${endTime?.hour}:${endTime?.minute}';
+      end = "$hour:$minute";
+      return 'End Time: $hour:$minute';
     }
   }
 
@@ -158,19 +137,20 @@ class _BatchUpdateState extends State<BatchUpdate> {
                           disabledBorder: InputBorder.none,
                         ),
                         onChanged: (value){
-
+                          batchName = value;
                         },
                       ),
                     ),
                     Spacer(),
-                    Text('Select Days:'),
+                    Text('Select Days',style: TextStyle(fontSize: 16),),
                     SelectWeekDays(
                       fontSize: 13,
                       fontWeight: FontWeight.w500,
                       days: _days,
                       boxDecoration: CustomBoxDecoration(primaryColor),
                       onSelect: (values) {
-                        log('$values');
+                        dateVal = values;
+                        log('$dateVal');
                       },
                     ),
                     Spacer(),
@@ -193,7 +173,7 @@ class _BatchUpdateState extends State<BatchUpdate> {
                                 offset: Offset(3, 3),
                               )
                             ]),
-                        child: Center(child: Text(getStartTime())),
+                        child: Center(child: Text(getStartTime(), style: TextStyle(fontSize: 20),)),
                       ),
                     ),
                     Spacer(),
@@ -215,46 +195,54 @@ class _BatchUpdateState extends State<BatchUpdate> {
                                 offset: Offset(3, 3),
                               )
                             ]),
-                        child: Center(child: Text(getEndTime())),
+                        child: Center(child: Text(getEndTime(), style: TextStyle(fontSize: 20),)),
                       ),
                     ),
                     Spacer(),
-                    Container(
-                      width: MediaQuery.of(context).size.width,
-                      height: 45,
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(6.0),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.8),
-                              spreadRadius: 0.1,
-                              blurRadius: 2,
-                              offset: Offset(3, 3),
-                            )
-                          ]),
-                      child: TextFormField(
-                        textAlignVertical: TextAlignVertical.center,
-                        keyboardType: TextInputType.phone,
-                        decoration: InputDecoration(
-                          isCollapsed: true,
-                          prefixIcon: Icon(Icons.phone),
-                          labelText: 'Fee (BDT)',
-                          hintStyle: hintText,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          border: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          enabledBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          disabledBorder: InputBorder.none,
+                    Row(
+                      children: [
+                        Container(
+                          width: MediaQuery.of(context).size.width*0.4,
+                          height: 45,
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(6.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.8),
+                                  spreadRadius: 0.1,
+                                  blurRadius: 2,
+                                  offset: Offset(3, 3),
+                                )
+                              ]),
+                          child: TextFormField(
+                            textAlignVertical: TextAlignVertical.center,
+                            keyboardType: TextInputType.phone,
+                            decoration: InputDecoration(
+                              isCollapsed: true,
+                              prefixIcon: Icon(Icons.phone),
+                              labelText: 'Fee (BDT)',
+                              hintStyle: hintText,
+                              floatingLabelBehavior: FloatingLabelBehavior.never,
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                            ),
+                            onChanged: (value){
+                                  fee = value;
+                            },
+                          ),
                         ),
-                        onChanged: (value){
-
-                        },
-                      ),
+                        Spacer(),
+                        RoundedButton(color: primaryColor, title: 'Update Fee', onPressed: (){}, height: 4, width: 5)
+                      ],
                     ),
                     Spacer(),
-                    RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: (){}, height: 30, width: 15),
+                    RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: (){
+                        log('$batchName,  $dateVal, $start,  $end   $fee');
+                    }, height: 30, width: 15),
 
                   ],
                 ),
