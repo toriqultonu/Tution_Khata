@@ -7,6 +7,7 @@ import 'package:tution_khata/model/unapprovedstudent.dart';
 import 'package:tution_khata/model/batch.dart';
 import 'package:tution_khata/model/captain.dart';
 import 'package:tution_khata/model/district.dart';
+import 'package:tution_khata/model/unpaid_student_of_batch.dart';
 import 'package:tution_khata/model/unpaidmonth_of_student.dart';
 
 import '../model/unpaidmonths.dart';
@@ -174,5 +175,18 @@ class DatabaseService{
     final jsonData = json.decode(response.body);
 
     return jsonData.map<UnpaidMonths>(UnpaidMonths.fromJson).toList();
+  }
+
+  static Future<List<UnpaidStudentsOfBatch>> getUnpaidStudentsOfBatch(var token, String batchId, String year, String monthId) async{
+    final response = await http.get(Uri.parse(
+        'https://tution.dcampusweb.com/api/payment/unpaidStudents/$batchId?year=$year&monthId=$monthId&token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    final jsonData = json.decode(response.body);
+
+    return jsonData.map<UnpaidStudentsOfBatch>(UnpaidStudentsOfBatch.fromJson).toList();
   }
 }

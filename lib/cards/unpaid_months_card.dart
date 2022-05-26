@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/batch_details.dart';
+import 'package:tution_khata/views/batchwise_collection.dart';
 
 class UnpaidMonthsCard extends StatefulWidget {
   final id;
@@ -30,6 +31,7 @@ class _UnpaidMonthsCardState extends State<UnpaidMonthsCard> {
         children: [
           GestureDetector(
             onTap: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context) => BatchWiseCollection(batchId: "1000001", year: widget.yearId, monthId: widget.monthId,)));
             },
             child: Container(
               width: 90,
