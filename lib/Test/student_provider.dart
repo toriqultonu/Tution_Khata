@@ -5,7 +5,9 @@ import 'package:flutter/foundation.dart';
 
 import 'package:flutter/services.dart';
 import 'package:tution_khata/Test/unpaid_student.dart';
+import 'package:http/http.dart' as http;
 
+import '../constant.dart';
 
 class UnpaidStudentProvider with ChangeNotifier {
   UnpaidStudentProvider() {
@@ -20,21 +22,17 @@ class UnpaidStudentProvider with ChangeNotifier {
   List<UnpaidStudent> get students => _students;
 
   Future loadCountries() async {
-    final data = await rootBundle.loadString('assets/country_codes.json');
-    final countriesJson = json.decode(data);
+    final data = await http.get(Uri.parse(
+        'https://tution.dcampusweb.com/api/payment/unpaidStudents/1000001?year=2021&monthId=2&token=$token'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    final jsonData= json.decode(data.body);
 
-    return countriesJson.keys.map<UnpaidStudent>((code) {
-      final json = countriesJson[code];
-      final newJson = json..addAll({'code': code.toLowerCase()});
-
-      return UnpaidStudent.fromJson(newJson);
-    }).toList()
-      ..sort(Utils.ascendingSort);
+    return jsonData.map<UnpaidStudent>(UnpaidStudent.fromJson).toList();
   }
 }
 
 
-class Utils {
-  static int ascendingSort(UnpaidStudent c1, UnpaidStudent c2) =>
-      c1.name.compareTo(c2.name);
-}

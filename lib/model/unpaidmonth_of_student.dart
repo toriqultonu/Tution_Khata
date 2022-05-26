@@ -1,4 +1,4 @@
-class UnPaidMonth{
+class UnPaidMonthOfStudent{
   final id;
   final monthId;
   final month;
@@ -9,9 +9,9 @@ class UnPaidMonth{
 
 
 
-  const UnPaidMonth({required this.id, required this.monthId, required this.month, required this.yearId, required this.fee, required this.paidAmount, required this.waiverAmount});
+  const UnPaidMonthOfStudent({required this.id, required this.monthId, required this.month, required this.yearId, required this.fee, required this.paidAmount, required this.waiverAmount});
 
-  static UnPaidMonth fromJson(json) => UnPaidMonth(
+  static UnPaidMonthOfStudent fromJson(json) => UnPaidMonthOfStudent(
       id: json['id'],
       monthId: json['monthId'],
       month: json['month'],
