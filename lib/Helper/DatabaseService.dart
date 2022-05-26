@@ -1,12 +1,15 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:tution_khata/Test/unpaid_student.dart';
 import 'package:tution_khata/model/student.dart';
 import 'package:tution_khata/model/unapprovedstudent.dart';
 import 'package:tution_khata/model/batch.dart';
 import 'package:tution_khata/model/captain.dart';
 import 'package:tution_khata/model/district.dart';
-import 'package:tution_khata/model/unpaidmonth.dart';
+import 'package:tution_khata/model/unpaidmonth_of_student.dart';
+
+import '../model/unpaidmonths.dart';
 
 class DatabaseService{
 
@@ -142,13 +145,34 @@ class DatabaseService{
         });
     final jsonData = json.decode(response.body);
 
-    return jsonData.map<UnPaidMonth>(UnPaidMonth.fromJson).toList();
+    return jsonData.map<UnPaidMonthOfStudent>(UnPaidMonthOfStudent.fromJson).toList();
 
   }
 
-  static unPaidStudentByBatch(var token, var year, var monthId){
+  static unPaidStudentByBatch(var token, String year, String monthId) async{
 
+    final response = await http.get(Uri.parse(
+        'https://tution.dcampusweb.com/api/payment/unpaidStudents/1000001?year=$year&monthId=$monthId&token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    final jsonData = json.decode(response.body);
 
+    return jsonData.map<UnpaidStudent>(UnpaidStudent.fromJson).toList();
   }
 
+  static Future<List<UnpaidMonths>> getUnpaidMonth(var token, String batchId) async{
+    final response = await http.get(Uri.parse(
+        'https://tution.dcampusweb.com/api/payment/unpaidmonth/bybatch/$batchId?token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    final jsonData = json.decode(response.body);
+
+    return jsonData.map<UnpaidMonths>(UnpaidMonths.fromJson).toList();
+  }
 }
