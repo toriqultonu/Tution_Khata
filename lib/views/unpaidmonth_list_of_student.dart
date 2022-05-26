@@ -30,6 +30,7 @@ class _UnpaidMonthListState extends State<UnpaidMonthList> {
 
     for(int i =0;i<widget.snapshot.data.length;i++){
       contacts.add(UnpaidMonthForList(widget.snapshot.data[i].id, widget.snapshot.data[i].monthId, widget.snapshot.data[i].month, widget.snapshot.data[i].yearId, widget.snapshot.data[i].fee, widget.snapshot.data[i].paidAmount, widget.snapshot.data[i].waiverAmount, false));
+
     }
     super.initState();
   }
@@ -81,7 +82,7 @@ class _UnpaidMonthListState extends State<UnpaidMonthList> {
                     onPressed: () {
                       print("Delete List Lenght: ${selectedContacts.length}");
                       for(var select in selectedContacts){
-                        log('${select.month}, ${select.yearId}');
+                        log('${select.id}, ${select.yearId}');
                       }
                     },
                   ),
@@ -120,8 +121,7 @@ class _UnpaidMonthListState extends State<UnpaidMonthList> {
   }
 
 
-  Widget ContactItem(
-      var id, var monthId, String month, String yearId, String fee, String paidAmount, String waiverAmount, bool isSelected, int index) {
+  Widget ContactItem(var id, var monthId, String month, String yearId, String fee, String paidAmount, String waiverAmount, bool isSelected, int index) {
     return ListTile(
       // leading: CircleAvatar(
       //   backgroundColor: Colors.green[700],
@@ -131,7 +131,7 @@ class _UnpaidMonthListState extends State<UnpaidMonthList> {
       //   ),
       // ),
       title: Text(
-        '$month, $yearId                    $fee',
+        '$month, $yearId                 $fee',
         style: TextStyle(
           fontWeight: FontWeight.w500,
         ),
