@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
+import 'package:tution_khata/build_lists/build_unpaidmonths_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/custom_form_field.dart';
 import 'package:tution_khata/components/buttons/month_button.dart';
@@ -35,74 +36,56 @@ class _MonthWiseCollectionState extends State<MonthWiseCollection> {
           child: Column(
             children: [
               SizedBox(height: 20,),
-
-              Container(
-                height: 155,
-                width: MediaQuery.of(context).size.width* 0.9,
-                padding: EdgeInsets.symmetric(vertical: 5),
-                decoration: CustomBoxDecoration(secondaryColor),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(padding:EdgeInsets.symmetric(vertical: 14),child: Text('Select a month below', style: TextStyle( fontSize: 15, fontWeight: FontWeight.w400),)),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        child: Column(
+              Expanded(
+                flex: 1,
+                child: Container(
+                  height: 155,
+                  width: MediaQuery.of(context).size.width* 0.9,
+                  padding: EdgeInsets.symmetric(vertical: 5),
+                  decoration: CustomBoxDecoration(secondaryColor),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(padding:EdgeInsets.symmetric(vertical: 14),child: Text('Select a month below', style: TextStyle( fontSize: 15, fontWeight: FontWeight.w400),)),
+                      Expanded(
+                        child: ListView(
                           children: [
-                            Row(
-                              children: [
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-
-
-                              ],
-                            ),
-                            Spacer(),
-                            Row(
-                              children: [
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-
-
-                              ],
-                            ),
-                            Spacer(),
-                            Row(
-                              children: [
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-                                Spacer(),
-                                MonthButton(label: 'January'),
-
-
-                              ],
-                            ),
-
+                            FutureBuilder(
+                                future: DatabaseService.getUnpaidMonth(token, "1000001"),
+                                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                  switch (snapshot.connectionState) {
+                                    case ConnectionState.waiting:
+                                      return Center(
+                                          child: Container(
+                                            margin: EdgeInsets.only(top: 20),
+                                            width: 30,
+                                            height: 30,
+                                            child: CircularProgressIndicator(),
+                                          ));
+                                    default:
+                                      if (snapshot.hasError) {
+                                        return Center(
+                                            child: Container(
+                                              child: Text(
+                                                  'Some error occurred! Contact our support team'),
+                                            ));
+                                      } else {
+                                        return buildUnpaidMonthsCard(snapshot);
+                                      }
+                                  }
+                                })
                           ],
                         ),
                       ),
-                    )
-                  ],
+                    ],
+                  ),
                 ),
               ),
 
               SizedBox(height: 30,),
 
               Expanded(
+                flex: 2,
                 child: Container(
                   width: MediaQuery.of(context).size.width*0.9,
                   padding: EdgeInsets.only(top: 10, left: 14, right: 14, bottom: 14),
