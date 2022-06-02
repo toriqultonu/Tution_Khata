@@ -10,16 +10,44 @@ import 'Test/unpaid_student.dart';
 void main() async{
 
 
-  final response = await http.get(Uri.parse(
-      'https://tution.dcampusweb.com/api/payment/unpaidmonth/bybatch/1000001?token='),
+  final msg = jsonEncode({
+    "phone": "01795107577",
+    "email": "m@g.com",
+    "name": "name",
+    "institutionName":"e",
+    "picPath": "",
+    "districtId": "3",
+    "upazilaId": "19",
+    "genderId": "1",
+    "password":"nxdwer"
+  });
+  final response = await http.post(Uri.parse(
+      'https://tution.dcampusweb.com/api/auth/registration'),
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': 'Bearer $token',
       },
-  );
-  final jsonData = json.decode(response.body);
-  log("$jsonData");
+      body: msg);
+  if(response.statusCode == 200){
+
+    final msg = jsonEncode({
+      "phone": "01934897000"
+    });
+    final response = await http.post(Uri.parse(
+        'https://tution.dcampusweb.com/api/otp/resend'),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: msg);
+
+    log('true');
+  }
+  else {
+
+
+    log('false ${jsonDecode(response.body)}');
+  }
   }
   //log('$jsonData');
 

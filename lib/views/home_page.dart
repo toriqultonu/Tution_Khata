@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/cards/batch_card.dart';
 import 'package:tution_khata/components/home_page_app_bar.dart';
@@ -13,7 +14,10 @@ import 'package:tution_khata/constant.dart';
 import 'package:http/http.dart' as http;
 import 'package:tution_khata/model/batch.dart';
 import 'package:tution_khata/views/take_attendance.dart';
+import 'package:tution_khata/views/version_details.dart';
 
+
+import '../components/add_student_alert_dialog.dart';
 import '../main.dart';
 import 'fee_collection.dart';
 
@@ -28,6 +32,16 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+  }
+
+  Future openDialog(context) {
+    return showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+          contentPadding: EdgeInsets.zero,
+          content: AddStudentAlert()
+      ),
+    );
   }
 
   @override
@@ -89,7 +103,15 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             SizedBox(
-              height: 45,
+              height: 25,
+            ),
+            GestureDetector(
+              onTap: (){
+                Navigator.pushNamed(context, VersionDetails.id);
+              },
+                child: Text('Buy package')),
+            SizedBox(
+              height: 20,
             ),
             Expanded(
               child: ListView(
@@ -104,7 +126,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   margin: EdgeInsets.only(top: 120),
                               width: 150,
                               height: 150,
-                              child: CircularProgressIndicator(),
+                              child: LoadingAnimationWidget.dotsTriangle(
+                                color: primaryColor,
+                                size: 100,
+                              ),
                             ));
                           default:
                             if (snapshot.hasError) {
@@ -124,6 +149,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(backgroundColor: primaryColor,onPressed: () { openDialog(context); }, child: Icon(Icons.add),),
+
     );
   }
 }

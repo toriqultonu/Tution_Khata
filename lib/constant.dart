@@ -14,6 +14,12 @@ var regexPhone = RegExp(r'(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$');
 
 var regexPassword = RegExp(r'.{6,}');
 
+bool isValidEmail(String email) {
+  return RegExp(
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
+      .hasMatch(email);
+}
+
 String? batchName, date, time, batchId;
 
 TextStyle hintText = TextStyle(
@@ -56,3 +62,7 @@ InputDecoration getTextFieldDesign({required String labelText, required Icon ico
     //border: OutlineInputBorder(borderSide: BorderSide.none),
   );
 }
+
+
+
+

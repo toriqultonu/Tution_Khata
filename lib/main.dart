@@ -22,6 +22,7 @@ import 'package:tution_khata/views/send_sms.dart';
 import 'package:tution_khata/views/sms_purchase.dart';
 import 'package:tution_khata/views/student_wise_collection.dart';
 import 'package:tution_khata/views/student_wise_collection_2.dart';
+import 'package:tution_khata/views/version_details.dart';
 import 'package:tution_khata/views/waiting_list.dart';
 
 void main() {
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSwatch().copyWith(
           primary: primaryColor,
@@ -67,6 +69,7 @@ class MyApp extends StatelessWidget {
         EditCaptain.id: (context) => EditCaptain(),
         AddStudentByTeacher.id: (context) => AddStudentByTeacher(),
         BatchUpdate.id: (context) => BatchUpdate(),
+        VersionDetails.id: (context) => VersionDetails(),
 
       },
 

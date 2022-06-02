@@ -28,17 +28,6 @@ class DatabaseService{
     return jsonData.map<Batch>(Batch.fromJson).toList();
   }
 
-  static Future<List<String>> getDistricts() async {
-    final response = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
-    final jsonData = json.decode(response.body);
-    print(jsonData);
-
-    List<String> district = (json.decode(response.body)['district'] as List)
-        .map((data) => District.fromJson(data)).cast<String>()
-        .toList();
-
-    return district;
-  }
 
   static getRegistered(String phone, String email, String name, String picPath, String districtId, String upazilaId, String genderId, String password) async{
 
@@ -47,7 +36,7 @@ class DatabaseService{
       "email": email,
       "name": name,
       "institutionName":"",
-      "picPath": picPath,
+      "picPath": "",
       "districtId": districtId,
       "upazilaId": upazilaId,
       "genderId": genderId,
@@ -61,12 +50,9 @@ class DatabaseService{
         },
         body: msg);
     if(response.statusCode == 200){
-      final jsonData = json.decode(response.body);
-      return jsonData.toString();
+      return true;
     }
-    else{
-      return "Failed to register!";
-    }
+    else return false;
   }
 
   static Future<List<Student>> getStudentList(var token) async{
