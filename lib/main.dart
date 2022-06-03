@@ -4,7 +4,7 @@ import 'package:tution_khata/views/about_us.dart';
 import 'package:tution_khata/views/add_student_by_captain.dart';
 import 'package:tution_khata/views/add_student_by_teacher.dart';
 import 'package:tution_khata/views/batch_details.dart';
-import 'package:tution_khata/views/batch_update.dart';
+import 'package:tution_khata/views/update_batch.dart';
 import 'package:tution_khata/views/captain_panel_view.dart';
 import 'package:tution_khata/views/contact_us.dart';
 import 'package:tution_khata/views/edit_captain_view.dart';

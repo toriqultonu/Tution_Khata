@@ -49,10 +49,9 @@ class DatabaseService{
           'Accept': 'application/json',
         },
         body: msg);
-    if(response.statusCode == 200){
-      return true;
-    }
-    else return false;
+
+      return response;
+
   }
 
   static Future<List<Student>> getStudentList(var token) async{

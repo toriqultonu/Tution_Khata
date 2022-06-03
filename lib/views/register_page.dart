@@ -516,7 +516,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 if(_checked){
 
                                   if(_formKey.currentState!.validate()){
-                                    if (DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "") == true) {
+                                    var response = DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "");
+                                    var jsonData = jsonDecode(response.body);
+                                    if (response.statusCode == 200) {
                                       log("success");
                                       Fluttertoast.showToast(
                                           msg: "Data submitted successfully \n Please verify phone number",
@@ -531,15 +533,17 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     }
                                     else{
                                       log("failed");
+                                      log("${jsonData.toString()}");
                                       Fluttertoast.showToast(
-                                          msg: "Registration incomplete",
+                                          msg: jsonData.toString(),
                                           toastLength: Toast.LENGTH_SHORT,
                                           gravity: ToastGravity.BOTTOM,
                                           timeInSecForIosWeb: 1,
-                                          backgroundColor: Colors.red,
+                                          backgroundColor: Colors.lightGreenAccent,
                                           textColor: Colors.white,
                                           fontSize: 16.0
                                       );
+                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PhoneVerification()));
                                     }
                                   }
                                   else{
@@ -556,6 +560,18 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   }
 
                                   //DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "");
+                                }
+                                else{
+                                  print("incorrect");
+                                  Fluttertoast.showToast(
+                                      msg: "Please check terms and conditions ",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                      timeInSecForIosWeb: 1,
+                                      backgroundColor: Colors.red,
+                                      textColor: Colors.white,
+                                      fontSize: 16.0
+                                  );
                                 }
                                 log('$fullName $phone $email $district $upazilla $selectedRadio $password $_checked $_img64');
                               },

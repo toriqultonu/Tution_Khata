@@ -4,7 +4,7 @@ import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/build_lists/build_batch_list.dart';
 import 'package:tution_khata/constant.dart';
-import 'package:tution_khata/views/batch_update.dart';
+import 'package:tution_khata/views/update_batch.dart';
 import 'package:tution_khata/views/send_sms.dart';
 import 'package:tution_khata/views/take_attendance.dart';
 import 'package:tution_khata/views/waiting_list.dart';
