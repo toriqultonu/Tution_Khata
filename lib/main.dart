@@ -4,6 +4,7 @@ import 'package:tution_khata/views/about_us.dart';
 import 'package:tution_khata/views/add_student_by_captain.dart';
 import 'package:tution_khata/views/add_student_by_teacher.dart';
 import 'package:tution_khata/views/batch_details.dart';
+import 'package:tution_khata/views/create_batch.dart';
 import 'package:tution_khata/views/update_batch.dart';
 import 'package:tution_khata/views/captain_panel_view.dart';
 import 'package:tution_khata/views/contact_us.dart';
@@ -51,6 +52,7 @@ class MyApp extends StatelessWidget {
         PhoneVerification.id: (context) => PhoneVerification(),
         HomeScreen.id: (context) => HomeScreen(),
         BatchDetails.id: (context) => BatchDetails(),
+        CreateBatch.id: (context) => CreateBatch(),
         //MainPage.id: (context) => MainPage(),
         FeeCollection.id: (context) => FeeCollection(),
         SendSMS.id: (context) => SendSMS(),

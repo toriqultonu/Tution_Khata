@@ -509,42 +509,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           RoundedButton(
                               color: primaryColor,
                               title: "SignUp",
-                              onPressed: () async{
+                              onPressed: () {
 
 
                                 print('asfda');
                                 if(_checked){
 
                                   if(_formKey.currentState!.validate()){
-                                    var response = DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "");
-                                    var jsonData = jsonDecode(response.body);
-                                    if (response.statusCode == 200) {
-                                      log("success");
-                                      Fluttertoast.showToast(
-                                          msg: "Data submitted successfully \n Please verify phone number",
-                                          toastLength: Toast.LENGTH_SHORT,
-                                          gravity: ToastGravity.BOTTOM,
-                                          timeInSecForIosWeb: 1,
-                                          backgroundColor: Colors.green,
-                                          textColor: Colors.white,
-                                          fontSize: 16.0
-                                      );
-                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PhoneVerification()));
-                                    }
-                                    else{
-                                      log("failed");
-                                      log("${jsonData.toString()}");
-                                      Fluttertoast.showToast(
-                                          msg: jsonData.toString(),
-                                          toastLength: Toast.LENGTH_SHORT,
-                                          gravity: ToastGravity.BOTTOM,
-                                          timeInSecForIosWeb: 1,
-                                          backgroundColor: Colors.lightGreenAccent,
-                                          textColor: Colors.white,
-                                          fontSize: 16.0
-                                      );
-                                      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PhoneVerification()));
-                                    }
+                                    // var response = DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "");
+                                    // var jsonData = jsonDecode(response.body);
+                                    // if (response.statusCode == 200) {
+                                    //   log("success");
+                                    //   Fluttertoast.showToast(
+                                    //       msg: "Data submitted successfully \n Please verify phone number",
+                                    //       toastLength: Toast.LENGTH_SHORT,
+                                    //       gravity: ToastGravity.BOTTOM,
+                                    //       timeInSecForIosWeb: 1,
+                                    //       backgroundColor: Colors.green,
+                                    //       textColor: Colors.white,
+                                    //       fontSize: 16.0
+                                    //   );
+                                      Navigator.pushReplacementNamed(context, PhoneVerification.id);
+                                    // }
+                                    // else{
+                                    //   log("failed");
+                                    //   log("${jsonData.toString()}");
+                                    //   Fluttertoast.showToast(
+                                    //       msg: jsonData.toString(),
+                                    //       toastLength: Toast.LENGTH_SHORT,
+                                    //       gravity: ToastGravity.BOTTOM,
+                                    //       timeInSecForIosWeb: 1,
+                                    //       backgroundColor: Colors.lightGreenAccent,
+                                    //       textColor: Colors.white,
+                                    //       fontSize: 16.0
+                                    //   );
+                                    //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PhoneVerification()));
+                                    // }
                                   }
                                   else{
                                     print("incorrect");

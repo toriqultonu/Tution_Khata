@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/Helper/OpenAPIs.dart';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
@@ -63,7 +64,10 @@ class _VersionDetailsState extends State<VersionDetails> {
                                   margin: EdgeInsets.only(top: 120),
                                   width: 150,
                                   height: 150,
-                                  child: CircularProgressIndicator(),
+                                  child: LoadingAnimationWidget.dotsTriangle(
+                                    color: primaryColor,
+                                    size: 100,
+                                  ),
                                 ));
                           default:
                             if (snapshot.hasError) {

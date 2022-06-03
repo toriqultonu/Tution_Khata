@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/build_lists/build_unpaidmonths_list.dart';
@@ -107,7 +108,10 @@ class _MonthWiseCollectionState extends State<MonthWiseCollection> {
                                             margin: EdgeInsets.only(top: 120),
                                             width: 100,
                                             height: 100,
-                                            child: CircularProgressIndicator(),
+                                            child: LoadingAnimationWidget.dotsTriangle(
+                                              color: primaryColor,
+                                              size: 100,
+                                            ),
                                           ));
                                     default:
                                       if (snapshot.hasError) {

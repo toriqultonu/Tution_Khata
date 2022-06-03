@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/views/unpaidmonth_list_of_student.dart';
@@ -56,7 +57,10 @@ class _StudentWiseCollection2State extends State<StudentWiseCollection2> {
                                     margin: EdgeInsets.only(top: 120),
                                     width: 150,
                                     height: 150,
-                                    child: CircularProgressIndicator(),
+                                    child: LoadingAnimationWidget.dotsTriangle(
+                                      color: primaryColor,
+                                      size: 100,
+                                    ),
                                   ));
                             default:
                               if (snapshot.hasError) {
