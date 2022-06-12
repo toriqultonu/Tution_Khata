@@ -61,10 +61,10 @@ class _MainPageState extends State<MainPage> {
         showUnselectedLabels:false,
         items: [
           BottomNavigationBarItem(label: 'Home',icon: Icon(Icons.home),),
-          BottomNavigationBarItem(label: 'Attendance',icon: Icon(Icons.whatshot),),
-          BottomNavigationBarItem(label: 'Fee Collection',icon: Icon(Icons.notifications_active),),
-          BottomNavigationBarItem(label: 'SMS',icon: Icon(Icons.search),),
-          BottomNavigationBarItem(label: 'Add Student',icon: Icon(Icons.account_circle),),
+          BottomNavigationBarItem(label: 'Attendance',icon: Icon(Icons.task),),
+          BottomNavigationBarItem(label: 'Fee Collection',icon: Icon(Icons.attach_money_rounded),),
+          BottomNavigationBarItem(label: 'SMS',icon: Icon(Icons.sms),),
+          BottomNavigationBarItem(label: 'Add Student',icon: Icon(Icons.add_circle_rounded),),
         ],
       ),
     );
