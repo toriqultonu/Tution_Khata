@@ -115,7 +115,7 @@ class _CaptainPanelState extends State<CaptainPanel> {
                 child: ListView(
                   children: [
                     FutureBuilder(
-                        future: DatabaseService.getCaptainList(token),
+                        future: DatabaseService.getCaptainList(captainToken),
                         builder: (BuildContext context, AsyncSnapshot snapshot) {
                           switch (snapshot.connectionState) {
                             case ConnectionState.waiting:
