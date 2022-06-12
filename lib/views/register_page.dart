@@ -509,47 +509,78 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           RoundedButton(
                               color: primaryColor,
                               title: "SignUp",
-                              onPressed: () {
+                              onPressed: () async {
+
+                                if(_checked) {
+                                  if (_formKey.currentState!.validate()) {
+                                    final msg1 = jsonEncode({
+                                      "phone": phone,
+                                      "email": email,
+                                      "name": fullName,
+                                      "institutionName": "n",
+                                      "picPath": "",
+                                      "districtId": district,
+                                      "upazilaId": upazilla,
+                                      "genderId": selectedRadio,
+                                      "password": password
+                                    });
+                                    final response1 = await http.post(Uri.parse(
+                                        'https://tution.dcampusweb.com/api/auth/registration'),
+                                        headers: {
+                                          'Content-Type': 'application/json',
+                                          'Accept': 'application/json',
+                                        },
+                                        body: msg1);
+                                    var jsonData1 = jsonDecode(response1.body);
 
 
-                                print('asfda');
-                                if(_checked){
+                                    if (response1.statusCode == 200) {
+                                      log("success");
+                                      Fluttertoast.showToast(
+                                          msg: "Data submitted successfully. Please verify phone number",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.green,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0
+                                      );
 
-                                  if(_formKey.currentState!.validate()){
-                                    // var response = DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "");
-                                    // var jsonData = jsonDecode(response.body);
-                                    // if (response.statusCode == 200) {
-                                    //   log("success");
-                                    //   Fluttertoast.showToast(
-                                    //       msg: "Data submitted successfully \n Please verify phone number",
-                                    //       toastLength: Toast.LENGTH_SHORT,
-                                    //       gravity: ToastGravity.BOTTOM,
-                                    //       timeInSecForIosWeb: 1,
-                                    //       backgroundColor: Colors.green,
-                                    //       textColor: Colors.white,
-                                    //       fontSize: 16.0
-                                    //   );
-                                      Navigator.pushReplacementNamed(context, PhoneVerification.id);
-                                    // }
-                                    // else{
-                                    //   log("failed");
-                                    //   log("${jsonData.toString()}");
-                                    //   Fluttertoast.showToast(
-                                    //       msg: jsonData.toString(),
-                                    //       toastLength: Toast.LENGTH_SHORT,
-                                    //       gravity: ToastGravity.BOTTOM,
-                                    //       timeInSecForIosWeb: 1,
-                                    //       backgroundColor: Colors.lightGreenAccent,
-                                    //       textColor: Colors.white,
-                                    //       fontSize: 16.0
-                                    //   );
-                                    //   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => PhoneVerification()));
-                                    // }
+                                      await Future.delayed(Duration(seconds: 1));
+
+                                      final msg2 = jsonEncode({
+                                        "phone": phone
+                                      });
+                                      final response2 = await http.post(
+                                          Uri.parse(
+                                              'https://tution.dcampusweb.com/api/otp/resend'),
+                                          headers: {
+                                            'Content-Type': 'application/json',
+                                            'Accept': 'application/json',
+                                          },
+                                          body: msg2);
+
+
+                                      Navigator.pushReplacementNamed(
+                                          context, PhoneVerification.id);
+                                    }
+                                    else {
+                                      print("incorrect");
+                                      Fluttertoast.showToast(
+                                          msg: "Data not submitted. Retry again ",
+                                          toastLength: Toast.LENGTH_SHORT,
+                                          gravity: ToastGravity.BOTTOM,
+                                          timeInSecForIosWeb: 1,
+                                          backgroundColor: Colors.red,
+                                          textColor: Colors.white,
+                                          fontSize: 16.0
+                                      );
+                                    }
                                   }
-                                  else{
+                                  else {
                                     print("incorrect");
                                     Fluttertoast.showToast(
-                                        msg: "Incorrect inputs ",
+                                        msg: "Incorrect inputs!",
                                         toastLength: Toast.LENGTH_SHORT,
                                         gravity: ToastGravity.BOTTOM,
                                         timeInSecForIosWeb: 1,
@@ -558,13 +589,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                         fontSize: 16.0
                                     );
                                   }
-
-                                  //DatabaseService.getRegistered(phone?? "", email?? "", fullName?? "", _img64?? "", district?? "", upazilla?? "", selectedRadio.toString(), password?? "");
                                 }
                                 else{
                                   print("incorrect");
                                   Fluttertoast.showToast(
-                                      msg: "Please check terms and conditions ",
+                                      msg: "Please check the terms and conditions",
                                       toastLength: Toast.LENGTH_SHORT,
                                       gravity: ToastGravity.BOTTOM,
                                       timeInSecForIosWeb: 1,
@@ -573,6 +602,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       fontSize: 16.0
                                   );
                                 }
+
                                 log('$fullName $phone $email $district $upazilla $selectedRadio $password $_checked $_img64');
                               },
                               height: 45,
