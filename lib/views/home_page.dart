@@ -13,6 +13,7 @@ import 'package:tution_khata/components/navigation_drawer.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:http/http.dart' as http;
 import 'package:tution_khata/model/batch.dart';
+import 'package:tution_khata/views/create_batch.dart';
 import 'package:tution_khata/views/take_attendance.dart';
 import 'package:tution_khata/views/version_details.dart';
 
@@ -149,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(backgroundColor: primaryColor,onPressed: () { openDialog(context); }, child: Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(backgroundColor: primaryColor,onPressed: () { Navigator.pushNamed(context, CreateBatch.id); }, child: Icon(Icons.add),),
 
     );
   }
