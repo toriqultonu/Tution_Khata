@@ -89,7 +89,7 @@ class _CreateBatchState extends State<CreateBatch> {
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: primaryColor,
-        title: CustomAppBar(str1: 'Update Batch'),
+        title: CustomAppBar(str1: 'Create Batch'),
         centerTitle: true,
         elevation: 15,
       ),
@@ -199,48 +199,42 @@ class _CreateBatchState extends State<CreateBatch> {
                       ),
                     ),
                     Spacer(),
-                    Row(
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width*0.4,
-                          height: 45,
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(6.0),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.8),
-                                  spreadRadius: 0.1,
-                                  blurRadius: 2,
-                                  offset: Offset(3, 3),
-                                )
-                              ]),
-                          child: TextFormField(
-                            textAlignVertical: TextAlignVertical.center,
-                            keyboardType: TextInputType.phone,
-                            decoration: InputDecoration(
-                              isCollapsed: true,
-                              prefixIcon: Icon(Icons.phone),
-                              labelText: 'Fee (BDT)',
-                              hintStyle: hintText,
-                              floatingLabelBehavior: FloatingLabelBehavior.never,
-                              border: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              enabledBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              disabledBorder: InputBorder.none,
-                            ),
-                            onChanged: (value){
-                              fee = value;
-                            },
-                          ),
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 45,
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(6.0),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.8),
+                              spreadRadius: 0.1,
+                              blurRadius: 2,
+                              offset: Offset(3, 3),
+                            )
+                          ]),
+                      child: TextFormField(
+                        textAlignVertical: TextAlignVertical.center,
+                        keyboardType: TextInputType.phone,
+                        decoration: InputDecoration(
+                          isCollapsed: true,
+                          prefixIcon: Icon(Icons.attach_money_sharp),
+                          labelText: 'Fee (BDT)',
+                          hintStyle: hintText,
+                          floatingLabelBehavior: FloatingLabelBehavior.never,
+                          border: InputBorder.none,
+                          focusedBorder: InputBorder.none,
+                          enabledBorder: InputBorder.none,
+                          errorBorder: InputBorder.none,
+                          disabledBorder: InputBorder.none,
                         ),
-                        Spacer(),
-                        RoundedButton(color: primaryColor, title: 'Update Fee', onPressed: (){}, height: 4, width: 5)
-                      ],
+                        onChanged: (value){
+                          fee = value;
+                        },
+                      ),
                     ),
                     Spacer(),
-                    RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: (){
+                    RoundedButton(color: primaryColor, title: 'Create Batch', onPressed: (){
                       log('$batchName,  $dateVal, $start,  $end   $fee');
                     }, height: 30, width: 15),
 
