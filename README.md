@@ -1,5 +1,4 @@
 # Tution_Khata
-# Awesome Android
 [<img src="https://raw.githubusercontent.com/jstumpp/awesome-android/master/awesome-android.png">](https://github.com/jstumpp/awesome-android)
 
 <p align="center">
