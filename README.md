@@ -10,8 +10,6 @@
 
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Tuition Khata is a cross platform mobile app for managing students of a batch. In a
 tuition batch there are many documents related to a student. Teacher has to
 manually maintain all these with their bare hands and sometimes it becomes quite
@@ -39,10 +37,8 @@ These are the features user will have..
 ### Build with: 
 
 * [Flutter](https://flutter.dev//)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
 * [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
+* [MySQL](https://www.mysql.com/)
 * [JQuery](https://jquery.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
