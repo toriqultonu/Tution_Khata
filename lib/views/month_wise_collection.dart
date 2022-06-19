@@ -83,59 +83,59 @@ class _MonthWiseCollectionState extends State<MonthWiseCollection> {
                 ),
               ),
 
-              SizedBox(height: 30,),
+              //SizedBox(height: 30,),
 
-              Expanded(
-                flex: 2,
-                child: Container(
-                  width: MediaQuery.of(context).size.width*0.9,
-                  padding: EdgeInsets.only(top: 10, left: 14, right: 14, bottom: 14),
-                  decoration: CustomBoxDecoration(secondaryColor),
-                  child: Column(
-                    children: [
-                      Container(child: Text('Select one or more students below'),),
-                      SizedBox(height: 9,),
-                      Expanded(
-                        child: ListView(
-                          children: [
-                            FutureBuilder(
-                                future: DatabaseService.getStudentList(token),
-                                builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                  switch (snapshot.connectionState) {
-                                    case ConnectionState.waiting:
-                                      return Center(
-                                          child: Container(
-                                            margin: EdgeInsets.only(top: 120),
-                                            width: 100,
-                                            height: 100,
-                                            child: LoadingAnimationWidget.dotsTriangle(
-                                              color: primaryColor,
-                                              size: 100,
-                                            ),
-                                          ));
-                                    default:
-                                      if (snapshot.hasError) {
-                                        return Center(
-                                            child: Container(
-                                              child: Text(
-                                                  'Some error occurred! Contact our support team'),
-                                            ));
-                                      } else {
-                                        return buildStudentList(snapshot);
-                                      }
-                                  }
-                                })
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Expanded(
+              //   flex: 2,
+              //   child: Container(
+              //     width: MediaQuery.of(context).size.width*0.9,
+              //     padding: EdgeInsets.only(top: 10, left: 14, right: 14, bottom: 14),
+              //     decoration: CustomBoxDecoration(secondaryColor),
+              //     child: Column(
+              //       children: [
+              //         Container(child: Text('Select one or more students below'),),
+              //         SizedBox(height: 9,),
+              //         Expanded(
+              //           child: ListView(
+              //             children: [
+              //               FutureBuilder(
+              //                   future: DatabaseService.getStudentList(token),
+              //                   builder: (BuildContext context, AsyncSnapshot snapshot) {
+              //                     switch (snapshot.connectionState) {
+              //                       case ConnectionState.waiting:
+              //                         return Center(
+              //                             child: Container(
+              //                               margin: EdgeInsets.only(top: 120),
+              //                               width: 100,
+              //                               height: 100,
+              //                               child: LoadingAnimationWidget.dotsTriangle(
+              //                                 color: primaryColor,
+              //                                 size: 100,
+              //                               ),
+              //                             ));
+              //                       default:
+              //                         if (snapshot.hasError) {
+              //                           return Center(
+              //                               child: Container(
+              //                                 child: Text(
+              //                                     'Some error occurred! Contact our support team'),
+              //                               ));
+              //                         } else {
+              //                           return buildStudentList(snapshot);
+              //                         }
+              //                     }
+              //                   })
+              //             ],
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
 
               SizedBox(height: 15,),
 
-              RoundedButton(color: primaryColor, title: 'Submit', onPressed: (){print('submit');}, height: 45, width: 277)
+              //RoundedButton(color: primaryColor, title: 'Submit', onPressed: (){print('submit');}, height: 45, width: 277)
             ],
           ),
         ),

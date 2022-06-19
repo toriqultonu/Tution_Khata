@@ -295,7 +295,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             child: DropdownButtonFormField<String>(
                               decoration: InputDecoration(
                                 border: InputBorder.none,
-                                prefixIcon: Icon(Icons.person),
+                                prefixIcon: Icon(Icons.add_location_rounded),
                               ),
                               hint: Text('$hintDistrict'),
                               items: districtData.map((item) {
@@ -336,7 +336,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           child: DropdownButtonFormField<String>(
                             decoration: InputDecoration(
                               border: InputBorder.none,
-                              prefixIcon: Icon(Icons.person),
+                              prefixIcon: Icon(Icons.location_searching_rounded),
                             ),
                             hint: Text('Upazila/Thana'),
                             items: upazillaData.map((item) {
@@ -385,7 +385,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   print(selectedRadio);
                                 },
                               ),
-                                Text('Male', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
+                                Text('Male', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w600, fontSize: 14),),
                                 SizedBox(width: 54,),
                                 Radio(
                                   value: 2,
@@ -396,7 +396,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                       print(selectedRadio);
                                   },
                                 ),
-                                Text('Female', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w300, fontSize: 14),),
+                                Text('Female', style: TextStyle(color: hintTextColor, fontWeight: FontWeight.w600, fontSize: 14),),
                             ]
                             ),
                           ),
