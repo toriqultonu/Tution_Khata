@@ -6,3 +6,17 @@
   <a href="https://travis-ci.org/JStumpp/awesome-android"><img alt="Build Status" src="https://api.travis-ci.org/JStumpp/awesome-android.svg?branch=master" /></a>
   <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" />
 </p> -->
+
+
+## About The Project
+
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
+
+Tuition Khata is a cross platform mobile app for managing students of a batch. In a
+tuition batch there are many documents related to a student. Teacher has to
+manually maintain all these with their bare hands and sometimes it becomes quite
+challenging to maintain. Especially when a teacher has multiple batches and
+hundreds of students. With the Tuition Khata app a teacher can maintain all these
+documents and maintain his batches from anywhere with his smartphone.
+
+<p align="right">(<a href="#top">back to top</a>)</p>
