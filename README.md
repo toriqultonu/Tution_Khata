@@ -20,3 +20,29 @@ hundreds of students. With the Tuition Khata app a teacher can maintain all thes
 documents and maintain his batches from anywhere with his smartphone.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+### Features:
+
+These are the features user will have..
+
+* Create batch
+* Assign captain
+* Add students
+* Take attendance
+* Take tuition fee
+* Send sms to batch
+* Send sms to individual student
+* Call student
+* Add students to waiting list by captain
+* Change student and captain information.
+
+### Build with: 
+
+* [Flutter](https://flutter.dev//)
+* [Angular](https://angular.io/)
+* [Svelte](https://svelte.dev/)
+* [Laravel](https://laravel.com)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
