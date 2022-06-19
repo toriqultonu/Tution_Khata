@@ -45,7 +45,7 @@ These are the features user will have..
 
 ## Screenshots
 
-[<img src="/readme/Wallabag%20Reading%20List.png" align="left"
+[<img src="[/readme/Wallabag%20Reading%20List.png](https://github.com/toriqultonu/Tution_Khata/blob/main/%E0%A6%9F%E0%A6%BF%E0%A6%89%E0%A6%B6%E0%A6%A8%20%E0%A6%96%E0%A6%BE%E0%A6%A4%E0%A6%BE/Tution_khata_SS/login.png?raw=true)" align="left"
 width="200"
     hspace="10" vspace="10">](/readme/Wallabag%20Reading%20List.png)
 [<img src="/readme/Wallabag%20Article%20View.png" align="center"
