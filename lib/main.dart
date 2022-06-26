@@ -13,7 +13,6 @@ import 'package:tution_khata/views/edit_student_view.dart';
 import 'package:tution_khata/views/fee_collection.dart';
 import 'package:tution_khata/views/home_page.dart';
 import 'package:tution_khata/views/login_page.dart';
-import 'package:tution_khata/views/main_page.dart';
 import 'package:tution_khata/views/month_wise_collection.dart';
 import 'package:tution_khata/views/personal_sms_view.dart';
 import 'package:tution_khata/views/phone_verification_page.dart';
