@@ -1,118 +1,189 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:snippet_coder_utils/FormHelper.dart';
 
-void main(){
+void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-
-      title: 'Dependent Dropdown',
+      title: 'Dependent DropDown',
       theme: ThemeData(
+
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Dependent DropDown'),
     );
-
   }
 }
 
-
 class MyHomePage extends StatefulWidget {
+  MyHomePage({Key? key, required this.title}) : super(key: key);
+
 
   final String title;
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  List<dynamic> countries = [];
-  List<dynamic> statesMasters =[];
-  List<dynamic> state = [];
-  String? countryId;
-  String? stateId;
+  List districtData = [];
+  List upazillaData = [];
 
-  @override
-  void initState() {
-    super.initState();
-    this.countries.add({"id":1, "label":"Bangladesh"});
-    this.countries.add({"id":2, "label":"USA"});
 
-    this.statesMasters = [
-      {"Id":1, "name":"bogura", "parentId":1},
-      {"Id":2, "name":"rajshahi", "parentId":1},
-      {"Id":3, "name":"khulna", "parentId":1},
-      {"Id":4, "name":"dhaka", "parentId":1},
-      {"Id":5, "name":"texus", "parentId":2},
-      {"Id":6, "name":"washington", "parentId":2},
-      {"Id":7, "name":"rweergton", "parentId":2},
-      {"Id":8, "name":"231rngton", "parentId":2},
-    ];
+  String _selectedCountry="India";
+  var country={'India':'IN','Pakistan':'PAK','Nepal':'NP','Bangladesh':'BD'};
+
+  List _countries=[];
+  CountryDependentDropDown(){
+
+
+    country.forEach((key, value) {
+      _countries.add(key);
+    });
+
+  }
+
+  String _selectedState="";
+  var state={'Jharkhand':'IN','Panjab':'IN','Baluchistan':'PAK','Dhaka':'BD','Janakpur':'NP'};
+
+  List _states=[];
+  StateDependentDropDown(countryShortName){
+    state.forEach((key, value) {
+      if(countryShortName==value){
+        _states.add(key);
+      }
+
+    });
+    _selectedState= _states[0];
+  }
+
+  String _selectedCity="";
+  var city={'Ranchi':'Jharkhand','Tata':'Jharkhand','Quetta':'Baluchistan','Ludhiana':'Panjab','Amritsar':'Panjab'};
+
+  List _cities=[];
+  CityDependentDropDown(stateShortName){
+    city.forEach((key, value) {
+      if(stateShortName==value){
+        _cities.add(key);
+      }
+
+    });
+    _selectedCity= _cities[0];
   }
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    CountryDependentDropDown();
+  }
+  @override
+
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text("Flutter dependent dropdown"),
-          backgroundColor: Colors.redAccent,
-        ),
 
-        body: Column(
-          children: [
-            FormHelper.dropDownWidget(
-                context,
-                "Select Country",
-                this.countryId,
-                this.countries,
-                    (onChangedValue){
-                  this.countryId = onChangedValue;
-                  this.state = this.statesMasters.where((element) => element["parentId"].toString() == onChangedValue.toString()).toList();
-                  this.stateId = null;
-                  setState(() {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: Container(
+        margin:EdgeInsets.all(15),
 
-                  });
-                },
-                    (onvalidate){
-                  if(onvalidate == null){
-                    return "please select country";
-                  }
+        child: Column(
 
-                  return null;
-                },
-                borderColor: Theme.of(context).primaryColor,
-                borderFocusColor: Theme.of(context).primaryColor,
-                borderRadius: 10,
-                optionValue: "id",
-                optionLabel: "label"
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            SizedBox(height: 23,),
+            Align(
+              alignment: Alignment.centerLeft,
+              child:Text("Country",  style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),),
             ),
+            Container(
+              width: 400,
+              child: DropdownButton(
+                value: _selectedCountry,
+                onChanged: (newValue){
+                  setState(() {
+                    _cities=[];
+                    _states=[];
+                    StateDependentDropDown(country[newValue]);
+                    _selectedCountry="$newValue";
+                  });
 
-            FormHelper.dropDownWidgetWithLabel(context, "state", "select state", this.stateId, this.state,
-                    (onChangedValue){
-                  this.stateId = onChangedValue;
                 },
-                    ()=> null,
+                items:_countries.map((country){
+                  return DropdownMenuItem(
+                    child: new Text(country),
+                    value:country,
+                  );
+                }).toList(),
+              ),
+            ),
+            SizedBox(height: 23,),
 
-                borderColor: Theme.of(context).primaryColor,
-                borderFocusColor: Theme.of(context).primaryColor,
-                borderRadius: 10,
-                optionValue: "Id",
-                optionLabel: "name"
+            Align(
+                alignment: Alignment.centerLeft,
+                child:Text("State", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),)
+            ),
+            Container(
+              width: 400,
+              child: DropdownButton(
+                value: _selectedState,
+                onChanged: (newValue){
+                  print(newValue);
+                  setState(() {
+                    print(newValue);
+                    _cities=[];
+                    CityDependentDropDown(newValue);
+
+                    _selectedState="$newValue";
+                  });
+
+                },
+                items:_states.map((state){
+                  return DropdownMenuItem(
+                    child: new Text(state),
+                    value:state,
+                  );
+                }).toList(),
+              ),
+            ),
+            SizedBox(height: 23,),
+
+            Align(
+                alignment: Alignment.centerLeft,
+                child:Text("City", style: TextStyle(fontWeight:FontWeight.bold,fontSize: 18),)
+            ),
+            Container(
+              width: 400,
+              child: DropdownButton(
+                value: _selectedCity,
+                onChanged: (newValue){
+                  setState(() {
+                    _selectedCity="$newValue";
+                  });
+
+                },
+                items:_cities.map((city){
+                  return DropdownMenuItem(
+                    child: new Text(city),
+                    value:city,
+                  );
+                }).toList(),
+              ),
             )
+
+
           ],
         ),
-
       ),
+      // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
