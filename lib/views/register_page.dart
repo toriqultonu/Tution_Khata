@@ -35,12 +35,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   bool _checked = false;
   String? selectedValue;
-  String? fullName, phone, email, district, upazilla, gender, password, confirmPass;
-  List<String> districts = [];
-  late String upzilla;
-  String hintDistrict = 'District';
-  List districtData = [];
-  List upazillaData = [];
+  String? fullName, phone, email, gender, password, confirmPass;
+
+
 
   final _formKey = GlobalKey<FormState>();
 
@@ -72,37 +69,42 @@ class _RegisterScreenState extends State<RegisterScreen> {
   }
 
 
-  getDistricts() async{
-    var response1 = await http.get(Uri.parse('https://tution.dcampusweb.com/api/districts'));
-    if(response1.statusCode == 200){
-      var jsonData = jsonDecode(response1.body);
-      // for(int i=0;i<jsonData.length;i++){
-      //   districts.add(jsonData[i]["district"].toString());
-      // }
+  List districtList = [];
+  String? district;
 
+  getDistrictList() async {
+    var response1 = await http.get(
+        Uri.parse('https://tution.dcampusweb.com/api/districts'));
+    if (response1.statusCode == 200) {
+      var data = json.decode(response1.body);
+
+//      print(data);
       setState(() {
-        districtData = jsonData;
+        districtList = data;
       });
     }
-    else
-      print("Didn't get any response");
   }
 
-  getUpazillas() async{
-    var response2 = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas-by-district?districtId=$upazillaid'));
+  // Get State information by API
+  List upazillaList = [];
+  String? upazilla;
+
+
+  getUpazillaList() async {
+    var response2 = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas-by-district?districtId=$district'));
     if(response2.statusCode == 200){
-      var jsonData = jsonDecode(response2.body);
+      var data = json.decode(response2.body);
+
       setState(() {
-        upazillaData = jsonData;
+        upazillaList = data;
       });
     }
-    else
-      print("Didn't get any response");
   }
+
 
   @override
   void initState() {
-    this.getDistricts();
+    this.getDistrictList();
     super.initState();
   }
 
@@ -292,31 +294,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   )
                                 ]),
 
-                            child: DropdownButtonFormField<String>(
-                              decoration: InputDecoration(
-                                border: InputBorder.none,
-                                prefixIcon: Icon(Icons.add_location_rounded),
+                            child: Expanded(
+                              child: DropdownButtonHideUnderline(
+                                child: ButtonTheme(
+                                  alignedDropdown: true,
+                                  child: DropdownButton<String>(
+                                    value: district,
+                                    iconSize: 30,
+                                    icon: (null),
+                                    style: TextStyle(
+                                      color: Colors.black54,
+                                      fontSize: 16,
+                                    ),
+                                    hint: Text('District'),
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        district = newValue!;
+                                        upazilla = null;
+                                        getUpazillaList();
+                                        print(district);
+                                        log('$district');
+                                      });
+                                    },
+                                    items: districtList.map((item) {
+                                      return new DropdownMenuItem(
+                                        child: new Text(item['district']),
+                                        value: item['id'].toString(),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
                               ),
-                              hint: Text('$hintDistrict'),
-                              items: districtData.map((item) {
-
-                                return DropdownMenuItem<String>(
-                                  // onTap: (){
-                                  //   district = item['district'].toString();
-                                  // },
-                                  value: item['id'].toString(),
-                                  child: new Text(item['district'])
-                                );
-                              }).toList(),
-                              value: upazillaid,
-                              onChanged: (newval) {
-                                upazillaid = newval!;
-                                district = newval;
-                                setState(() {
-
-                                });
-                                getUpazillas();
-                              },
                             ),
                           ),
                           Spacer(),
@@ -333,28 +341,34 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   offset: Offset(3, 3),
                                 )
                               ]),
-                          child: DropdownButtonFormField<String>(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              prefixIcon: Icon(Icons.location_searching_rounded),
+                          child: Expanded(
+                            child: DropdownButtonHideUnderline(
+                              child: ButtonTheme(
+                                alignedDropdown: true,
+                                child: DropdownButton<String>(
+                                  value: upazilla,
+                                  iconSize: 30,
+                                  icon: (null),
+                                  style: TextStyle(
+                                    color: Colors.black54,
+                                    fontSize: 16,
+                                  ),
+                                  hint: Text('Upazilla/Thana'),
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      upazilla = newValue!;
+                                      print(upazilla);
+                                    });
+                                  },
+                                  items: upazillaList.map((item) {
+                                    return new DropdownMenuItem(
+                                      child: new Text(item['upazila']),
+                                      value: item['id'].toString(),
+                                    );
+                                  }).toList(),
+                                ),
+                              ),
                             ),
-                            hint: Text('Upazila/Thana'),
-                            items: upazillaData.map((item) {
-                              return DropdownMenuItem<String>(
-                                onTap: (){
-                                  upazilla = item['upazila'].toString();
-                                },
-                                value: item['id'].toString(),
-                                child: new Text(item['upazila'])
-                              );
-                            }).toList(),
-                            value: selectedValue,
-                            onChanged: (value) {
-                              setState(() {
-                                upazilla = value!;
-                              });
-
-                            },
                           ),
                         ),
                           Spacer(),
@@ -620,17 +634,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-
-
-DropdownMenuItem<String> buildMenuItem(String item) => DropdownMenuItem(
-  value: item,
-  child: Container(
-    //padding: EdgeInsets.all(8.0),
-    child: Text(
-      item,
-      style: TextStyle(
-        color: Color(0xFF0F0909),
-      ),
-    ),
-  ),
-);
