@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 var primaryColor = Color(0xff47C8D7);
 var secondaryColor = Color(0xffFBE9D5);
@@ -30,7 +31,9 @@ TextStyle hintText = TextStyle(
     color: Colors.black
 );
 
-var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdHV0aW9uLmRjYW1wdXN3ZWIuY29tXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjU1NzM5MDU5LCJleHAiOjE2NTgzMzEwNTksIm5iZiI6MTY1NTczOTA1OSwianRpIjoiTGpsbDEwOW5GWlc5OVlpRSIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.7YZPTW1-b4Vk1cI2i4rzlIoVMc31qL3QvJX15SCCsXg";
+
+
+String token = "";
 
 var captainToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdHV0aW9uLmRjYW1wdXN3ZWIuY29tXC9hcGlcL2F1dGhcL2xvZ2luIiwiaWF0IjoxNjU0Mjc2MjI4LCJleHAiOjE2NTY4NjgyMjgsIm5iZiI6MTY1NDI3NjIyOCwianRpIjoiQTRDZUpUcFp1V3Fsc3pLSiIsInN1YiI6MTQ3LCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.w2GDeA0ldQVzddKkOoj_FZ304vC0LSp0vYuHe6arHnU";
 

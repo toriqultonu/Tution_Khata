@@ -5,6 +5,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/cards/batch_card.dart';
 import 'package:tution_khata/components/home_page_app_bar.dart';
@@ -31,7 +32,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-  void initState() {
+  void initState(){
     super.initState();
   }
 

@@ -9,21 +9,31 @@ import 'package:http/http.dart' as http;
 
 void main() async {
 
-  var response2 = await http.get(Uri.parse('https://tution.dcampusweb.com/api/upazilas'));
-  if(response2.statusCode == 200){
-    var data = json.decode(response2.body);
+  Map data = {
+    "username": "01761500333",
+    "password": "123456"
+  };
+  var jsonData;
+  //SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  var response = await http.post(Uri.parse('https://tution.dcampusweb.com/api/auth/login'), body: data);
+  if(response.statusCode == 200){
+    jsonData = json.decode(response.body);
 
 
-    List  citiesList = data;
+          if(jsonData["roles"].toString() == "[teacher]"){
+            log('${jsonData["access_token"]}');
+          }
 
-    log('${data.toString()}');
-    log('to');
+
+
+            else
+          log("not teacher");
+
+
   }
-
   else{
-    log("nothing");
+    print(response.body);
   }
- // runApp(MyApp());
 }
 
 // class MyApp extends StatelessWidget {
