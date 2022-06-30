@@ -1,13 +1,20 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:day_picker/day_picker.dart';
 import 'package:day_picker/model/day_in_week.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import '../components/custom_app_bar.dart';
 import '../constant.dart';
+import 'package:http/http.dart' as http;
 
 class BatchUpdate extends StatefulWidget {
+
+  final batchId;
   static String id = "batch_update";
+
+  const BatchUpdate({Key? key, this.batchId}) : super(key: key);
 
   @override
   _BatchUpdateState createState() => _BatchUpdateState();
@@ -236,13 +243,100 @@ class _BatchUpdateState extends State<BatchUpdate> {
                           ),
                         ),
                         Spacer(),
-                        RoundedButton(color: primaryColor, title: 'Update Fee', onPressed: (){}, height: 4, width: 5)
+                        RoundedButton(color: primaryColor, title: 'Update Fee', onPressed: () async {
+
+                          final body = jsonEncode({
+                            "batchId": widget.batchId.toString(),
+                            "batchFee": fee,
+                            "updateBatchStudentFee": true
+                          });
+
+                          final response = await http.post(Uri.parse(
+                              'https://tution.dcampusweb.com/api/batch/update/fee?token='),
+                              headers: {
+                                'Content-Type': 'application/json',
+                                'Accept': 'application/json',
+                                'Authorization': 'Bearer $token',
+                              },
+                              body: body);
+                          final jsonData = json.decode(response.body);
+
+    if (response.statusCode == 200) {
+    log("success");
+    Fluttertoast.showToast(
+    msg: "Batch fee updated",
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.green,
+    textColor: Colors.white,
+    fontSize: 16.0
+    );}
+    else{
+      print("incorrect");
+      Fluttertoast.showToast(
+          msg: "Batch fee didn't update",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
+
+                        }, height: 4, width: 5)
                       ],
                     ),
                     Spacer(),
-                    RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: (){
+                    RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: () async {
+
+    final body1 = jsonEncode({
+      "batchId": widget.batchId,
+      "batchName": batchName
+    });
+
+    final response1 = await http.post(Uri.parse(
+    'https://tution.dcampusweb.com/api/batch/update/batchinfo?token='),
+    headers: {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer $token',
+    },
+    body: body1);
+    final jsonData1 = json.decode(response1.body);
+
+    if (response1.statusCode == 200) {
+    log("success");
+    Fluttertoast.showToast(
+    msg: "Batch updated successfully",
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM,
+    timeInSecForIosWeb: 1,
+    backgroundColor: Colors.green,
+    textColor: Colors.white,
+    fontSize: 16.0
+    );}
+
+    else {
+      print("incorrect");
+      Fluttertoast.showToast(
+          msg: "Batch didn't update!",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
+
+    setState(() {});
+
+
                         log('$batchName,  $dateVal, $start,  $end   $fee');
-                    }, height: 30, width: 15),
+                    },
+                        height: 30, width: 15),
 
                   ],
                 ),
