@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'dart:developer';
 import 'package:day_picker/day_picker.dart';
 import 'package:day_picker/model/day_in_week.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import '../components/custom_app_bar.dart';
 import '../constant.dart';
+import 'package:http/http.dart' as http;
 
 class CreateBatch extends StatefulWidget {
   static String id = "create_batch";
@@ -234,7 +237,49 @@ class _CreateBatchState extends State<CreateBatch> {
                       ),
                     ),
                     Spacer(),
-                    RoundedButton(color: primaryColor, title: 'Create Batch', onPressed: (){
+                    RoundedButton(color: primaryColor, title: 'Create Batch', onPressed: () async {
+
+                      //creating batch
+                      final body = jsonEncode({
+                        "batchName": batchName,
+                        "batchFee": fee
+                      });
+
+                      final response = await http.post(Uri.parse(
+                          'https://tution.dcampusweb.com/api/batch/create?token='),
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                          body: body);
+                      final jsonData = json.decode(response.body);
+
+    if (response.statusCode == 200) {
+      log("success");
+      Fluttertoast.showToast(
+          msg: "Batch created successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
+      else{
+      print("incorrect");
+      Fluttertoast.showToast(
+          msg: "Failed to created batch",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          timeInSecForIosWeb: 1,
+          backgroundColor: Colors.red,
+          textColor: Colors.white,
+          fontSize: 16.0
+      );
+    }
+
                       log('$batchName,  $dateVal, $start,  $end   $fee');
                     }, height: 30, width: 15),
 
