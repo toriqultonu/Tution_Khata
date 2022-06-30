@@ -70,7 +70,7 @@ class _BatchDetailsState extends State<BatchDetails> {
                         Container(alignment: Alignment.centerLeft,child: Text('Time: $time'),),
                         GestureDetector(
                           onTap: (){
-                            Navigator.pushNamed(context, BatchUpdate.id);
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => BatchUpdate(batchId: batchId)));
                           },
                           child: Container(
                             padding: EdgeInsets.only(right:14 ),
