@@ -67,10 +67,9 @@ class _LoginScreenState extends State<LoginScreen> {
         if(jsonData["roles"].toString() == "[teacher]"){
           final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
           sharedPreferences.setString("token", jsonData["access_token"]);
-          log('${jsonData["access_token"]}');
           token = jsonData["access_token"];
-          await Future.delayed(Duration(seconds: 3));
-          Navigator.pushNamed(context, HomeScreen.id);
+          //await Future.delayed(Duration(seconds: 3));
+          Navigator.pushReplacementNamed(context, HomeScreen.id);
         }
 
         else {

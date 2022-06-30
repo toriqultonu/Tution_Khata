@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tution_khata/constant.dart';
 import 'package:tution_khata/views/about_us.dart';
 import 'package:tution_khata/views/add_student_by_captain.dart';
@@ -25,8 +26,10 @@ import 'package:tution_khata/views/student_wise_collection_2.dart';
 import 'package:tution_khata/views/version_details.dart';
 import 'package:tution_khata/views/waiting_list.dart';
 
-void main() {
+void main() async {
   runApp(MyApp());
+  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  token = sharedPreferences.getString("token")!;
 }
 
 class MyApp extends StatelessWidget {
@@ -76,7 +79,7 @@ class MyApp extends StatelessWidget {
 
       home: Scaffold(
         resizeToAvoidBottomInset: true,
-        body: LoginScreen(),
+        body: token == null ? LoginScreen():HomeScreen(),
       ),
     );
   }

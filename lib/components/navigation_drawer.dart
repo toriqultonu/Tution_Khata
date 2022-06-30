@@ -1,5 +1,9 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tution_khata/constant.dart';
+import 'package:tution_khata/views/login_page.dart';
 
 class NavigationDrawer extends StatefulWidget {
 
@@ -31,7 +35,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "Video Tutorials", icon: Icons.video_collection_outlined, context: context, ID: 'queue'),
                 Divider(color: Colors.grey, thickness: 1,),
-                buildMenuItem(text: "Log Out", icon: Icons.logout, context: context, ID: 'tree'),
+                buildMenuItem(text: "Log Out", icon: Icons.logout, context: context, ID: 'logout'),
                 Divider(color: Colors.grey, thickness: 1,),
                 buildMenuItem(text: "Captain panel", icon: Icons.admin_panel_settings_outlined, context: context, ID: 'captain_panel'),
 
@@ -50,9 +54,16 @@ Widget buildMenuItem({required String text, required IconData icon, context, req
     hoverColor: Colors.white,
     leading: Icon(icon, color: Colors.black54, size: 28,),
     title: Text(text,style: TextStyle(color: Colors.black54, fontSize: 17),),
-    onTap: (){
+    onTap: () async {
       // Navigator.pop(context);
       // Navigator.pop(context);
+      if(ID == "logout")
+        {
+          SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+          sharedPreferences.remove("token");
+          log("$token");
+          Navigator.pushReplacementNamed(context, LoginScreen.id);
+        }
       Navigator.pushNamed(context, ID);
       print('$text + $ID');
     },
