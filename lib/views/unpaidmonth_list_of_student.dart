@@ -63,10 +63,7 @@ class _UnpaidMonthListState extends State<UnpaidMonthList> {
                       ),
                     ),
                     onPressed: () {
-                      print("Delete List Lenght: ${selectedContacts.length}");
-                      for(var select in selectedContacts){
-                        log('${select.month}, ${select.yearId}');
-                      }
+                      Navigator.pop(context);
                     },
                   ),
                   SizedBox(width: 30,),
