@@ -31,7 +31,7 @@ class _UnpaidMonthsCardState extends State<UnpaidMonthsCard> {
         children: [
           GestureDetector(
             onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context) => BatchWiseCollection(batchId: "1000001", year: widget.yearId, monthId: widget.monthId,)));
+              Navigator.push(context, MaterialPageRoute(builder: (context) => BatchWiseCollection(batchId: batchId.toString(), year: widget.yearId, monthId: widget.monthId,)));
             },
             child: Container(
               width: 90,
