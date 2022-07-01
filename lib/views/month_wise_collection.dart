@@ -52,7 +52,7 @@ class _MonthWiseCollectionState extends State<MonthWiseCollection> {
                         child: ListView(
                           children: [
                             FutureBuilder(
-                                future: DatabaseService.getUnpaidMonth(token, "1000001"),
+                                future: DatabaseService.getUnpaidMonth(token, batchId.toString()),
                                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                                   switch (snapshot.connectionState) {
                                     case ConnectionState.waiting:
