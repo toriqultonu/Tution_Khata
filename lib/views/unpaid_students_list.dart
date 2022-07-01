@@ -1,16 +1,23 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:tution_khata/model/unpaidmonth_for_list.dart';
+import 'package:http/http.dart' as http;
 
 import '../Helper/DatabaseService.dart';
 import '../constant.dart';
 import '../model/attendance.dart';
+import 'main_page.dart';
 
 class UnpaidStudentList extends StatefulWidget {
   final snapshot;
+  final batchId;
+  final monthId;
+  final yearId;
 
-  const UnpaidStudentList({Key? key, this.snapshot}) : super(key: key);
+  const UnpaidStudentList({Key? key, this.snapshot, this.batchId, this.monthId, this.yearId}) : super(key: key);
 
 
   @override
@@ -63,10 +70,8 @@ class _UnpaidStudentListState extends State<UnpaidStudentList> {
                         ),
                       ),
                       onPressed: () {
-                        print("Delete List Lenght: ${selectedContacts.length}");
-                        for(var select in selectedContacts){
-                          log('${select.month}, ${select.yearId}');
-                        }
+                       Navigator.pop(context);
+
                       },
                     ),
                     SizedBox(width: 30,),
@@ -79,11 +84,58 @@ class _UnpaidStudentListState extends State<UnpaidStudentList> {
                           fontSize: 18,
                         ),
                       ),
-                      onPressed: () {
+                      onPressed: () async {
+
+
+                        final body1 = jsonEncode({
+                          "batchId": widget.batchId,
+                          "monthId": widget.monthId,
+                          "yearId": widget.yearId,
+                          "students": selectedContacts.toList()
+                        });
+
+                        final response1 = await http.post(Uri.parse(
+                            'https://tution.dcampusweb.com/api/payment/batch/bymonth?token='),
+                            headers: {
+                              'Content-Type': 'application/json',
+                              'Accept': 'application/json',
+                              'Authorization': 'Bearer $token',
+                            },
+                            body: body1);
+                        final jsonData1 = json.decode(response1.body);
+
+                        if (response1.statusCode == 200) {
+                          log("success");
+                          Fluttertoast.showToast(
+                              msg: "Fees collected",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.green,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );}
+
+                        else {
+                          log("incorrect");
+                          Fluttertoast.showToast(
+                              msg: "Fees aren't collected!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.BOTTOM,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0
+                          );
+                        }
+
+
+
                         print("Delete List Lenght: ${selectedContacts.length}");
                         for(var select in selectedContacts){
                           log('${select.id}, ${select.yearId}');
                         }
+                        log("${widget.batchId}, ${widget.monthId}, ${widget.yearId  }");
                       },
                     ),
                   ],
