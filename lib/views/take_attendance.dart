@@ -7,6 +7,7 @@ import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/custom_app_bar.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:intl/intl.dart';
+import 'package:http/http.dart' as http;
 
 import '../constant.dart';
 import '../model/attendance.dart';
@@ -61,7 +62,18 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                     ],
                   ),
                 ),
-                SizedBox(height: 20,),
+                SizedBox(height: 15,),
+
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text("Check absent students", style: TextStyle(color: Colors.redAccent),)
+                    ],
+                  ),
+                ),
+
                 Expanded(
                   child: ListView(
                     children: [
@@ -88,7 +100,7 @@ class _TakeAttendanceState extends State<TakeAttendance> {
                                             'Some error occurred! Contact our support team'),
                                       ));
                                 } else {
-                                  return AttendanceList(snapshot: snapshot,);
+                                  return AttendanceList(snapshot: snapshot, attendanceDate: currentDate, batchId: batchId,);
                                 }
                             }
                           })
