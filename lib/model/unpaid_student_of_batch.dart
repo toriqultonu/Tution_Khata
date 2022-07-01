@@ -8,12 +8,14 @@ class UnpaidStudentsOfBatch {
   final fee;
   final paidAmount;
   final waiverAmount;
+  final studentId;
 
 
 
-  const UnpaidStudentsOfBatch({required this.id, required this.name, required this.phone, required this.monthId,required this.month,required this.yearId,required this.fee,required this.paidAmount,required this.waiverAmount});
+  const UnpaidStudentsOfBatch({this.studentId, required this.id, required this.name, required this.phone, required this.monthId,required this.month,required this.yearId,required this.fee,required this.paidAmount,required this.waiverAmount});
 
   static UnpaidStudentsOfBatch fromJson(json) => UnpaidStudentsOfBatch(
+      studentId: json['studentId'],
       id: json['id'],
       name: json['name'],
       phone: json['phone'],
@@ -23,5 +25,6 @@ class UnpaidStudentsOfBatch {
       fee: json['fee'],
       paidAmount: json['paidAmount'],
       waiverAmount: json['waiverAmount']
+
   );
 }

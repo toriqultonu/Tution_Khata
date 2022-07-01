@@ -33,10 +33,10 @@ class _UnpaidStudentListState extends State<UnpaidStudentList> {
   @override
   void initState() {
 
-    var snap = DatabaseService.unPaidMonthByStudent(token, 1);
-
+    //var snap = DatabaseService.unPaidMonthByStudent(token, 1);
+    /// Here we are using waiver amount as student_id...
     for(int i =0;i<widget.snapshot.data.length;i++){
-      contacts.add(UnpaidMonthForList(widget.snapshot.data[i].name, widget.snapshot.data[i].monthId, widget.snapshot.data[i].month, widget.snapshot.data[i].yearId, widget.snapshot.data[i].fee, widget.snapshot.data[i].paidAmount, widget.snapshot.data[i].waiverAmount, false));
+      contacts.add(UnpaidMonthForList(widget.snapshot.data[i].name, widget.snapshot.data[i].monthId, widget.snapshot.data[i].month, widget.snapshot.data[i].yearId, widget.snapshot.data[i].fee, widget.snapshot.data[i].paidAmount, widget.snapshot.data[i].studentId, false));
 
     }
     super.initState();
@@ -85,13 +85,17 @@ class _UnpaidStudentListState extends State<UnpaidStudentList> {
                         ),
                       ),
                       onPressed: () async {
+                        List<String> studentsIdList = [];
+                        for(var select in selectedContacts){
+                          studentsIdList.add(select.waiverAmount);
 
-
+                        }
+                          log("${studentsIdList.toString()}");
                         final body1 = jsonEncode({
                           "batchId": widget.batchId,
                           "monthId": widget.monthId,
                           "yearId": widget.yearId,
-                          "students": selectedContacts.toList()
+                          "students": studentsIdList
                         });
 
                         final response1 = await http.post(Uri.parse(
@@ -103,7 +107,7 @@ class _UnpaidStudentListState extends State<UnpaidStudentList> {
                             },
                             body: body1);
                         final jsonData1 = json.decode(response1.body);
-
+                        log("into condition");
                         if (response1.statusCode == 200) {
                           log("success");
                           Fluttertoast.showToast(
@@ -114,7 +118,8 @@ class _UnpaidStudentListState extends State<UnpaidStudentList> {
                               backgroundColor: Colors.green,
                               textColor: Colors.white,
                               fontSize: 16.0
-                          );}
+                          );
+                        }
 
                         else {
                           log("incorrect");
@@ -128,13 +133,11 @@ class _UnpaidStudentListState extends State<UnpaidStudentList> {
                               fontSize: 16.0
                           );
                         }
-
+                        log("$jsonData1");
 
 
                         print("Delete List Lenght: ${selectedContacts.length}");
-                        for(var select in selectedContacts){
-                          log('${select.id}, ${select.yearId}');
-                        }
+
                         log("${widget.batchId}, ${widget.monthId}, ${widget.yearId  }");
                       },
                     ),
