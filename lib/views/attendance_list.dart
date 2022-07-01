@@ -1,14 +1,18 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:http/http.dart' as http;
 import '../constant.dart';
 import '../model/attendance.dart';
 
 class AttendanceList extends StatefulWidget {
   final snapshot;
+  final attendanceDate;
+  final batchId;
 
-  const AttendanceList({Key? key, this.snapshot}) : super(key: key);
+  const AttendanceList({Key? key, this.snapshot, this.attendanceDate, this.batchId}) : super(key: key);
 
 
   @override
@@ -64,12 +68,55 @@ class _AttendanceListState extends State<AttendanceList> {
                     fontSize: 18,
                   ),
                 ),
-                onPressed: () {
+                onPressed: () async {
+
                   print("Delete List Lenght: ${selectedStudents.length}");
-                  for(var select in selectedStudents){
-                    log('${select.name}');
-                  }
-                },
+
+
+                    final body1 = jsonEncode({
+                      "batchId": widget.batchId,
+                      "date": "test date",
+                      "absentStudents":selectedStudents.toList()
+                    });
+
+                    final response1 = await http.post(Uri.parse(
+                        'https://tution.dcampusweb.com/api/batch/attendance/create/bydate?token='),
+                        headers: {
+                          'Content-Type': 'application/json',
+                          'Accept': 'application/json',
+                          'Authorization': 'Bearer $token',
+                        },
+                        body: body1);
+                    final jsonData1 = json.decode(response1.body);
+
+                    if (response1.statusCode == 200) {
+                      log("success");
+                      Fluttertoast.showToast(
+                          msg: "Attendance taken",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.green,
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );}
+
+                    else {
+                      log("incorrect");
+                      Fluttertoast.showToast(
+                          msg: "Attendance already been taken for today!",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
+                    }
+                  Navigator.pop(context);
+
+
+                  },
               ),
             ),
           ),
