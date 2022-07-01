@@ -73,7 +73,7 @@ class _BatchWiseCollectionState extends State<BatchWiseCollection> {
                                           'Some error occurred! Contact our support team'),
                                     ));
                               } else {
-                                return UnpaidStudentList(snapshot: snapshot);
+                                return UnpaidStudentList(snapshot: snapshot, batchId: widget.batchId, monthId: widget.monthId, yearId: widget.year);
                               }
                           }
                         })
