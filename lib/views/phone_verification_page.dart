@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pinput/pinput.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/components/text_field_otp.dart';
 import 'package:tution_khata/views/home_page.dart';
+import 'package:http/http.dart' as http;
 
 
 import '../constant.dart';
@@ -17,7 +20,9 @@ class PhoneVerification extends StatefulWidget {
 
   static String id = "phone_verification";
 
-  const PhoneVerification({Key? key}) : super(key: key);
+  final phoneNumber;
+
+  const PhoneVerification({Key? key, this.phoneNumber}) : super(key: key);
 
   @override
   _PhoneVerificationState createState() => _PhoneVerificationState();
@@ -97,7 +102,53 @@ class _PhoneVerificationState extends State<PhoneVerification> {
                     ),
                   ),
                   SizedBox(height: 20,),
-                  RoundedButton(color: primaryColor, title: 'Verify Now', onPressed: () {
+                  RoundedButton(color: primaryColor, title: 'Verify Now', onPressed: () async {
+
+                    final body1 = jsonEncode({
+                      "otp":code,
+                      "phone":phoneToVerify
+                    });
+
+                    final response1 = await http.post(Uri.parse(
+                        'https://tution.dcampusweb.com/api/otp/verification'),
+                        headers: {
+                          'Content-Type': 'application/json',
+                          'Accept': 'application/json',
+
+                        },
+                        body: body1);
+                    final jsonData1 = json.decode(response1.body);
+
+                    if (response1.statusCode == 200) {
+                      log("success");
+                      Fluttertoast.showToast(
+                          msg: "Account is verified",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.green,
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
+                      await Future.delayed(Duration(seconds: 1));
+                      Navigator.pop(context);
+                    }
+
+                    else {
+                      log("incorrect");
+                      Fluttertoast.showToast(
+                          msg: "Account is not verified! Enter right code",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.BOTTOM,
+                          timeInSecForIosWeb: 1,
+                          backgroundColor: Colors.red,
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
+                    }
+
+
+
                     log('$code');
                     //Navigator.pushNamed(context, HomeScreen.id);
                   }, height: 45, width: 277),

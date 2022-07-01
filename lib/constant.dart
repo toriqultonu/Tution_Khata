@@ -21,7 +21,7 @@ bool isValidEmail(String email) {
       .hasMatch(email);
 }
 
-String? batchName, date, time, batchId;
+String? batchName, date, time, batchId, phoneToVerify;
 
 TextStyle hintText = TextStyle(
   fontSize: 16,

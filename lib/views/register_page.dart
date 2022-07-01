@@ -548,7 +548,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     var jsonData1 = jsonDecode(response1.body);
 
 
+
                                     if (response1.statusCode == 200) {
+                                      phoneToVerify = phone;
                                       log("success");
                                       Fluttertoast.showToast(
                                           msg: "Data submitted successfully. Please verify phone number",
