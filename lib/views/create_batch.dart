@@ -39,6 +39,16 @@ class _CreateBatchState extends State<CreateBatch> {
   TimeOfDay? startTime;
   TimeOfDay? endTime;
 
+  Map<String, int> dayToId = {
+    "Sat":1,
+    "Sun":2,
+    "Mon":3,
+    "Tue":4,
+    "Wed":5,
+    "Thu":6,
+    "Fri":7
+  };
+
   Future pickStartTime(BuildContext context) async{
     final initialTime = TimeOfDay(hour: 9, minute: 0);
     final newTime = await showTimePicker(context: context, initialTime: startTime ?? initialTime);
@@ -153,7 +163,9 @@ class _CreateBatchState extends State<CreateBatch> {
                       boxDecoration: CustomBoxDecoration(primaryColor),
                       onSelect: (values) {
                         dateVal = values;
-                        log('$dateVal');
+                        log('${dateVal.length}');
+
+
                       },
                     ),
                     Spacer(),
@@ -239,23 +251,50 @@ class _CreateBatchState extends State<CreateBatch> {
                     Spacer(),
                     RoundedButton(color: primaryColor, title: 'Create Batch', onPressed: () async {
 
+                      List schedules = [];
+
+                      for(int i = 0; i<dateVal.length;i++){
+                        Map schedule = {
+                          "dayId": dayToId[dateVal[i]],
+                          "startingTime": start,
+                          "endingTime": end
+                        };
+                        schedules.add(schedule);
+                      }
+
                       //creating batch
-                      final body = jsonEncode({
+
+                      final body1 = jsonEncode({
+                        "batchId": batchId,
+                        "schedule": schedules
+                      });
+
+                      final response1 = await http.post(Uri.parse(
+                          'https://tution.dcampusweb.com/api/batch/update/schedule?token='),
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                          body: body1);
+
+
+                      final body2 = jsonEncode({
                         "batchName": batchName,
                         "batchFee": fee
                       });
 
-                      final response = await http.post(Uri.parse(
+                      final response2 = await http.post(Uri.parse(
                           'https://tution.dcampusweb.com/api/batch/create?token='),
                           headers: {
                             'Content-Type': 'application/json',
                             'Accept': 'application/json',
                             'Authorization': 'Bearer $token',
                           },
-                          body: body);
-                      final jsonData = json.decode(response.body);
+                          body: body2);
+                      final jsonData = json.decode(response2.body);
 
-    if (response.statusCode == 200) {
+    if (response2.statusCode == 200) {
       log("success");
       Fluttertoast.showToast(
           msg: "Batch created successfully",
@@ -280,7 +319,8 @@ class _CreateBatchState extends State<CreateBatch> {
       );
     }
 
-                      log('$batchName,  $dateVal, $start,  $end   $fee');
+
+                      log('$batchName,  $schedules, $start,  $end   $fee');
                     }, height: 30, width: 15),
 
                   ],
