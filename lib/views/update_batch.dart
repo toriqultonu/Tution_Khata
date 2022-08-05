@@ -227,7 +227,7 @@ class _BatchUpdateState extends State<BatchUpdate> {
                             keyboardType: TextInputType.phone,
                             decoration: InputDecoration(
                               isCollapsed: true,
-                              prefixIcon: Icon(Icons.phone),
+                              prefixIcon: Icon(Icons.attach_money),
                               labelText: 'Fee (BDT)',
                               hintStyle: hintText,
                               floatingLabelBehavior: FloatingLabelBehavior.never,
@@ -291,22 +291,52 @@ class _BatchUpdateState extends State<BatchUpdate> {
                     Spacer(),
                     RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: () async {
 
-    final body1 = jsonEncode({
+                      List schedules = [];
+
+                      for(int i = 0; i<dateVal.length;i++){
+                        Map schedule = {
+                          "dayId": dayToId[dateVal[i]],
+                          "startingTime": start,
+                          "endingTime": end
+                        };
+                        schedules.add(schedule);
+                      }
+
+                      //creating batch
+
+                      final body1 = jsonEncode({
+                        "batchId": batchId,
+                        "schedule": schedules
+                      });
+
+                      final response1 = await http.post(Uri.parse(
+                          'https://tution.dcampusweb.com/api/batch/update/schedule?token='),
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                          body: body1);
+
+
+                      final body2 = jsonEncode({
       "batchId": widget.batchId,
       "batchName": batchName
     });
 
-    final response1 = await http.post(Uri.parse(
+    final response2 = await http.post(Uri.parse(
     'https://tution.dcampusweb.com/api/batch/update/batchinfo?token='),
     headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Authorization': 'Bearer $token',
     },
-    body: body1);
-    final jsonData1 = json.decode(response1.body);
+    body: body2);
+    final jsonData1 = json.decode(response2.body);
 
-    if (response1.statusCode == 200) {
+
+
+    if (response2.statusCode == 200) {
     log("success");
     Fluttertoast.showToast(
     msg: "Batch updated successfully",

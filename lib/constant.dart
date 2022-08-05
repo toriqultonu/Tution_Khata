@@ -23,6 +23,16 @@ bool isValidEmail(String email) {
 
 String? batchName, date, time, batchId, phoneToVerify;
 
+Map<String, int> dayToId = {
+  "Sat":1,
+  "Sun":2,
+  "Mon":3,
+  "Tue":4,
+  "Wed":5,
+  "Thu":6,
+  "Fri":7
+};
+
 TextStyle hintText = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w300,

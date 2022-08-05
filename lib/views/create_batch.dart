@@ -39,16 +39,6 @@ class _CreateBatchState extends State<CreateBatch> {
   TimeOfDay? startTime;
   TimeOfDay? endTime;
 
-  Map<String, int> dayToId = {
-    "Sat":1,
-    "Sun":2,
-    "Mon":3,
-    "Tue":4,
-    "Wed":5,
-    "Thu":6,
-    "Fri":7
-  };
-
   Future pickStartTime(BuildContext context) async{
     final initialTime = TimeOfDay(hour: 9, minute: 0);
     final newTime = await showTimePicker(context: context, initialTime: startTime ?? initialTime);
@@ -264,25 +254,13 @@ class _CreateBatchState extends State<CreateBatch> {
 
                       //creating batch
 
-                      final body1 = jsonEncode({
-                        "batchId": batchId,
-                        "schedule": schedules
-                      });
-
-                      final response1 = await http.post(Uri.parse(
-                          'https://tution.dcampusweb.com/api/batch/update/schedule?token='),
-                          headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json',
-                            'Authorization': 'Bearer $token',
-                          },
-                          body: body1);
-
 
                       final body2 = jsonEncode({
                         "batchName": batchName,
-                        "batchFee": fee
-                      });
+                        "batchFee": fee,
+                        "schedule": schedules
+                      }
+                      );
 
                       final response2 = await http.post(Uri.parse(
                           'https://tution.dcampusweb.com/api/batch/create?token='),
