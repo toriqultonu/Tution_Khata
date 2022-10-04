@@ -47,6 +47,29 @@ Future<T?> showTextDialog<T>(
 
 }
 
+  updateStudentFee(String studentId, String fee) async {
+
+
+  final body = jsonEncode({
+    "batchFee": fee,
+    "studentId": studentId
+  });
+
+  final response = await http.post(Uri.parse(
+      'https://tution.dcampusweb.com/api/student/change/fee?token='),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: body);
+  final jsonData = json.decode(response.body);
+  log('$jsonData');
+
+  return response.statusCode;
+
+}
+
   updateCaptainInfo(String batchId, String captainName, String captainPhone) async {
 
 

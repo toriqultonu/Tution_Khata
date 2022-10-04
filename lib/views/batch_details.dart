@@ -33,6 +33,13 @@ class BatchDetails extends StatefulWidget {
 class _BatchDetailsState extends State<BatchDetails> {
 
 
+  Future refresh() async{
+
+    setState(() {
+      DatabaseService.getStudentList(token);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,36 +157,39 @@ class _BatchDetailsState extends State<BatchDetails> {
                           Container(child: Text('click on the student to view more options'),),
                           SizedBox(height: 9,),
                           Expanded(
-                            child: ListView(
-                              children: [
-                                FutureBuilder(
-                                    future: DatabaseService.getStudentList(token),
-                                    builder: (BuildContext context, AsyncSnapshot snapshot) {
-                                      switch (snapshot.connectionState) {
-                                        case ConnectionState.waiting:
-                                          return Center(
-                                              child: Container(
-                                                margin: EdgeInsets.only(top: 120),
-                                                width: 100,
-                                                height: 100,
-                                                child: LoadingAnimationWidget.dotsTriangle(
-                                                  color: primaryColor,
-                                                  size: 100,
-                                                ),
-                                              ));
-                                        default:
-                                          if (snapshot.hasError) {
+                            child: RefreshIndicator(
+                              onRefresh: refresh,
+                              child: ListView(
+                                children: [
+                                  FutureBuilder(
+                                      future: DatabaseService.getStudentList(token),
+                                      builder: (BuildContext context, AsyncSnapshot snapshot) {
+                                        switch (snapshot.connectionState) {
+                                          case ConnectionState.waiting:
                                             return Center(
                                                 child: Container(
-                                                  child: Text(
-                                                      'Some error occurred! Contact our support team'),
+                                                  margin: EdgeInsets.only(top: 120),
+                                                  width: 100,
+                                                  height: 100,
+                                                  child: LoadingAnimationWidget.dotsTriangle(
+                                                    color: primaryColor,
+                                                    size: 100,
+                                                  ),
                                                 ));
-                                          } else {
-                                            return buildStudentList(snapshot);
-                                          }
-                                      }
-                                    })
-                              ],
+                                          default:
+                                            if (snapshot.hasError) {
+                                              return Center(
+                                                  child: Container(
+                                                    child: Text(
+                                                        'Some error occurred! Contact our support team'),
+                                                  ));
+                                            } else {
+                                              return buildStudentList(snapshot);
+                                            }
+                                        }
+                                      })
+                                ],
+                              ),
                             ),
                           ),
                         ],

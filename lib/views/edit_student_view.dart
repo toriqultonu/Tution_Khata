@@ -215,7 +215,11 @@ class _EditStudentState extends State<EditStudent> {
                     ),
 
                   ),
-                  RoundedButton(color: primaryColor, title: "Update", onPressed: (){}, height: 23, width: 32,),
+                  RoundedButton(color: primaryColor, title: "Update", onPressed: (){
+
+                    updateStudentFee(widget.studentId.toString(), fee.toString());
+
+                  }, height: 23, width: 32,),
                 ],
               ),
             ),
