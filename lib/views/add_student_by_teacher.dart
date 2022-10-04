@@ -214,7 +214,10 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                       ),
                     ),
                     Spacer(),
-                    RoundedButton(color: primaryColor, title: 'Do Admission', onPressed: (){}, height: 30, width: 15),
+                    RoundedButton(color: primaryColor, title: 'Do Admission', onPressed: (){
+
+
+                    }, height: 30, width: 15),
 
                   ],
                 ),
