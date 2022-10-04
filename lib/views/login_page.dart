@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tution_khata/Helper/authenticator.dart';
 import 'package:tution_khata/components/custom_alert_dialog.dart';
 import 'package:tution_khata/components/custom_password_filed.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
@@ -65,8 +66,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
         _isLoading = false;
         if(jsonData["roles"].toString() == "[teacher]"){
-          final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-          sharedPreferences.setString("token", jsonData["access_token"]);
+          setToken(jsonData["access_token"]);
+          //sharedPreferences.setString("token", jsonData["access_token"]);
           token = jsonData["access_token"];
           //await Future.delayed(Duration(seconds: 3));
           Navigator.pushReplacementNamed(context, HomeScreen.id);

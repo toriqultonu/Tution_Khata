@@ -251,7 +251,7 @@ class _CreateBatchState extends State<CreateBatch> {
                         };
                         schedules.add(schedule);
                       }
-
+                       // log('${log}');
                       //creating batch
 
 
@@ -299,6 +299,7 @@ class _CreateBatchState extends State<CreateBatch> {
 
 
                       log('$batchName,  $schedules, $start,  $end   $fee');
+                      log('${response2.body}');
                     }, height: 30, width: 15),
 
                   ],

@@ -27,9 +27,10 @@ import 'package:tution_khata/views/version_details.dart';
 import 'package:tution_khata/views/waiting_list.dart';
 
 void main() async {
+   // SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+   // token = sharedPreferences.getString("token")!;
   runApp(MyApp());
-  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  token = sharedPreferences.getString("token")!;
+
 }
 
 class MyApp extends StatelessWidget {
@@ -79,7 +80,8 @@ class MyApp extends StatelessWidget {
 
       home: Scaffold(
         resizeToAvoidBottomInset: true,
-        body: token == null ? LoginScreen():HomeScreen(),
+        //body: token == null ? LoginScreen():HomeScreen(),
+       body:  LoginScreen(),
       ),
     );
   }

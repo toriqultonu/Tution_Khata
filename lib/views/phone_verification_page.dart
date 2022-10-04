@@ -5,8 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:pinput/pinput.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
-import 'package:tution_khata/components/text_field_otp.dart';
-import 'package:tution_khata/views/home_page.dart';
 import 'package:http/http.dart' as http;
 
 

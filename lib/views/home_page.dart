@@ -35,8 +35,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
 
+
   @override
   void initState(){
+    //token = getToken();
+    log('$token');
+    setState(() {
+
+    });
     super.initState();
   }
 
