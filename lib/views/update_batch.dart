@@ -296,17 +296,18 @@ class _BatchUpdateState extends State<BatchUpdate> {
                       for(int i = 0; i<dateVal.length;i++){
                         Map schedule = {
                           "dayId": dayToId[dateVal[i]],
-                          "startingTime": start,
-                          "endingTime": end
+                          "startingTime": '${start.toString()}:00',
+                          "endingTime": '${end.toString()}:00'
                         };
+                        log('$schedule');
                         schedules.add(schedule);
                       }
 
                       //creating batch
 
                       final body1 = jsonEncode({
-                        "batchId": batchId,
-                        "schedule": schedules
+                        "batchId": batchId.toString(),
+                        "schedule":  schedules
                       });
 
                       final response1 = await http.post(Uri.parse(
@@ -318,6 +319,7 @@ class _BatchUpdateState extends State<BatchUpdate> {
                           },
                           body: body1);
 
+                      log('${schedules.toString()}');
 
                       final body2 = jsonEncode({
       "batchId": widget.batchId,
@@ -336,7 +338,7 @@ class _BatchUpdateState extends State<BatchUpdate> {
 
 
 
-    if (response2.statusCode == 200) {
+    if (response1.statusCode == 200) {
     log("success");
     Fluttertoast.showToast(
     msg: "Batch updated successfully",

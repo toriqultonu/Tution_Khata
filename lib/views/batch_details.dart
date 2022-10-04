@@ -172,7 +172,7 @@ class _BatchDetailsState extends State<BatchDetails> {
                                             return Center(
                                                 child: Container(
                                                   child: Text(
-                                                      'Some error occurred! Contact our support team'),
+                                                      'No student added yet!'),
                                                 ));
                                           } else {
                                             return buildStudentList(snapshot);
