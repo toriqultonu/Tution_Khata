@@ -35,6 +35,12 @@ Map<String, int> dayToId = {
   "Fri":7
 };
 
+Map<int, String> idToGender = {
+  1:"Male",
+  2:"Female",
+  3:"Other"
+};
+
 TextStyle hintText = TextStyle(
   fontSize: 16,
   fontWeight: FontWeight.w300,

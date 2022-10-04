@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 import 'package:tution_khata/build_lists/build_unapprovedStudent_list.dart';
 import 'package:tution_khata/components/buttons/custom_flat_button.dart';
 import 'package:tution_khata/components/buttons/regular_button.dart';
 import 'package:tution_khata/components/buttons/rounded_button.dart';
 import 'package:tution_khata/views/waiting_list.dart';
+import 'dart:convert';
+import 'dart:developer';
+import 'package:day_picker/day_picker.dart';
+import 'package:day_picker/model/day_in_week.dart';
+import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:tution_khata/components/buttons/rounded_button.dart';
+import '../components/custom_app_bar.dart';
+import '../constant.dart';
+import 'package:http/http.dart' as http;
 
 import '../Helper/DatabaseService.dart';
 import '../build_lists/build_captain_list.dart';
@@ -21,6 +32,8 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
 
   String? selectedValue;
   int? selectedRadio;
+
+  String? studentName, phone, feeAmount, gender;
 
   setSelectedRadio(val){
     setState(() {
@@ -95,7 +108,7 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                           disabledBorder: InputBorder.none,
                         ),
                         onChanged: (value){
-
+                          studentName = value;
                         },
                       ),
                     ),
@@ -130,7 +143,7 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                           disabledBorder: InputBorder.none,
                         ),
                         onChanged: (value){
-
+                            phone = value;
                         },
                       ),
                     ),
@@ -165,7 +178,7 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                           disabledBorder: InputBorder.none,
                         ),
                         onChanged: (value){
-
+                          feeAmount = value;
                         },
                       ),
                     ),
@@ -214,7 +227,56 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                       ),
                     ),
                     Spacer(),
-                    RoundedButton(color: primaryColor, title: 'Do Admission', onPressed: (){
+                    RoundedButton(color: primaryColor, title: 'Do Admission', onPressed: () async {
+
+                      log('$studentName, $phone, $feeAmount ${idToGender[selectedRadio]}');
+
+
+                      final body1 = jsonEncode({
+                        "batchId": batchId,
+                        "name": studentName,
+                        "phone": phone,
+                        "gender": idToGender[selectedRadio].toString(),
+                        "batchFee": feeAmount,
+                        "guardianName": " ",
+                        "guardianPhone": null
+                      });
+
+                      final response1 = await http.post(Uri.parse(
+                          'https://tution.dcampusweb.com/api/student/create?token='),
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                          body: body1);
+
+                      if (response1.statusCode == 200) {
+                        log("success");
+                        Fluttertoast.showToast(
+                            msg: "Student admitted successfully",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );}
+
+                      else {
+                        print("incorrect");
+                        Fluttertoast.showToast(
+                            msg: "Student admission failed",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );
+                      }
+
+                      setState(() {});
 
 
                     }, height: 30, width: 15),

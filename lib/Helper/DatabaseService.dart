@@ -11,6 +11,7 @@ import 'package:tution_khata/model/district.dart';
 import 'package:tution_khata/model/unpaid_student_of_batch.dart';
 import 'package:tution_khata/model/unpaidmonth_of_student.dart';
 
+import '../constant.dart';
 import '../model/unpaidmonths.dart';
 
 class DatabaseService{
@@ -58,7 +59,7 @@ class DatabaseService{
 
   static Future<List<Student>> getStudentList(var token) async{
     final response = await http.get(Uri.parse(
-        'https://tution.dcampusweb.com/api/batch/get/students/bybatch/id/1000002?token='),
+        'https://tution.dcampusweb.com/api/batch/get/students/bybatch/id/$batchId?token='),
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json',
@@ -85,7 +86,7 @@ class DatabaseService{
   static Future<List<UnapprovedStudent>> getUnapprovedStudentList(var token) async {
 
     final body = jsonEncode({
-      "batchId": "1000019"
+      "batchId": batchId
     });
 
     final response = await http.post(Uri.parse(
