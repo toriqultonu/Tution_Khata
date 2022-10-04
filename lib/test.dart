@@ -9,31 +9,62 @@ import 'package:http/http.dart' as http;
 
 void main() async {
 
-  Map data = {
-    "username": "01761500333",
-    "password": "123456"
-  };
-  var jsonData;
-  //SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-  var response = await http.post(Uri.parse('https://tution.dcampusweb.com/api/auth/login'), body: data);
-  if(response.statusCode == 200){
-    jsonData = json.decode(response.body);
+  final body1 = jsonEncode({
+    "batchId": '1000041',
+    "schedule": [
+      {
+        "dayId": dayToId[dateVal[0]],
+        "startingTime": start,
+        "endingTime": end
+      },
+      {
+        "dayId": dayToId[dateVal[1]],
+        "startingTime": start,
+        "endingTime": end
+      },
+      {
+        "dayId": dayToId[dateVal[2]],
+        "startingTime": start,
+        "endingTime": end
+      },
+      {
+        "dayId": dayToId[dateVal[3]],
+        "startingTime": start,
+        "endingTime": end
+      },
+      {
+        "dayId": dayToId[dateVal[4]],
+        "startingTime": start,
+        "endingTime": end
+      },
+      {
+        "dayId": dayToId[dateVal[5]],
+        "startingTime": start,
+        "endingTime": end
+      },
+      {
+        "dayId": dayToId[dateVal[6]],
+        "startingTime": start,
+        "endingTime": end
+      },
+    ]
+  });
 
+  final response1 = await http.post(Uri.parse(
+      'https://tution.dcampusweb.com/api/batch/update/schedule?token='),
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token',
+      },
+      body: body1);
 
-          if(jsonData["roles"].toString() == "[teacher]"){
-            log('${jsonData["access_token"]}');
-          }
+  log('${schedules.toString()}');
 
-
-
-            else
-          log("not teacher");
-
-
-  }
-  else{
-    print(response.body);
-  }
+  final body2 = jsonEncode({
+    "batchId": widget.batchId,
+    "batchName": batchName
+  });
 }
 
 // class MyApp extends StatelessWidget {

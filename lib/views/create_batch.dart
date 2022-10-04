@@ -246,8 +246,8 @@ class _CreateBatchState extends State<CreateBatch> {
                       for(int i = 0; i<dateVal.length;i++){
                         Map schedule = {
                           "dayId": dayToId[dateVal[i]],
-                          "startingTime": start,
-                          "endingTime": end
+                          "startingTime": '${start.toString()}:00',
+                          "endingTime": '${end.toString()}:00'
                         };
                         schedules.add(schedule);
                       }
