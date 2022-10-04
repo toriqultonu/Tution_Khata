@@ -56,6 +56,12 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Future refresh() async{
+    setState(() {
+      DatabaseService.getBatchList(token);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -126,36 +132,39 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 20,
             ),
             Expanded(
-              child: ListView(
-                children: [
-                  FutureBuilder(
-                      future: DatabaseService.getBatchList(token),
-                      builder: (BuildContext context, AsyncSnapshot snapshot) {
-                        switch (snapshot.connectionState) {
-                          case ConnectionState.waiting:
-                            return Center(
-                                child: Container(
-                                  margin: EdgeInsets.only(top: 120),
-                              width: 150,
-                              height: 150,
-                              child: LoadingAnimationWidget.dotsTriangle(
-                                color: primaryColor,
-                                size: 100,
-                              ),
-                            ));
-                          default:
-                            if (snapshot.hasError) {
+              child: RefreshIndicator(
+                onRefresh: refresh,
+                child: ListView(
+                  children: [
+                    FutureBuilder(
+                        future: DatabaseService.getBatchList(token),
+                        builder: (BuildContext context, AsyncSnapshot snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.waiting:
                               return Center(
                                   child: Container(
-                                child: Text(
-                                    'Some error occurred! Contact our support team'),
+                                    margin: EdgeInsets.only(top: 120),
+                                width: 150,
+                                height: 150,
+                                child: LoadingAnimationWidget.dotsTriangle(
+                                  color: primaryColor,
+                                  size: 100,
+                                ),
                               ));
-                            } else {
-                              return buildBatch(snapshot);
-                            }
-                        }
-                      })
-                ],
+                            default:
+                              if (snapshot.hasError) {
+                                return Center(
+                                    child: Container(
+                                  child: Text(
+                                      'Some error occurred! Contact our support team'),
+                                ));
+                              } else {
+                                return buildBatch(snapshot);
+                              }
+                          }
+                        })
+                  ],
+                ),
               ),
             ),
           ],
