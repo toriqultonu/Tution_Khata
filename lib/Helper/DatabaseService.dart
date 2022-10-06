@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:tution_khata/Test/unpaid_student.dart';
@@ -178,4 +179,22 @@ class DatabaseService{
     return jsonData.map<UnpaidStudentsOfBatch>(UnpaidStudentsOfBatch.fromJson).toList();
   }
 
+  static getTeacherInfo(var token) async{
+
+    final response = await http.get(Uri.parse(
+        'https://tution.dcampusweb.com/api/teacher/info?token='),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        });
+    final jsonData = json.decode(response.body);
+
+    teacherName = jsonData["name"];
+    teacherPhone = jsonData["phone"];
+    teacherEmail = jsonData["email"];
+    teacherDistrict = jsonData["district"];
+    teacherUpazilla = jsonData["upazila"];
+    teacherInstitute = jsonData["institutionName"];
+  }
 }
