@@ -190,11 +190,16 @@ class DatabaseService{
         });
     final jsonData = json.decode(response.body);
 
+    teacherId = jsonData["id"];
     teacherName = jsonData["name"];
     teacherPhone = jsonData["phone"];
+    teacherDOB = jsonData["dob"];
     teacherEmail = jsonData["email"];
     teacherDistrict = jsonData["district"];
     teacherUpazilla = jsonData["upazila"];
     teacherInstitute = jsonData["institutionName"];
+    teacherStatusId = jsonData["teacherStatusId"];
+    teacherStatus = jsonData["teacherStatus"];
+    smsBalance = jsonData["smsBalance"];
   }
 }
