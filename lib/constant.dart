@@ -88,4 +88,5 @@ InputDecoration getTextFieldDesign({required String labelText, required Icon ico
 
 
 
-
+// Teacher's Info
+String? teacherEmail, teacherPhone, teacherName, teacherInstitute, teacherDistrict, teacherUpazilla;
