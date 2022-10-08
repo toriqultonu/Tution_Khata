@@ -32,6 +32,9 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
 
   String? selectedValue;
   int? selectedRadio;
+  TextEditingController nameController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController feeController = TextEditingController();
 
   String? studentName, phone, feeAmount, gender;
 
@@ -93,6 +96,7 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                             )
                           ]),
                       child: TextFormField(
+                        controller: nameController,
                         textAlignVertical: TextAlignVertical.center,
                         keyboardType: TextInputType.name,
                         decoration: InputDecoration(
@@ -128,6 +132,7 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                             )
                           ]),
                       child: TextFormField(
+                        controller: phoneController,
                         textAlignVertical: TextAlignVertical.center,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
@@ -163,6 +168,7 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                             )
                           ]),
                       child: TextFormField(
+                        controller: feeController,
                         textAlignVertical: TextAlignVertical.center,
                         keyboardType: TextInputType.phone,
                         decoration: InputDecoration(
@@ -252,6 +258,8 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                           body: body1);
 
                       if (response1.statusCode == 200) {
+
+
                         log("success");
                         Fluttertoast.showToast(
                             msg: "Student admitted successfully",
@@ -261,7 +269,8 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                             backgroundColor: Colors.green,
                             textColor: Colors.white,
                             fontSize: 16.0
-                        );}
+                        );
+                      }
 
                       else {
                         print("incorrect");
@@ -276,7 +285,11 @@ class _AddStudentByTeacherState extends State<AddStudentByTeacher> {
                         );
                       }
 
-                      setState(() {});
+                      setState(() {
+                          nameController.clear();
+                          phoneController.clear();
+                          feeController.clear();
+                      });
 
 
                     }, height: 30, width: 15),
