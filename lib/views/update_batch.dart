@@ -205,6 +205,87 @@ class _BatchUpdateState extends State<BatchUpdate> {
                         child: Center(child: Text(getEndTime(), style: TextStyle(fontSize: 20),)),
                       ),
                     ),
+                    Spacer(), RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: () async {
+
+                      List schedules = [];
+
+                      for(int i = 0; i<dateVal.length;i++){
+                        Map schedule = {
+                          "dayId": dayToId[dateVal[i]],
+                          "startingTime": '${start.toString()}:00',
+                          "endingTime": '${end.toString()}:00'
+                        };
+                        log('$schedule');
+                        schedules.add(schedule);
+                      }
+
+                      //creating batch
+
+                      final body1 = jsonEncode({
+                        "batchId": batchId.toString(),
+                        "schedule":  schedules
+                      });
+
+                      final response1 = await http.post(Uri.parse(
+                          'https://tution.dcampusweb.com/api/batch/update/schedule?token='),
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                          body: body1);
+
+                      log('${schedules.toString()}');
+
+                      final body2 = jsonEncode({
+                        "batchId": widget.batchId,
+                        "batchName": batchName
+                      });
+
+                      final response2 = await http.post(Uri.parse(
+                          'https://tution.dcampusweb.com/api/batch/update/batchinfo?token='),
+                          headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'Authorization': 'Bearer $token',
+                          },
+                          body: body2);
+                      final jsonData1 = json.decode(response2.body);
+
+
+
+                      if (response1.statusCode == 200) {
+                        log("success");
+                        Fluttertoast.showToast(
+                            msg: "Batch updated successfully",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.green,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );}
+
+                      else {
+                        print("incorrect");
+                        Fluttertoast.showToast(
+                            msg: "Batch didn't update!",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            timeInSecForIosWeb: 1,
+                            backgroundColor: Colors.red,
+                            textColor: Colors.white,
+                            fontSize: 16.0
+                        );
+                      }
+
+                      setState(() {});
+
+
+                      log('$batchName,  $dateVal, $start,  $end   $fee');
+                    },
+                        height: 30, width: 15),
+
                     Spacer(),
                     Row(
                       children: [
@@ -238,7 +319,7 @@ class _BatchUpdateState extends State<BatchUpdate> {
                               disabledBorder: InputBorder.none,
                             ),
                             onChanged: (value){
-                                  fee = value;
+                              fee = value;
                             },
                           ),
                         ),
@@ -261,114 +342,33 @@ class _BatchUpdateState extends State<BatchUpdate> {
                               body: body);
                           final jsonData = json.decode(response.body);
 
-    if (response.statusCode == 200) {
-    log("success");
-    Fluttertoast.showToast(
-    msg: "Batch fee updated",
-    toastLength: Toast.LENGTH_SHORT,
-    gravity: ToastGravity.BOTTOM,
-    timeInSecForIosWeb: 1,
-    backgroundColor: Colors.green,
-    textColor: Colors.white,
-    fontSize: 16.0
-    );}
-    else{
-      print("incorrect");
-      Fluttertoast.showToast(
-          msg: "Batch fee didn't update",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
-    }
+                          if (response.statusCode == 200) {
+                            log("success");
+                            Fluttertoast.showToast(
+                                msg: "Batch fee updated",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.green,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );}
+                          else{
+                            print("incorrect");
+                            Fluttertoast.showToast(
+                                msg: "Batch fee didn't update",
+                                toastLength: Toast.LENGTH_SHORT,
+                                gravity: ToastGravity.BOTTOM,
+                                timeInSecForIosWeb: 1,
+                                backgroundColor: Colors.red,
+                                textColor: Colors.white,
+                                fontSize: 16.0
+                            );
+                          }
 
                         }, height: 4, width: 5)
                       ],
                     ),
-                    Spacer(),
-                    RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: () async {
-
-                      List schedules = [];
-
-                      for(int i = 0; i<dateVal.length;i++){
-                        Map schedule = {
-                          "dayId": dayToId[dateVal[i]],
-                          "startingTime": '${start.toString()}:00',
-                          "endingTime": '${end.toString()}:00'
-                        };
-                        log('$schedule');
-                        schedules.add(schedule);
-                      }
-
-                      //creating batch
-
-                      final body1 = jsonEncode({
-                        "batchId": batchId.toString(),
-                        "schedule":  schedules
-                      });
-
-                      final response1 = await http.post(Uri.parse(
-                          'https://tution.dcampusweb.com/api/batch/update/schedule?token='),
-                          headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json',
-                            'Authorization': 'Bearer $token',
-                          },
-                          body: body1);
-
-                      log('${schedules.toString()}');
-
-                      final body2 = jsonEncode({
-      "batchId": widget.batchId,
-      "batchName": batchName
-    });
-
-    final response2 = await http.post(Uri.parse(
-    'https://tution.dcampusweb.com/api/batch/update/batchinfo?token='),
-    headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Authorization': 'Bearer $token',
-    },
-    body: body2);
-    final jsonData1 = json.decode(response2.body);
-
-
-
-    if (response1.statusCode == 200) {
-    log("success");
-    Fluttertoast.showToast(
-    msg: "Batch updated successfully",
-    toastLength: Toast.LENGTH_SHORT,
-    gravity: ToastGravity.BOTTOM,
-    timeInSecForIosWeb: 1,
-    backgroundColor: Colors.green,
-    textColor: Colors.white,
-    fontSize: 16.0
-    );}
-
-    else {
-      print("incorrect");
-      Fluttertoast.showToast(
-          msg: "Batch didn't update!",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.red,
-          textColor: Colors.white,
-          fontSize: 16.0
-      );
-    }
-
-    setState(() {});
-
-
-                        log('$batchName,  $dateVal, $start,  $end   $fee');
-                    },
-                        height: 30, width: 15),
 
                   ],
                 ),
