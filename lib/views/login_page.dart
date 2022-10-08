@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:tution_khata/Helper/DatabaseService.dart';
 import 'package:tution_khata/Helper/authenticator.dart';
 import 'package:tution_khata/components/custom_alert_dialog.dart';
 import 'package:tution_khata/components/custom_password_filed.dart';
@@ -69,6 +70,9 @@ class _LoginScreenState extends State<LoginScreen> {
           setToken(jsonData["access_token"]);
           //sharedPreferences.setString("token", jsonData["access_token"]);
           token = jsonData["access_token"];
+
+          DatabaseService.getTeacherInfo(token);
+
           //await Future.delayed(Duration(seconds: 3));
           Navigator.pushReplacementNamed(context, HomeScreen.id);
         }

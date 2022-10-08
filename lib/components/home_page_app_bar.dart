@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tution_khata/constant.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({Key? key}) : super(key: key);
@@ -27,15 +28,15 @@ class HomeAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  child: Text('Mojura Moula', style: TextStyle(fontFamily: 'Nunito Sans', fontWeight: FontWeight.w600, fontSize: 14, color: Colors.white),),
+                  child: Text('$teacherName', style: TextStyle(fontFamily: 'Nunito Sans', fontWeight: FontWeight.w600, fontSize: 14, color: Colors.white),),
                 ),
                 Spacer(),
                 Container(
-                  child: Text('Subscription: Free Trial', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
+                  child: Text('Subscription: $teacherStatus', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
                 ),
                 Spacer(),
                 Container(
-                  child: Text('SMS Balance: 0 (Click to Recharge)', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
+                  child: Text('SMS Balance: $smsBalance (Click to Recharge)', style: TextStyle(fontFamily: 'Nunito', fontWeight: FontWeight.w400, fontSize: 14, color: Colors.white),),
                 ),
               ],
             ),
