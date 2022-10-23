@@ -32,6 +32,8 @@ class _AttendanceListState extends State<AttendanceList> {
     super.initState();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -115,6 +117,9 @@ class _AttendanceListState extends State<AttendanceList> {
                     }
                   Navigator.pop(context);
 
+                    setState(() {
+                      
+                    });
 
                   },
               ),

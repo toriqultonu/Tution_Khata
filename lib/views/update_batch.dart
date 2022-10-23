@@ -23,7 +23,7 @@ class BatchUpdate extends StatefulWidget {
 class _BatchUpdateState extends State<BatchUpdate> {
 
   var dateVal;
-  String? batchName, fee, start, end;
+  String? updateBatchName, fee, start, end;
 
   List<DayInWeek> _days = [DayInWeek(
       "Sat",), DayInWeek(
@@ -104,10 +104,35 @@ class _BatchUpdateState extends State<BatchUpdate> {
         child: Container(
           child: ListView(
             children: [
-              SizedBox(height: 55,),
+              SizedBox(height: 25,),
+              Container(
+                margin: EdgeInsets.all(15),
+                padding: EdgeInsets.only(left: 29),
+                height: 100,
+                decoration: CustomBoxDecoration(boxColor),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.topRight,
+                      padding: EdgeInsets.only(top: 8, right: 14),
+                      child: Text('Batch Code: $batchId', style: TextStyle(fontWeight: FontWeight.w600,),),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Batch Name: $batchName', style: TextStyle(color: Colors.redAccent, fontWeight: FontWeight.w600, fontSize: 17),),
+                    ),
+                    SizedBox(height: 5,),
+                    Container(alignment: Alignment.centerLeft,child: Text('Day: $date'),),
+                    SizedBox(height: 5,),
+                    Container(alignment: Alignment.centerLeft,child: Text('Time: $time'),),
+
+                  ],
+                ),
+              ),
+              SizedBox(height: 15,),
               Container(
                 width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width*1.2,
+                height: MediaQuery.of(context).size.width*1.1,
                 margin: EdgeInsets.all(15),
                 padding: EdgeInsets.all(15),
                 decoration: CustomBoxDecoration(boxColor),
@@ -144,7 +169,7 @@ class _BatchUpdateState extends State<BatchUpdate> {
                           disabledBorder: InputBorder.none,
                         ),
                         onChanged: (value){
-                          batchName = value;
+                          updateBatchName = value;
                         },
                       ),
                     ),
@@ -161,51 +186,56 @@ class _BatchUpdateState extends State<BatchUpdate> {
                       },
                     ),
                     Spacer(),
+                    Row(
+                      children: [
+                        GestureDetector(
+                          onTap: (){
+                            pickStartTime(context);
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width/2.5,
+                            height: 45,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(6.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.8),
+                                    spreadRadius: 0.1,
+                                    blurRadius: 2,
+                                    offset: Offset(3, 3),
+                                  )
+                                ]),
+                            child: Center(child: Text(getStartTime(), style: TextStyle(fontSize: 18),)),
+                          ),
+                        ),
+                        Spacer(),
+                        GestureDetector(
+                          onTap: (){
+                            pickEndTime(context);
+                          },
+                          child: Container(
+                            width: MediaQuery.of(context).size.width/2.5,
+                            height: 45,
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(6.0),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.8),
+                                    spreadRadius: 0.1,
+                                    blurRadius: 2,
+                                    offset: Offset(3, 3),
+                                  )
+                                ]),
+                            child: Center(child: Text(getEndTime(), style: TextStyle(fontSize: 18),)),
+                          ),
+                        ),
+                      ],
+                    ),
 
-                    GestureDetector(
-                      onTap: (){
-                        pickStartTime(context);
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(6.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.8),
-                                spreadRadius: 0.1,
-                                blurRadius: 2,
-                                offset: Offset(3, 3),
-                              )
-                            ]),
-                        child: Center(child: Text(getStartTime(), style: TextStyle(fontSize: 20),)),
-                      ),
-                    ),
                     Spacer(),
-                    GestureDetector(
-                      onTap: (){
-                        pickEndTime(context);
-                      },
-                      child: Container(
-                        width: MediaQuery.of(context).size.width,
-                        height: 45,
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(6.0),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withOpacity(0.8),
-                                spreadRadius: 0.1,
-                                blurRadius: 2,
-                                offset: Offset(3, 3),
-                              )
-                            ]),
-                        child: Center(child: Text(getEndTime(), style: TextStyle(fontSize: 20),)),
-                      ),
-                    ),
-                    Spacer(), RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: () async {
+                    RoundedButton(color: primaryColor, title: 'Update Batch', onPressed: () async {
 
                       List schedules = [];
 
@@ -239,7 +269,7 @@ class _BatchUpdateState extends State<BatchUpdate> {
 
                       final body2 = jsonEncode({
                         "batchId": widget.batchId,
-                        "batchName": batchName
+                        "batchName": updateBatchName
                       });
 
                       final response2 = await http.post(Uri.parse(
@@ -282,9 +312,8 @@ class _BatchUpdateState extends State<BatchUpdate> {
                       setState(() {});
 
 
-                      log('$batchName,  $dateVal, $start,  $end   $fee');
-                    },
-                        height: 30, width: 15),
+                      log('$updateBatchName,  $dateVal, $start,  $end   $fee');
+                    }, height: 30, width: 15),
 
                     Spacer(),
                     Row(

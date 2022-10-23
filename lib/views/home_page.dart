@@ -40,10 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState(){
     //token = getToken();
     log('$token');
-
-    setState(() {
-
-    });
+    DatabaseService.getBatchList(token);
     super.initState();
   }
 

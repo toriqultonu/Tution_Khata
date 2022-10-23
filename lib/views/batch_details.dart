@@ -33,6 +33,11 @@ class BatchDetails extends StatefulWidget {
 class _BatchDetailsState extends State<BatchDetails> {
 
 
+  void initState(){
+    DatabaseService.getStudentList(token);
+    super.initState();
+  }
+
   Future refresh() async{
 
     setState(() {
