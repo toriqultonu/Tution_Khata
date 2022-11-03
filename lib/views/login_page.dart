@@ -70,8 +70,8 @@ class _LoginScreenState extends State<LoginScreen> {
           setToken(jsonData["access_token"]);
           //sharedPreferences.setString("token", jsonData["access_token"]);
           token = jsonData["access_token"];
-
           DatabaseService.getTeacherInfo(token);
+          //DatabaseService.getTeacherInfo(token);
 
           //await Future.delayed(Duration(seconds: 3));
           Navigator.pushReplacementNamed(context, HomeScreen.id);

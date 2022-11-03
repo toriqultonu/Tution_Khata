@@ -81,7 +81,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        CustomInfoShower(icon: Icon(Icons.ac_unit_rounded, size: 24,), labelText: 'Full Name', mainInfo: 'Anik'),
+                        CustomInfoShower(icon: Icon(Icons.ac_unit_rounded, size: 24,), labelText: 'Full Name', mainInfo: '$teacherName'),
                         Spacer(),
                         CustomInfoShower(icon: Icon(Icons.ac_unit_rounded, size: 24,), labelText: 'Full Name', mainInfo: 'Anik'),
                         Spacer(),

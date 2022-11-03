@@ -189,9 +189,9 @@ class DatabaseService{
           'Authorization': 'Bearer $token',
         });
     final jsonData = json.decode(response.body);
-
+    log('${jsonData}');
     teacherId = jsonData["id"];
-    teacherName = jsonData["name"];
+    teacherName = jsonData["name"].toString();
     teacherPhone = jsonData["phone"];
     teacherDOB = jsonData["dob"];
     teacherEmail = jsonData["email"];

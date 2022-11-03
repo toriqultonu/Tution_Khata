@@ -41,6 +41,10 @@ class _HomeScreenState extends State<HomeScreen> {
     //token = getToken();
     log('$token');
     DatabaseService.getBatchList(token);
+    DatabaseService.getTeacherInfo(token);
+    setState(() {
+
+    });
     super.initState();
   }
 
@@ -57,6 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Future refresh() async{
     setState(() {
       DatabaseService.getBatchList(token);
+      DatabaseService.getTeacherInfo(token);
     });
   }
 
