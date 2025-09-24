@@ -37,7 +37,7 @@ These are the features user will have..
 ### Build with: 
 
 * [Flutter](https://flutter.dev//)
-* [Laravel](https://laravel.com)
+* [Springboot](https://spring.io/projects/spring-boot)
 * [MySQL](https://www.mysql.com/)
 * [JQuery](https://jquery.com)
 
